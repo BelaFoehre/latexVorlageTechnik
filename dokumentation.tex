@@ -27,7 +27,7 @@
 	\pagenumbering{Roman}
 
 	% Sperrvermerk
-	\input{ads/sperrvermerk}
+	% \input{ads/sperrvermerk}
 	\newpage
 
 	% Erklärung
@@ -83,15 +83,21 @@
 	\pagestyle{headings}		% Kolumnentitel im Kopf, Seitenzahlen im Fuß
 
 	% Inhalt
-	\foreach \i in {01,02,03,04,05,06,07,08,09,...,99} {%
-		\edef\FileName{content/\i kapitel}%
-			\IfFileExists{\FileName}{%
-				\input{\FileName}
-			}
-			{%
-				%file does not exist
-			}
-	}
+	% \foreach \i in {01,02,03,04,05,06,07,08,09,...,99} {%
+	% 	\edef\FileName{content/\i kapitel}%
+	% 		\IfFileExists{\FileName}{%
+	% 			\input{\FileName}
+	% 		}
+	% 		{%
+	% 			%file does not exist
+	% 		}
+	% }
+
+	\input{content/01_einleitung/00_einleitung.tex}
+	\input{content/02_grundlagen/00_grundlagen.tex}
+	\input{content/03_forschungsmethoden/00_forschungsmethoden.tex}
+	\input{content/04_forschung/00_forschung.tex}
+	\input{content/05_evaluation-schlussbetrachtung/00_evaluation.tex}
 
 	\clearpage
 
