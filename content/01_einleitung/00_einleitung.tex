@@ -1,32 +1,40 @@
 %!TEX root = ../../dokumentation.tex
 
 \chapter{Einleitung}
-Erste Erwähnung eines Akronyms wird als Fußnote angezeigt. Jede weitere wird
-nur verlinkt: \acf{AGPL}. % \cite{fsf:2007}
+% Erste Erwähnung eines Akronyms wird als Fußnote angezeigt. Jede weitere wird
+% nur verlinkt: \acf{AGPL}. % \cite{fsf:2007}
 
-Verweise auf das Glossar: \gls{Glossareintrag}, \glspl{Glossareintrag}
-
-Nur erwähnte Literaturverweise werden auch im Literaturverzeichnis gedruckt:
-% \cite{baumgartner:2002}, \cite{dreyfus:1980}
-
-Meine erste Fußnote\footnote{Ich bin eine Fußnote}
-
-\begin{wrapfigure}{r}{.4\textwidth}
-\centering
-\includegraphics[height=.35\textwidth]{logo.png}
-\vspace{-15pt}
-\caption{Das Logo der Musterfirma\footnotemark}
-\end{wrapfigure}
-%Quelle muss in Fußnote stehen (da sonst aufgrund eines Fehlers nicht kompiliert
-% wird)
-% \footnotetext{aus \cite{mustermann:2012}}
-Looking for the one superhero comic you just have to read. Following the antics and adventures of May Mayday Parker, this Spider-book has everything you could want in a comic--action, laughs, mystery and someone in a Spidey suit. Collects Alias \#1-28, What If. Jessica Jones had Joined the Avengers. In her inaugural arc, Jessicas life immediately becomes expendable when she uncovers the potentially explosive secret of one heros true identity. In her inaugural arc, Jessicas life immediately becomes expendable when she uncovers the potentially explosive secret of one heros true identity.
-
-Once upon a time, Jessica Jones was a costumed super-hero, just not a very good one. First, a story where Wolverine and Hulk come together, and then Captain America and Cable meet up. In a city of Marvels, Jessica Jones never found her niche. The classic adventures of Spider-Man from the early days up until the 90s. Looking for the one superhero comic you just have to read. In her inaugural arc, Jessicas life immediately becomes expendable when she uncovers the potentially explosive secret of one heros true identity.
+% Verweise auf das Glossar: \gls{Glossareintrag}, \glspl{Glossareintrag}
 
 Motivation:
+Steigende Nutzerzahlen und zunehmende Digitalisierung bringen nach Hentschel und Leyh (2018) einen wachsenden Bedarf an
+Rechenleistung und immer höhere Anforderungen an Informationssysteme mit sich, denen klassische Modelle der Datenverarbeitung
+nicht mehr gerecht werden können. Cloud Computing dagegen ist in der Lage diese Anforderungen zu erfüllen
+\cite[Vgl.][S. 6]{Reinheimer2018}.
+
 Problemstellung:
-Zielsetzung: Aus der zuvor erarbeiteten Problemstellung ergibt sich als Ziel dieser Arbeit…
+Der zuor gezeigte, anhaltende Trend Anwendungen in der Cloud laufen zu lassen führt auch dazu,
+dass legacy Anwendungen nach und nach in die Cloud Migriert werden.
+Nach Kazanavičius, et al. (2019) stellt die Wahl der zum Unternehmen passenden Migrationsmethode
+eine schwierige Aufgabe dar. Die erste Frage die hier beantwortet werden sollte sei demnach
+"refactor or rebuild?" \cite[Vgl.][S. 4]{Kazanavicius2019}.
+Darüber hinaus kommen auch Herausforderungen wie die Frage nach einem adäquaten Architekturdesign
+für die Cloud \cite[Vgl.][S. 14]{Pahl} und der Untersuchng potenzieler Vor- und Nachteile
+von zum Beispiel einer Microservice-Architektur und der Untersuchung möglicher Alternativen
+\cite[Vgl.][S. 3]{Carrasco2018}.
+
+Zielsetzung:
+Aus der zuvor erarbeiteten Problemstellung ergibt sich als Ziel dieser Arbeit für
+eine Unternehmensinterne, lokale Anwendung herauszuarbeiten, wie die Migration diese in die
+Cloud vollzogen werden kann und in welchen Aufgaben sich Herausforderungen befinden.
+
+Out-of-Scope:
+Explizit nicht betrachtet werden in dieser Arbeit die folgenden Aspekte:
+\begin{itemize}
+\item Implementierung von Migrationstrategien
+\item zweitens
+\item drittens
+\end{itemize}
 
 \input{content/01_einleitung/01_gesch_kontext.tex}
 \input{content/01_einleitung/02_wiss_kontext.tex}
