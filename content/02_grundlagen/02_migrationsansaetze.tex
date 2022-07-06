@@ -1,7 +1,7 @@
 \section{Migrationsansätze}
 
 Im folgenden Kapitel wird auf die unterschiedlichen Migrationsmethoden des Cloud Computing eingegangen.
-Grundsätzlich gibt es verschiedene Ansätze, wie die Cloud Migration realisierbar ist,
+Durch die unterschiedlichen Servicelevel bedingt gibt es verschiedene Ansätze, wie die Cloud Migration realisierbar ist \cite[Vgl.][S. 226]{Surianarayanan2019},
 angefangen mit dem sogenannten "Lift and Shift", bis hin zur Entwicklung Cloud nativer Anwendungen.
 
 \subsection{Lift and Shift}
@@ -9,8 +9,18 @@ Der sicherlich einfachste Weg seine Anwendungen in die Cloud zu bringen ist der 
 Hier wird die Anwendung genau so wie sie ist genommen und in der Cloud auf einer Infrastruktur installiert, die
 dem ursprünglichen System entspricht.
 
-\subsection{Replatforming}
+\subsection{Replatforming/Rehosting}
+Nach Zhao (2014) ist das Replatforming oder Rehosting die vorgeschlagene Strategie für die Migration zu IaaS \cite[Vgl.][S. 144]{Zhao2014}.
+Bei diesen Strategien werden Anwendungen lediglich auf einer anderen Hardwareplattform installiert, die Anwendungsarchitektur bleibt dabei
+unverändert. Dieser Ansatz bietet eine schnelle Lösung zur Migration \cite[Vgl.][]{CIO}.
 
 \subsection{Refactoring/Rebuilding}
+Das Refactoring oder Rebuilding von Anwendungen gehört nach Zhao (2014) zu den empfohlenen Strategien für die Migration zu PaaS \cite[Vgl.][S. 144]{Zhao2014}.
+Rebuilding bedeutet, den bisherigen Code zu re-architekten um die Vorteile der Cloud Plattform nutzen zu können \cite[Vgl.][]{CIO}.
 
 \subsection{Cloud Native Entwicklung}
+Der Schritt zu SaaS ist nach Zhao (2014) auf verschiedenen Wegen zu erreichen. Demnach sei eine Anwendung durch einen SaaS Service entweder zu ersetzen,
+enstprechend der SaaS Prinzipien zu überarbeiten oder zu einem SaaS Service unzustrukturieren \cite[Vgl.][S. 144]{Zhao2014}.
+
+Sind die Ressourcen vorhanden, ist die Cloud Native Entwicklung von Anwendungen mit Serverless Functions, auch als
+Lambda Funtionen bekannt, möglich.
