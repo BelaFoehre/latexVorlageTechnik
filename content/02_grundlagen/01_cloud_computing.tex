@@ -5,14 +5,14 @@ Bereitstellungsmodelle und Abstraktionsebenen des Cloud Computing erläutert.
 
 \subsection{Was ist Cloud Computing}
 
-Nach dem \ac{NIST} ist Cloud Computing ein Modell der Zurverfügungstellung von Computing Ressourcen
+Nach dem \ac{NIST}, auf dessen Definition sich in jüngerer Literatur häufig bezogen wird \cite[Vgl.][S. 4f]{Reinheimer2018}, ist Cloud Computing ein Modell der Zurverfügungstellung von Computing Ressourcen
 (z.B. Netzwerke, Server, Speicher, Anwendungen und Services),die über das Netzwerk erreichbar sind und mit geringem Managementaufwand
-schnell freigegeben und bereitgestellt werden können \cite[Vgl.][S. 2]{Mell2011}.
+schnell freigegeben und bereitgestellt werden können \cite[Vgl.][S. 2]{Mell2011}\cite[Vgl.][S. 5]{Reinheimer2018}.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
 \centering
-\includegraphics[height=0.3\textwidth]{xaas_maenhaut.png}
-\caption{Eine Übersicht der Cloud Service Modelle \cite[S. 33]{Maenhaut2016}}
+\includegraphics[height=0.3\textwidth]{xaas.png}
+\caption{Eine Übersicht der Cloud Service Modelle \cite[Eigene Darstellung nach][S. 33]{Maenhaut2016}\cite[Ergänzt durch][]{Toroman2018}}
 \label{fig:XaaS}
 \end{wrapfigure}
 
@@ -20,14 +20,13 @@ Nach Hentschel und Leyh (2018), Zhao (2014), Maenhaut (2016) und Surianarayanan 
 \textbf{\ac{PaaS}} und \textbf{\ac{IaaS}}, welche auch zu \ac{XaaS} zusammengefasst werden
 \cite[Vgl.][S. 9]{Reinheimer2018}\cite[Vgl.][S. 143f]{Zhao2014}\cite[Vgl.][S. 32ff]{Maenhaut2016} und \cite[Vgl.][S. 226ff]{Surianarayanan2019}.
 
-Die unterste der drei genannten Abstraktionsschichten ist die \ac{IaaS}, welche die Basisinfrastruktur, wie zum Beispiel Netzwerk, Server oder Speicher,
-bereitstellt. Diese Infrastruktur kann sowohl physisch als auch virtuell zur Verfügung gestellt werden \cite[Vgl.][S. 9f]{Reinheimer2018}.
-Die darüberliegende Schicht ist die \ac{PaaS}, welche auf der Infrastruktur zusätzlich noch eine Basis zur Anwendungsentwicklung bietet, indem zum Beispiel
-bereits ein Betriebssystem und eine Datenbank installiert sind oder eine andere Programmierumgebung verwendet werden kann \cite[Vgl.][S. 10]{Reinheimer2018}.
-Die darüberliegende Schicht ist die \ac{SaaS}, welche standardisierte Anwendungen zur Verfügung stellt und sich somit direkt an den Endnutzer richtet
+Die in Abbildung \ref{fig:XaaS} dargestellte unterste der drei genannten Abstraktionsschichten ist \ac{IaaS},
+welche die Basisinfrastruktur, wie zum Beispiel Netzwerk, Server oder Speicher, bereitstellt.
+Diese Infrastruktur kann sowohl physisch als auch virtuell zur Verfügung gestellt werden \cite[Vgl.][S. 9f]{Reinheimer2018}.
+Die darüberliegend dargestellte Schicht ist \ac{PaaS}, welche zu der Infrastrukturebene zusätzlich noch eine Basis zur Anwendungsentwicklung bietet, indem zum Beispiel
+bereits ein Betriebssystem und Middleware und eine Laufzeitumgebung bereitgestellt werden \cite[Vgl.][S. 10]{Reinheimer2018}.
+Die oberste Abstraktionsebene ist \ac{SaaS}, welche standardisierte Anwendungen zur Verfügung stellt und sich somit direkt an den Endnutzer richtet
 \cite[Vgl.][S. 11]{Reinheimer2018}.
-
-In Abbildung \ref{fig:XaaS} wird eine Übersicht der drei Abstraktionsebenen angezeigt und dargestellt, wie es sich mit der Flexibilität über diese verhält \cite[Vgl.][S. 33]{Maenhaut2016}.
 
 Generell wird die Cloud darüber hinaus in drei Organisationsdimensionen eingeteilt \cite[Vgl. auch im Folgenden][S. 7ff]{Reinheimer2018}:
 \begin{itemize}
