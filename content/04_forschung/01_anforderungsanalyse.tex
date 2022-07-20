@@ -21,10 +21,15 @@ Die bisher existierende Anwendung ist eine Python Anwendung, die grundsätzlich 
 
 Jeder dieser drei Services ist ein eigenes Python Modul. Diese greifen jeweils auf weitere Services wie einen Excel-Helper und Checking-Tools zurück.
 
+Da es sich bei dieser Arbeit um eine Machbarkeitsstudie mit Erstellung eines Prototypen handelt, wird im ersten Schritt nur die Migration des Collect Service untersucht, bevor die anderen, komplexeren Services migriert werden. Dies ist in Abbildung \ref{fig:pmo_python} entsprechend durch den gelben Rahmen gekennzeichnet. Der Collect Service benötigt eine Verbindung zu dem Box-Verzeichnis und einen Ablageort für die \glqq{eingesammelten}\grqq{} Timesheets.
+
 \subsection{Anforderungen an die Cloud Migration}
-Wird eine Anwendung in die Cloud migriert werden unter anderem folgende Vorteile erwartet \cite[Vgl. auch im Folgenden][zeit einfügen]{AWS2019}:
+Wird eine Anwendung in die Cloud migriert werden unter anderem folgende Vorteile erwartet \cite[Vgl. auch im Folgenden][03:23-05:36min]{AWS2019}:
 \begin{itemize}
 \item Kostensenkung
 \item Steigerung der Produktivität
 \item Agilität in der Entwicklung
 \end{itemize}
+
+Darüber hinaus muss vor der Migration untersucht und festgelegt werden, welche der in Kapitel \ref{sec:migrationsansaetze} herausgearbeiteten Migrationsstrategien verfolgt werden soll \cite[Vgl.][10:38-13:23min]{AWS2019}. Jede dieser Strategien bietet ihre Vor- und Nachteile, weshalb diese Entscheidung individuell von der Anwendungsarchitektur und der Art der Benutzung abhängig ist.
+\pagebreak
