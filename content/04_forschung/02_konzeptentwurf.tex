@@ -3,8 +3,18 @@ Bevor die Anwendung in die Cloud migriert werden kann, muss konzeptioniert werde
 
 Da die ursprüngliche Anwendung einige Funktionalitäten auf eine Weise umsetzt, die nicht in der Cloud funktionieren würde (z.B. das Lesen und Schreiben in Box), müssen diese überarbeitet oder neu geschrieben werden. Ein simples Rehosting ist durch die anfallenden Anpassungen entsprechend nicht möglich.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{architektur.png}
+    \caption{Grober Architekturentwurf}
+    \label{fig:Architektur}
+\end{figure}
+
+Abbildung \ref{fig:Architektur} zeigt einen groben  Entwurf der Anwendung und wie die Services miteinander kommunizieren sollen. Der Timesheet Service soll zu einem Späteren Zeitpunkt alle Funktionen aus der Ursprünglichen Anwendung bündeln, für den Prototypen wird sich jedoch, wie bereits in der Anforderungsanalyse erwähnt, auf den Collect Service beschränkt.
+\pagebreak
+
 \subsection{Box Service}
-In der ursprünglichen Anwendung ist der Zugriff auf die Box mithilfe der Box Drive Erweiterung umgesetzt worden. Diese ermöglicht es, Verzeichnisse in der Box wie einen lokalen Dateipfad ansprechen zu können, zum Beispiel \textit{C:/Users/User/Box/Folder}. Somit konnte der Box-Pfad in eine Konfigurationsdatei geschrieben und als Parameter an die Anwendung übergeben werden. Nachteil an dieser Umsetzung ist die Notwendigkeit den Box-Pfad anpassen zu müssen, wenn ein anderer Nutzer die Anwendung startet. Eine Einbindung der Box API für den Prototypen wird aus diesem Grund unumgänglich sein.
+In der ursprünglichen Anwendung ist der Zugriff auf die Box mithilfe der Box Drive Erweiterung umgesetzt worden. Diese ermöglicht es, Verzeichnisse in der Box wie einen lokalen Dateipfad ansprechen zu können, zum Beispiel \textit{C:/Users/User/Box/Folder}. Somit konnte der Box-Pfad in eine Konfigurationsdatei geschrieben und als Parameter an die Anwendung übergeben werden. Nachteil an dieser Umsetzung ist die Notwendigkeit den Box-Pfad anpassen zu müssen, wenn ein anderer Nutzer die Anwendung startet. Eine Einbindung der Box \ac{API} für den Prototypen wird aus diesem Grund unumgänglich sein.
 
 Der Box Service muss Dateien herunterladen, die Inhalte von Ordnern auflisten und Ordner IDs ermitteln können.
 
@@ -12,7 +22,7 @@ Der Box Service muss Dateien herunterladen, die Inhalte von Ordnern auflisten un
 Außerdem enthalten die PMO-Tools ein \glqq{excelhelper.py}\grqq{} Skript, welches den Umgang mit Excel Spreadsheets ermöglicht. Dazu gehört zum einen das Ermitteln aktiver Mitarbeiter und zum anderen das Auslesen der Timesheets, was jedoch für den Prototypen keine Verwendung findet. Einen vergleichbaren Service muss auch die neue Anwendung enthalten.
 
 \subsection{Timesheet Service}
-Den \glqq{Hauptservice}\grqq{} der Anwendung soll der Timesheet Service bilden. Dieser soll Funktionen bereitstellen, die unter Verwendung der anderen Services die letztendlich gewünschte Funktionalität des Einsammeln der Timesheets bieten. Dieser Service soll zu einem Späteren Zeitpunkt immer dann getriggert werden, wenn eine neue Konfigurationsdatei in einen entsprechenden Box Ordner geladen wird. Für den Prototypen reicht jedoch ein simpler Trigger oder der Start via API \textit{Request} aus.
+Den \glqq{Hauptservice}\grqq{} der Anwendung soll der Timesheet Service bilden. Dieser soll Funktionen bereitstellen, die unter Verwendung der anderen Services die letztendlich gewünschte Funktionalität des Einsammeln der Timesheets bieten. Dieser Service soll zu einem Späteren Zeitpunkt immer dann getriggert werden, wenn eine neue Konfigurationsdatei in einen entsprechenden Box Ordner geladen wird. Für den Prototypen reicht jedoch ein simpler Trigger oder der Start via \ac{API} \textit{Request} aus.
 
 \subsection{Programmiersprache und Framework}
 Neben der Konzeptionierung einer Anwendungsarchitektur braucht es zur Entwicklung auch eine Programmiersprache und gegebenenfalls ein Framework, um die Anwendung sinnvoll umzusetzen. Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem Springboot Framework sinnvoll.
