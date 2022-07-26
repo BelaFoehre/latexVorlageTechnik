@@ -2,14 +2,27 @@
 
 Nachfolgend wird der Prozess der Implementierung des Prototypen beschrieben. Die Entwicklung wurde in verschiedene Schritte unterteilt, die in den folgenden Abschnitten beschrieben werden.
 
-\subsection{Lokaler Entwurf}
-Der erste Entwicklungsschritt für die Anwendung ist ein lokaler Entwurf des Konzeptes, welches später in die Cloud migriert werden soll. Um die Box \ac{API} direkt nutzen zu können wird im ersten Entwurf darüber hinaus ein privater Box Account verwendet, um die Zulassungsprozesse der Enterprise Box zu umgehen. Die Einbindung dieser wird auf einen späteren Entwicklungsschritt verschoben.
+\subsection{Lokale Implementierung}
+Der erste Entwicklungsschritt für die Anwendung ist eine lokale Implementierung des Konzeptes, welches später in die Cloud migriert werden soll. Um die Box \ac{API} direkt nutzen zu können wird im ersten Entwurf darüber hinaus ein privater Box Account verwendet, um die Zulassungsprozesse der Enterprise Box zu umgehen. Die Einbindung dieser wird auf einen späteren Entwicklungsschritt verschoben.
 
 Initial wurde ein \textit{\gls{Springboot}} Projekt in \textit{\gls{IntelliJ}} aufgesetzt. Parallel dazu wurde in einem privaten Box Account die Ordnerstruktur des Projektverzeichnisses repliziert und eine sogenannte Box-App erstellt, die die Zugriffsdaten für die Nutzung der \ac{API} bereitstellt.
 
 Im nächsten Schritt wurde als erste Funktion dann der Box Service erstellt und getestet. Um diesen über eine \ac{REST}-\ac{API} verfügbar zu machen wurde außerdem ein \textit{BoxController} erstellt, welcher die \ac{API} Anfragen verarbeitet. Die erste getestete Funktion war der allgemeine Zugriff auf das Box Verzeichnis mit den Zugriffsdaten der Box-App. Über die \ac{API} Dokumentation von Box sind für die gängigsten Methoden und Programmiersprachen bereits beispielhafte Codesnippets bereitstellt. Hierbei wurde unter anderem festgestellt, dass die \ac{API}-Dokumentation einige Lücken enthält, die eine reibungslose Implementierung erschweren. So fehlten zum Beispiel die Information, dass die zuvor erstellte Box-App einen eigenen Serviceuser erstellt und dieser erst auf die entsprechenden Verzeichnisse zugelassen werden muss, bevor ein Zugriff möglich ist. Nachdem diese Hürde jedoch überwunden war, funktionierte der Zugriff wie gewünscht und Ordner und Dateien aus dem Verzeichnis konnten Angezeigt werden.
 
-Die nächste entwickelte Funktion war die automatisierte Ermittlung der Folder-IDs, da diese für den Zugriff auf die Unterordner benötigt werden. Bei der Ausgabe aller im Projektordner enthaltenen Elemente, werden diese mit Namen, IDs und einigen weiteren Informationen im \ac{JSON}-Format ausgegeben. Da die Namensgebung der Ordner einem vorgegebenen Prinzip folgt, kann anhand der Ordnernamen die ID des jeweils gesuchten Ordners ermittelt werden.
+Die nächste entwickelte Funktion war die automatisierte Ermittlung der Folder-IDs, da diese für den Zugriff auf die Unterordner benötigt werden. Bei der Ausgabe aller im Projektordner enthaltenen Elemente, werden diese mit Namen, IDs und einigen weiteren Informationen im \ac{JSON}-Format ausgegeben. Da die Namensgebung der Ordner einem vorgegebenen Prinzip folgt, kann anhand der Ordnernamen die ID des jeweils gesuchten Ordners ermittelt werden. \pagebreak
+
+Die Collect Funktion sieht letztlich wie folgt aus:
+
+\begin{lstlisting}[caption=collectTimesheets Funktion]
+    public void collectTimesheets() throws Exception {
+        deletePreviousCollectedTimesheets();
+        String pmoFile = boxService.getPMOFile();
+        List<String> activeEmployees = excelService.getActiveEmployees(pmoFile);
+        boxService.copyFile(activeEmployees);
+    }
+\end{lstlisting}
+
+Zuerst wird das temporäre Verzeichnis geleert, falls noch alte Dateien enthalten sind, danach wird die Projektmanagement-Datei geladen und gelesen, bevor die entsprechenden Timesheets in das temporäre Verzeichnis kopiert werden.
 
 \subsection{Migration in die Cloud}
 Nachdem festgestellt werden konnte, dass die Anwendung lokal wie gewünscht läuft, wir in einem nächsten Schritt die Migration in die Cloud durchgeführt. Als Cloud Provider wurde \ac{AWS} gewählt. Mithilfe von \gls{Terraform} Skripts wurde die Cloud-Umgebung den Anforderungen entsprechend aufgesetzt.

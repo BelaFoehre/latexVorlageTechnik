@@ -31,5 +31,17 @@ Wird eine Anwendung in die Cloud migriert werden unter anderem folgende Vorteile
 \item Agilität in der Entwicklung
 \end{itemize}
 
-Darüber hinaus muss vor der Migration untersucht und festgelegt werden, welche der in Kapitel \ref{sec:migrationsansaetze} herausgearbeiteten Migrationsstrategien verfolgt werden soll \cite[Vgl.][10:38-13:23min]{AWS2019}. Jede dieser Strategien bietet ihre Vor- und Nachteile, weshalb diese Entscheidung individuell von der Anwendungsarchitektur und der Art der Benutzung abhängig ist.
+Darüber hinaus muss vor der Migration untersucht und festgelegt werden, welche der in Kapitel \ref{sec:migrationsansaetze} herausgearbeiteten Migrationsstrategien verfolgt werden soll \cite[Vgl.][10:38-13:23min]{AWS2019}. Jede dieser Strategien bietet ihre Vor- und Nachteile, weshalb diese Entscheidung individuell von der Anwendungsarchitektur und der Art der Benutzung abhängig ist. \pagebreak
+
+Grundlegend kann der Migrationsprozess  in vier Schritte zusammengefasst werden \cite[Vgl. auch im Folgenden][S. 34f]{Maenhaut2016}:
+\begin{enumerate}
+\item \textbf{Auswahl der Komponenten:} Die Auswahl der zu migrierenden Komponenten sollte als erster Schritt vorgenommen werden. Wird die ganze Anwendung migriert ist dieser entsprechend einfach. Zu beachten ist hier vorallem die Kommunikation zwischen den Komponenten und damit verbundenen Sicherheitsanforderungen.
+\item \textbf{Feststellen kompatibler Provider:} Verschiedene Provider bieten verschiedene Möglichkeiten und haben unterschiedliche limitierende Faktoren. Somit sollte ein Provider gefunden werden, der alle gewünschten Features abdecken kann.
+\item \textbf{Einfluss auf das Client Netzwerk untersuchen:} Da die Kommunikation zwischen einzelnen Komponenten ins Internet verlagert wird, muss möglicher Weise die Bandbreite des Client Netzwerks angehoben werden.
+\item \textbf{Skalierung der Anwendung:} Einer der Vorteile des Cloud Computing ist die Skalierbarkeit, also die Fähigkeit, bei großer Last weitere Instanzen einer Anwendung zu starten. Um diese Skalierbarkeit bereitstellen zu können müssen die Komponenten lokalisiert werden, die entsprechend angepasst werden müssten.
+\end{enumerate}
+
+Bei dem in dieser Arbeit untersuchten Prototypen werden alle Komponenten des Collect Service migriert, weshalb keine speziellen Komponenten ausgewählt werden müssen oder die Kommunikation zwischen diesen geprüft werden muss. Somit ist der erste Schritt recht einfach abzuschließen. Die Auswahl eines Passenden Providers wird im weiteren Verlauf dieser Arbeit beschrieben. Einen Einfluss auf das Client Netzwerk wird der Prototyp nicht haben, es sollte lediglich hinsichtlich der Auswahl des Cloud Providers darauf geachtet werden, dass die Netzwerkanbindung ausreicht um zum Beispiel das Projektmanagement-File zuverlässig herunterzuladen. Die Skalierbarkeit der Anwendung bleibt für den ersten Prototypen vorerst außerhalb der Zielsetzung, diese würde erst nach einer erfolgreichen Machbarkeitsstudie weiter betrachtet werden.
+
+Darüber hinaus soll eine Anwendung in der Cloud je nach Bedarf auch von mehr Nutzern gleichzeitig nutzbar sein, weshalb auch über die Umsetzung von \textit{multi-tenancy} nachgedacht werden sollte \cite[Vgl.][S. 34ff]{Maenhaut2016}. Im Falle des in dieser Arbeit beschriebenen Prototypen ist das jedoch erst einmal nicht nötig.
 \pagebreak

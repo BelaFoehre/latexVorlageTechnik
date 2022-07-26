@@ -19,11 +19,13 @@ In der ursprünglichen Anwendung ist der Zugriff auf die Box mithilfe der Box Dr
 Der Box Service muss Dateien herunterladen, die Inhalte von Ordnern auflisten und Ordner IDs ermitteln können.
 
 \subsection{Excel Service}
-Außerdem enthalten die PMO-Tools ein \glqq{excelhelper.py}\grqq{} Skript, welches den Umgang mit Excel Spreadsheets ermöglicht. Dazu gehört zum einen das Ermitteln aktiver Mitarbeiter und zum anderen das Auslesen der Timesheets, was jedoch für den Prototypen keine Verwendung findet. Einen vergleichbaren Service muss auch die neue Anwendung enthalten.
+Außerdem enthalten die PMO-Tools ein \glqq{excelhelper.py}\grqq{} Skript, welches den Umgang mit Excel Spreadsheets ermöglicht. Dazu gehört zum einen das Ermitteln aktiver Mitarbeiter und zum anderen das Auslesen der Timesheets, was jedoch für den Prototypen keine Verwendung findet. Einen vergleichbaren Service muss auch die neue Anwendung enthalten. Für Java kann man in diesem Fall auf die Apache POI Programmbibliothek zurückgreifen, welche das Lesen und Schreiben von Microsoft Office Dateien ermöglicht.
 
 \subsection{Timesheet Service}
-Den \glqq{Hauptservice}\grqq{} der Anwendung soll der Timesheet Service bilden. Dieser soll Funktionen bereitstellen, die unter Verwendung der anderen Services die letztendlich gewünschte Funktionalität des Einsammeln der Timesheets bieten. Dieser Service soll zu einem Späteren Zeitpunkt immer dann getriggert werden, wenn eine neue Konfigurationsdatei in einen entsprechenden Box Ordner geladen wird. Für den Prototypen reicht jedoch ein simpler Trigger oder der Start via \ac{API} \textit{Request} aus.
+Den \glqq{Hauptservice}\grqq{} der Anwendung soll der Timesheet Service bilden. Dieser soll alle Funktionen bereitstellen, die unter Verwendung der anderen Services die letztendlich gewünschte Funktionalität des Einsammeln der Timesheets bieten. Darüber hinaus soll dieser für eine Spätere Anwendungsversion auch die anderen Funktionalitäten aus der ursprünglichen Anwendung bereitstellen. Dieser Service soll zu einem Späteren Zeitpunkt immer dann getriggert werden, wenn eine neue Konfigurationsdatei in einen entsprechenden Box Ordner geladen wird. Für den Prototypen reicht jedoch ein simpler Trigger oder der Start via \ac{API} \textit{Request} aus. \pagebreak
 
 \subsection{Programmiersprache und Framework}
-Neben der Konzeptionierung einer Anwendungsarchitektur braucht es zur Entwicklung auch eine Programmiersprache und gegebenenfalls ein Framework, um die Anwendung sinnvoll umzusetzen. Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem Springboot Framework sinnvoll.
-\pagebreak
+Neben der Konzeptionierung einer Anwendungsarchitektur braucht es zur Entwicklung auch eine Programmiersprache und gegebenenfalls ein Framework, um die Anwendung sinnvoll umzusetzen. Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll. Aus diesem Grund wird auf \gls{Springboot} zurückgegriffen, zur vereinfachten Entwicklung von \gls{Spring} Anwendungen.
+
+\subsection{Auswahl eines Cloud Providers}
+Ein für die Cloud Migration unerlässlicher Schritt ist die Auswahl eines zu den Anforderungen passenden Cloud Providers. In diesem Fall wurde \ac{AWS} als Provider gewählt, da hier die benötigte Umgebung mit wenigen Mausklicks oder einem einfachen \gls{Terraform}- Skript reproduzierbar aufgesetzt werden kann. \pagebreak

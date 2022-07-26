@@ -10,6 +10,13 @@ Der für den Prototypen ausgewählte Use-Case ist das "Einsammeln" der Timesheet
 \item \textbf{Einsammeln (Kopieren) der Timesheets:} Erfassen der Timesheets aller aktiven Mitarbeiter und Kopieren dieser in das temporäre Verzeichnis
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{use-case-diagram.png}
+    \caption{Use-Case Diagramm}
+    \label{fig:use-case-diagram}
+\end{figure}
+
 \subsection{Akzeptanzkriterien}
 Um die Implementierung als erfolgreich zu bewerten, müssen folgende Kriterien erfüllt sein:
 \begin{itemize}
@@ -19,5 +26,10 @@ Um die Implementierung als erfolgreich zu bewerten, müssen folgende Kriterien e
 \end{itemize}
 
 \subsection{Testfälle}
+Nachfolgende Testfälle wurden definiert, um die Implementierung zu testen:
+\begin{itemize}
+\item \textbf{Testfall 1:} Einlesen der Konfigurationsdatei und Einsammeln der Timesheets
+\item \textbf{Testfall 2:} Einlesen der Konfigurationsdatei und Einsammeln der Timesheets mit Fehler
+\end{itemize}
 
 Für die Cloud-Migration der PMO-Tools war eine Umstrukturierung aufgrund der bestehenden Anwendungsstruktur notwendig. Dazu wurde die Anwendung umgeschrieben und in eine Springboot App umgewandelt. Alle Funktionen der ursprünglichen Anwendung mussten somit entsprechend in Java repliziert werden, der Aufwand dabei hängt stark von der Komplexität der jeweiligen Funktion ab. Desweiteren war es nötig, die Box-\ac{API} in die Anwendung zu integrieren, da die zuvor verwendete Zugriffsmethode nicht migrationsfähig gewesen wäre.
