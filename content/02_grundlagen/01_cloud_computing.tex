@@ -6,12 +6,12 @@ Im folgenden Unterkapitel werden die Grundlagen und eine Definition des Cloud Co
 
 Nach dem \ac{NIST}, auf dessen Definition sich in jüngerer Literatur häufig bezogen wird \cite[Vgl.][S. 4f]{Reinheimer2018}, ist Cloud Computing ein Modell der Zurverfügungstellung von Computing Ressourcen (z.B. Netzwerke, Server, Speicher, Anwendungen und Services),die über das Netzwerk erreichbar sind und mit geringem Managementaufwand schnell freigegeben und bereitgestellt werden können \cite[Vgl.][S. 2]{Mell2011}\cite[Vgl.][S. 5]{Reinheimer2018}.
 
-\begin{wrapfigure}{r}{0.45\textwidth}
-\centering
-\includegraphics[height=0.3\textwidth]{xaas.png}
-\caption{Eine Übersicht der Cloud Service Modelle \cite[Eigene Darstellung nach][S. 33]{Maenhaut2016}\cite[Ergänzt durch][]{Toroman2018}}
-\label{fig:XaaS}
-\end{wrapfigure}
+\begin{figure}{H}
+    \centering
+    \includegraphics[height=0.3\textwidth]{xaas.png}
+    \caption{Eine Übersicht der Cloud Service Modelle \cite[Eigene Darstellung nach][S. 33]{Maenhaut2016}\cite[Ergänzt durch][]{Toroman2018}}
+    \label{fig:XaaS}
+\end{figure}
 
 Nach Hentschel und Leyh (2018), Zhao (2014), Maenhaut (2016) und Surianarayanan (2019) kann man Cloud Services grundsätzlich in drei Abstraktionsebenen einteilen. Diese sind \textbf{\ac{SaaS}}, \textbf{\ac{PaaS}} und \textbf{\ac{IaaS}}, welche auch zu \ac{XaaS} zusammengefasst werden \cite[Vgl.][S. 9]{Reinheimer2018}\cite[Vgl.][S. 143f]{Zhao2014}\cite[Vgl.][S. 32ff]{Maenhaut2016} und \cite[Vgl.][S. 226ff]{Surianarayanan2019}.
 
@@ -35,7 +35,7 @@ Die Entwicklung des Cloud Computing und dessen Vorgängerkonzepte is bis in die 
 
 Salesforce war eines der ersten Unternehmen, welches 1999 Anwendungen über eine Webseite bereitgestellt hat, gefolgt von \ac{AWS} in 2002, welche Speicher und Rechenleistung als Services bereitstellten \cite[Vgl.][S. 17f]{Srivastava2018}.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \includegraphics[width=\textwidth]{public_cloud_spending.png}
     \caption{Die Verkaufsleistungen der Public Cloud in den letzten Jahren \cite[S. 8]{Statista2022}}
     \label{fig:public_cloud_spending}
@@ -44,10 +44,3 @@ Salesforce war eines der ersten Unternehmen, welches 1999 Anwendungen über eine
 Aus einem Dossier von Statista 2022 geht in der in Abbildung \ref{fig:public_cloud_spending} gezeigten Statistik hervor, dass sich die Ausgaben für Public Cloud Services von 2017 bis 2023 etwas mehr als vervierfacht haben werden \cite[Vgl.][S. 8]{Statista2022}. Auch weitere Statistiken desselben Dossiers machen einen stetig steigenden Trend hinsichtlich des Cloud Computing deutlich \cite[Vgl. unter anderem][S. 11ff]{Statista2022}. 
 
 \pagebreak
-
-\subsection{Herausforderungen -> Migration von Legacy Anwendungen}
-Cloud Computing birgt jedoch auch einige Herausforderungen, welche in der Entwicklung und Migration komplexe Aufgaben mit sich bringen können.
-
-Neben der steigenden Nutzung von Cloud Computing und der Entwicklung Cloud basierter Anwendungen können auch legacy Anwendungen von Cloud Computing profitieren, woraus sich der trend abzeichnet, dass auch solche Anwendungen auf eine Cloud Infrastruktur migriert werden um die Ressourcen dieser nutzen zu können und Kosten zu sparen \cite[Vgl.][S. 31]{Maenhaut2016}.
-
-Abhängig vom gewählten Migrationsansatz sind Änderungen in der Anwendung vorzunehmen, damit die Vorteile der Cloud genutzt werden können. Verbesserung des Anwendungsdesigns und die Optimierung von Ressourcennutzung sind nach Feathers (2004) zwei der vier möglichen Hauptgründe Änderungen an Software vorzunehmen \cite[Vgl.][S. 3]{Feathers2004}. Diese lassen sich auch auf die vorzunehmenden Änderungen für die Cloud Migration übertragen. Die Herausforderung die bei der Änderung von Software aufkommt, ist sicherzustellen, dass das grundlegende Verhalten der Anwendungen nicht verändert wird. Die Schwierigkeit liegt darin, oft nicht genau zu wissen wie Stark das Verhalten verändert wird, wenn Änderungen vorgenommen werden \cite[Vgl.][S. 7]{Feathers2004}.
