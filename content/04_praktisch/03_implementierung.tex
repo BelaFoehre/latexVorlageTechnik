@@ -5,7 +5,7 @@ Nachfolgend wird der Prozess der Implementierung des Prototypen beschrieben. Die
 \section{Lokale Implementierung}
 Der erste Entwicklungsschritt für die Anwendung ist eine lokale Implementierung des Konzeptes, welches später in die Cloud migriert werden soll. Die zuvor identifizierten Services und \ac{API} Anbindungen wurden implementiert und die Funktionen der Anwendung werden über eine \ac{REST}-\ac{API} bereitgestellt.
 
-Schritt für Schritt wurden hierzu die Funktionen der ursprünglichen Anwendung reproduziert und die BOX-\ac{API} eingebunden. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation. \pagebreak
+Schritt für Schritt wurden hierzu die Funktionen der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation. \pagebreak
 
 % Um die Box \ac{API} direkt nutzen zu können wird im ersten Entwurf darüber hinaus ein privater Box Account verwendet, um die Zulassungsprozesse der Enterprise Box zu umgehen. Die Einbindung dieser wird auf einen späteren Entwicklungsschritt verschoben.
 
@@ -18,5 +18,4 @@ Schritt für Schritt wurden hierzu die Funktionen der ursprünglichen Anwendung 
 % Zuerst wird das temporäre Verzeichnis geleert, falls noch alte Dateien enthalten sind, danach wird die Projektmanagement-Datei geladen und gelesen, bevor die entsprechenden Timesheets in das temporäre Verzeichnis kopiert werden.
 
 \section{Migration in die Cloud}
-Nachdem festgestellt werden konnte, dass die Anwendung lokal wie gewünscht läuft, wir in einem nächsten Schritt die Migration in die Cloud durchgeführt. Als Cloud Provider wurde \ac{AWS} gewählt. Mithilfe von \gls{Terraform} Skripts wurde die Cloud-Umgebung den Anforderungen entsprechend aufgesetzt. \textbf{TODO: ausführliche Beschreibung}
-\pagebreak
+Nachdem festgestellt werden konnte, dass die Anwendung lokal die Qualitätsanforderungen aus dem definierten Use-Case erfüllt, kann iim darauf folgenden Entwicklungsschritt die Migration in die Cloud durchgeführt werden. Als Cloud Provider wird dazu, wie bereits in Kapitel \ref{chapter:cloud-architektur} ausgeführt, \ac{AWS} gewählt. Dazu wurde zuerst entsprechend des zuvor entworfenen Architekturbilds die Cloud-Umgebung mithilfe von \gls{Terraform}-Skripts erstellt. Die aktuelle Version des Anwendungscodes wird in einem Code-Repository abgelegt und von dort aus in die Pipeline injiziert. \pagebreak

@@ -5,7 +5,7 @@
 % -> Beeinflussen von functional requirements
 
 \subsection{Use-Case Definition}
-Der für den Prototypen ausgewählte Use-Case ist das \glqq{Einsammeln}\grqq der Timesheets. Aus einer Konfigurationsdatei hinaus soll festgelegt werden für welches Projekt und welchen Zeitraum diese von dem Projektverzeichnis in ein temporäres Verzeichnis kopiert werden sollen. Nachfolgend wird der Use-Case definiert um im Anschluss an die Implementierung untersuchen zu können, ob dieser auch nach der Migration in die Cloud erfüllbar ist. % Unter diesem Haupt-Use-Case definieren sich weitere Sub-Use-Cases, die wie folgt aussehen:
+Der für den Prototypen ausgewählte Use-Case ist das \glqq{Einsammeln}\grqq der Timesheets. Aus einer Konfigurationsdatei hinaus soll festgelegt werden für welches Projekt und welchen Zeitraum diese von dem Projektverzeichnis in ein temporäres Verzeichnis kopiert werden sollen. Nachfolgend wird der Use-Case definiert, um im Anschluss an die Implementierung untersuchen zu können, ob dieser auch nach der Migration in die Cloud erfüllbar ist. % Unter diesem Haupt-Use-Case definieren sich weitere Sub-Use-Cases, die wie folgt aussehen:
 % \begin{itemize}
 % \item \textbf{Einlesen der Konfigurationsdatei:} Lesen der Parameter für Box-Zugriff und Projektdaten aus der Konfigurationsdatei
 % \item \textbf{Lesen des PMO Files:} Lesen des Projektmanagement-Files aus dem Box-Verzeichnis zur Ermittlung der Namen aktiver Mitarbeiter
@@ -31,7 +31,13 @@ Der für den Prototypen ausgewählte Use-Case ist das \glqq{Einsammeln}\grqq der
         \multicolumn{2}{|l|}{\textbf{Qualitätsanforderungen}} \\
         \hline
         \multicolumn{2}{|l|}{1. Für jeden aktiven Mitarbeiter soll ein Timesheet im temporären Ordner liegen} \\
-        \multicolumn{2}{|l|}{2. \dots} \\
+        \multicolumn{2}{|l|}{2. Die Timesheets sollen unverändert sein (Dateiname, Inhalt)} \\
+        \multicolumn{2}{|l|}{3. Eigener Zielordner pro Monat zur Vermiedung von Vermischungen} \\
+        \multicolumn{2}{|l|}{4. Die Timesheet Größe kann variieren -> keine Limitierungen} \\
+        \multicolumn{2}{|l|}{5. Es darf keine Kompression mit Formatänderung eingesetz werden} \\
+        \multicolumn{2}{|l|}{6. Ein Logfile soll Erfolg und Misserfolg von Kopiervorgängen enthalten} \\
+        \multicolumn{2}{|l|}{7. Fehlersituationen auf einzelnen Dateien dürfen den Ablauf nicht unterbrechen} \\
+        \multicolumn{2}{|l|}{8. Root-Verzeichnisse für Ziel und Quelle müssen konfigurierbar sein} \\
         \hline
     \end{tabular}
     \caption{Anwendungsfall: Einsammeln der Timesheets}
