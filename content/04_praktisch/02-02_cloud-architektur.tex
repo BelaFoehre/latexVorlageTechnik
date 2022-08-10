@@ -1,5 +1,5 @@
 \section{Cloud Architektur}
-In diesem Kapitel wird auf die verwendete Architektur in \ac{AWS} eingegangen. Die nachfolgende Abbildung gibt einen Überblick wie die einzelnen Komponenten miteinander kommunizieren und voneinander abhängen. Die Services die eingesetzt werden sind eine Code Pipeline, ECS und ein Code-Repository in welchem der Anwendungscode abgelegt ist.
+In diesem Kapitel wird auf die verwendete Architektur in \ac{AWS} eingegangen. Die nachfolgende Abbildung gibt einen Überblick wie die einzelnen Komponenten miteinander kommunizieren und voneinander abhängen. Die Services die eingesetzt werden sind eine Code Pipeline, \ac{ECS} und ein Code-\gls{Repository} in welchem der Anwendungscode abgelegt ist.
 
 \begin{figure}[H]
     \centering
@@ -8,9 +8,6 @@ In diesem Kapitel wird auf die verwendete Architektur in \ac{AWS} eingegangen. D
     \label{fig:CloudArchitektur}
 \end{figure}
 
-Die Services werden wir folgt eingesetzt:
-\begin{itemize}
-    \item \textbf{Code Pipeline} \dots
-    \item \textbf{ECS} \dots
-    \item \textbf{Code Repository} \dots
-\end{itemize}
+Innerhalb einer \ac{VPC} wird ein Subnetz bereitgestellt, in welchem wiederum der \ac{ECS}-Service sein eigenes isoliertes Netzwerk zum Starten des \ac{ECS}-Clusters hat. Um die Bereitstellung und Konfiguration des \ac{ECS}-Clusters zu vereinfachen wird Fargate eingesetzt. Damit wird sichergestellt, dass der \ac{ECS}-Service weitere Instanzen desselben \ac{ECS}-Clusters starten kann, wenn zum Beispiel Aufgaben fehlschlagen.
+
+Neben dem Containerservice wird außerdem eine Code Pipeline zum Ausspielen der Anwendung in den Containern eingesetzt. Hierzu wird der Anwendungscode von \textit{CodeStar} aus dem Code-\gls{Repository} geladen, \textit{CodeBuild} erzeugt dann eine ausführbare Anwendung, die von \textit{CodeDeploy} in die Container geladen wird. Als \gls{Repository} wird in diesem Fall \gls{GitHub} eingesetzt.
