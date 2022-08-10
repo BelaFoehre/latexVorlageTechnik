@@ -1,5 +1,5 @@
-\section{Use-Case Analyse}
-Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitätsanforderungen für den modellierten Use-Case wird für jedes Kriterium ein Testfall definiert, der die Mindestanforderungen für eine erfolgreiche Bewertung abdeckt.
+\section{Beurteilung der technischen Realisierung}
+Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitätsanforderungen für den modellierten Use-Case wird für jedes Kriterium ein Testfall definiert, der die Mindestanforderungen für eine erfolgreiche Bewertung abdeckt. Darüber hinaus soll untersucht werden, welche Aufwände die Umsetzung mit sich gebracht hat.
 
 Folgende Testfälle wurden dazu definiert:
 \begin{enumerate}
@@ -13,4 +13,6 @@ Folgende Testfälle wurden dazu definiert:
     \item Test mit unterschiedlichen Root Verzeichnissen.
 \end{enumerate}
 
-Beim Prüfen aud Erfüllung dieser Testfälle konnte bestätigt werden, dass die grundlegende Funktionalität der Anwendung auch nach der Cloud Migration verfügbar ist, jedoch durch das Refactoring der Anwendung noch nicht alle Qualitätsanforderungen erfüllt werden können. So werden die Testfälle 1-5 und 8 wie erwartet erfüllt, jedoch fehlt unter anderem das ausführliche Logging und das erwartete Fehlerhandling.
+Beim Prüfen aud Erfüllung dieser Testfälle konnte bestätigt werden, dass die grundlegende Funktionalität der Anwendung auch nach der Cloud Migration verfügbar ist, jedoch durch das Refactoring der Anwendung noch nicht alle Qualitätsanforderungen erfüllt werden können. So werden die Testfälle 1-5 und 8 wie erwartet erfüllt, jedoch fehlt unter anderem das ausführliche Logging und das erwartete Fehlerhandling. Da  die Umsetzung des Prototypen mit wenigen Testdatensätzen erfolgte, wurde die Erfüllung der Testfälle manuell überprüft.
+
+Grundlegend war der größte Aufwand bei der Realisierung in diesem Fall das Refactoring, da die ursprüngliche Python Anwendung in ein Springboot Projekt umgeschrieben wurde. Die Prinzipien von Microservices waren in der Ursprünglichen Anwendung bereits umgesetzt, entsprechend ist auch der neu geschriebene Collect Service als ein solcher vorgesehen, da in der weiteren Umsetzung auch die anderen Services folgen sollen. \pagebreak
