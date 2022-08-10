@@ -1,0 +1,16 @@
+\section{Use-Case Analyse}
+Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitätsanforderungen für den modellierten Use-Case wird für jedes Kriterium ein Testfall definiert, der die Mindestanforderungen für eine erfolgreiche Bewertung abdeckt.
+
+Folgende Testfälle wurden dazu definiert:
+\begin{enumerate}
+    \item Die Anzahl aktiver Mitarbeiter im PMO-File variieren und prüfen ob jeweils entsprechende Timesheets kopiert werden.
+    \item Abgleichen kopierter Timesheets mit den Timesheets aus dem Ursprungsverzeichnis.
+    \item Monat in Konfiguration variieren zum Prüfen, ob entsprechend neuer Ordner erstellt wird.
+    \item Test mit sehr großem Timesheet.
+    \item Manueller Abgleich und Untersuchung auf potenzielle Verluste.
+    \item Logfile auslesen.
+    \item Fehler einbauen und Anwendung ausführen.
+    \item Test mit unterschiedlichen Root Verzeichnissen.
+\end{enumerate}
+
+Beim Prüfen aud Erfüllung dieser Testfälle konnte bestätigt werden, dass die grundlegende Funktionalität der Anwendung auch nach der Cloud Migration verfügbar ist, jedoch durch das Refactoring der Anwendung noch nicht alle Qualitätsanforderungen erfüllt werden können. So werden die Testfälle 1-5 und 8 wie erwartet erfüllt, jedoch fehlt unter anderem das ausführliche Logging und das erwartete Fehlerhandling.
