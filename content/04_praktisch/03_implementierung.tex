@@ -7,7 +7,7 @@ Der erste Entwicklungsschritt für die Anwendung ist eine lokale Implementierung
 
 Schritt für Schritt wurden hierzu die Funktionen der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation.
 
-Um die Funktion der neuen \gls{Springboot} Anwendung zu testen wurden Testdatensätze nach dem Vorbild der realen Daten erstellt und in ein \gls{Box}-Verzeichnis gelegt. Über die von der Anwendung bereitgestellte \ac{API} können nun die Funktionen der Anwendung getestet werden. \pagebreak
+Um die Funktion der neuen \gls{Spring Boot} Anwendung zu testen wurden Testdatensätze nach dem Vorbild der realen Daten erstellt und in ein \gls{Box}-Verzeichnis gelegt. Über die von der Anwendung bereitgestellte \ac{API} können nun die Funktionen der Anwendung getestet werden. \pagebreak
 
 % Um die Box \ac{API} direkt nutzen zu können wird im ersten Entwurf darüber hinaus ein privater Box Account verwendet, um die Zulassungsprozesse der Enterprise Box zu umgehen. Die Einbindung dieser wird auf einen späteren Entwicklungsschritt verschoben.
 
@@ -22,6 +22,6 @@ Um die Funktion der neuen \gls{Springboot} Anwendung zu testen wurden Testdatens
 \section{Migration in die Cloud}
 Abschließend für das Implementierungs-Kapitel wird der Prozess der Anwendungsmigration in die Cloud für den Untersuchten Fall zusammengefasst.
 
-Zuerst wurde untersucht, welche Migrationsstrategie für die vorliegende Anwendung in Frage kommen könnte. Im vorliegenden Beispiel ist die Entscheidung auf ein Refactoring gefallen, um die Vorteile der Cloud mit einer Springboot Anwendung nutzen zu können. Ein Rehosting der existierenden Python Anwendung wäre dazu nicht ausreichend gewesen, da der Service zwar in einem Container laufen würde, jedoch ohne die Vorteile der Cloud nutzen zu können \textbf{!!!ausführen warum!!!}.
+Zuerst wurde untersucht, welche Migrationsstrategie für die vorliegende Anwendung in Frage kommen könnte. Im vorliegenden Beispiel ist die Entscheidung auf ein Refactoring gefallen, um die Vorteile der Cloud mit einer Spring Boot Anwendung nutzen zu können. Ein Rehosting der existierenden Python Anwendung wäre dazu nicht ausreichend gewesen, da der Service zwar in einem Container laufen würde, jedoch ohne die Vorteile der Cloud nutzen zu können \textbf{!!!ausführen warum!!!}.
 
 Um testen zu können, ob die Migration in diesem Fall überhaupt die gewünschten Vorteile mit sich bringt, wurde außerdem entschieden, für die erste testweise Umsetzung nur einen der vier Services zu migrieren. Für diesen Service wurde anschließend konzeptioniert, wie die Funktionen der Anwendung nun in Spring umgesetzt werden können, um der ursprünglichen Funktionalität zu entsprechen. Darüber hinaus musste dann für die Anwendung auch ein Cloud Provider und eine entsprechende Architektur für die Cloud Umgebung entworfen und danach umgesetzt werden. Nach dem Aufsetzen der Cloud Umgebung und Konfiguration der Pipeline konnte der Anwendungscode ein erstes Mal testweise in die Container ausgespielt werden. \pagebreak
