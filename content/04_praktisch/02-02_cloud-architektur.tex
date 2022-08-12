@@ -8,8 +8,12 @@ In diesem Kapitel wird auf die verwendete Infrastruktur Architektur in \ac{AWS} 
     \label{fig:CloudArchitektur}
 \end{figure}
 
-Ziel ist es, die Anwendung auf Containern zu deployen. Dazu wird \ac{ECS} mit einem \gls{Fargate}-Worker eingesetzt zur Bereitstellung eines Clusters mit serverless Containern. Innerhalb des Clusters ist in einer \textit{Taskdefinition} festgelegt, wie viele Container gestartet werden sollen und die \textit{Task} selbst, in welcher die Container bereitgestellt werden.
+Ziel ist es, die Anwendung auf Containern zu deployen. Dazu wird \ac{ECS} zur Bereitstellung eines Clusters mit Containern. Innerhalb des Clusters ist in einer \textit{Taskdefinition} festgelegt, wie viele Container gestartet werden sollen und die \textit{Task} selbst, in welcher die Container bereitgestellt werden. Die Wahl ist deshalb auf \ac{ECS} gefallen, weil hier mit \gls{Fargate}, wie bereits im vorhergehenden Kapitel erwähnt, das serverless Deployment von Containern ermöglicht wird.
 
-Das \ac{ECS} Cluster selbst befindet sich innerhalb eines von einer \ac{VPC} bereitgestellten Subnetz. Erreichbar sind die einzelnen Container über ein \textit{\ac{API} Gateway}, welches auf die IP-Adressen innerhalb des Subnetzes verweist. Die Adressen der Container werden in \textit{CloudMap} gespeichert und der Betrieb dieser mit \textit{CloudWatch} überwacht.
+Das \ac{ECS} Cluster selbst befindet sich innerhalb eines von einer \ac{VPC} bereitgestellten Subnetz. Erreichbar sind die einzelnen Container über ein \textit{\ac{API} Gateway}, welches auf die IP-Adressen innerhalb des Subnetzes verweist. Die Adressen der Container werden in \textit{CloudMap} gespeichert und der Betrieb dieser mit \textit{CloudWatch} überwacht. \pagebreak
 
 Neben dem \ac{ECS} Cluster wird als weiterer Service \textit{\gls{CodePipeline}} eingesetzt. Dieser Kombiniert die Services \textit{CodeStar}, \textit{CodeBuild} und \textit{CodeDeploy}. \textit{CodeStar} stellt hierbei eine Verbindung zu \gls{GitHub} her, wo der Anwendungscode abgelegt ist. \textit{CodeBuild} erzeugt ein Abbild der Anwendung in einem Container und legt diesen in \ac{ECR} ab. \textit{CodeDeploy} deployt die aktuellste Version der Anwendung aus \ac{ECR} in das Cluster.
+
+Das Bereitstellungsmodell entspricht letztendlich dem \ac{CaaS} Modell, also der Bereitstellung von Containern, ohne der Notwendigkeit die zugrundeliegende Hardwareplattform zu konfigurieren, da diese Aufgabe von \gls{Fargate} übernommen wird.
+
+Definiert werden die Services zuvor in einem \gls{Terraform} Skript, in welchem beschrieben wird, welche Bedingungen für die Services gelten und wie diese untereinander kommunizieren.
