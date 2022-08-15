@@ -1,4 +1,5 @@
 \section{Anforderungsanalyse}
+\label{sec:anforderungsanalyse}
 
 % Merkmale Cloud Native Anwendungen
 % Was muss Applikation hierzu erfüllen (non-functional requirements)?
@@ -9,8 +10,8 @@ Um ein Migrationskonzept entwerfen zu können wird zuerst die existierenden Anwe
 Wird eine Anwendung in die Cloud migriert werden unter anderem folgende Vorteile erwartet \cite[Vgl. auch im Folgenden][03:23-05:36min]{AWS2019}:
 \begin{itemize}
 \item Kostensenkung
-\item Steigerung der Produktivität
-\item Agilität in der Entwicklung
+\item Steigerung der Produktivität (z.B. durch Skalierbarkeit und Fehlertoleranz)
+\item Agilität in der Entwicklung (z.B. mit CI/CD Pipeline)
 \end{itemize}
 
 Darüber hinaus muss vor der Migration untersucht und festgelegt werden, welche der in Kapitel \ref{sec:migrationsansaetze} herausgearbeiteten Migrationsstrategien verfolgt werden soll \cite[Vgl.][10:38-13:23min]{AWS2019}. Jede dieser Strategien bietet ihre Vor- und Nachteile, weshalb diese Entscheidung individuell von der Anwendungsarchitektur und der Art der Benutzung abhängig ist. \pagebreak
@@ -25,9 +26,10 @@ Grundlegend kann der Migrationsprozess  in vier Schritte zusammengefasst werden 
 
 % Thema Sicherheit ?!
 
-Bei dem in dieser Arbeit untersuchten Prototypen werden alle Komponenten des Collect Service migriert, weshalb keine speziellen Komponenten ausgewählt werden müssen oder die Kommunikation zwischen diesen geprüft werden muss. Somit ist der erste Schritt recht einfach abzuschließen. Die Auswahl eines Passenden Providers wird im weiteren Verlauf dieser Arbeit beschrieben. Einen Einfluss auf das Client Netzwerk wird der Prototyp nicht haben, es sollte lediglich hinsichtlich der Auswahl des Cloud Providers darauf geachtet werden, dass die Netzwerkanbindung ausreicht um zum Beispiel das Projektmanagement-File zuverlässig herunterzuladen. Die Skalierbarkeit der Anwendung bleibt für den ersten Prototypen vorerst außerhalb der Zielsetzung, diese würde erst nach einer erfolgreichen Machbarkeitsstudie weiter betrachtet werden.
+Bei dem in dieser Arbeit untersuchten Prototypen werden alle Komponenten des Collect Service migriert, weshalb keine speziellen Komponenten ausgewählt werden müssen oder die Kommunikation zwischen diesen geprüft werden muss. Somit ist der erste Schritt recht einfach abzuschließen. Die Auswahl eines Passenden Providers wird im weiteren Verlauf dieser Arbeit beschrieben. Einen Einfluss auf das Client Netzwerk wird der Prototyp nicht haben, es sollte lediglich hinsichtlich der Auswahl des Cloud Providers darauf geachtet werden, dass die Netzwerkanbindung ausreicht um zum Beispiel das Projektmanagement-File zuverlässig herunterzuladen. Die Skalierbarkeit der Anwendung bleibt für den ersten Prototypen vorerst außerhalb der Zielsetzung, diese würde erst nach einer erfolgreichen Machbarkeitsstudie weiter betrachtet werden. \pagebreak
 
 Zudem ist zu untersuchen, ob eine Public, Hybrid oder Private Cloud verwendet werden kann. Für den Prototypen ist der Einsatz einer Public Cloud Infrastruktur unproblematisch, da hier nur Testdatensätze verwendet werden. Würden die realen Daten verwendet, so müsste auf eine Private Cloud umgestellt werden, da die \textit{\glspl{Timesheet}} personenbezogene Daten enthalten und unternehmenskritische Daten wie Informationen über das Budget und Gewinn/Verlust im PMO-File enthalten sind.
 
-Darüber hinaus soll eine Anwendung in der Cloud je nach Bedarf auch von mehr Nutzern gleichzeitig nutzbar sein, weshalb auch über die Umsetzung von \textit{multi-tenancy} nachgedacht werden sollte \cite[Vgl.][S. 34ff]{Maenhaut2016}. Im Falle des in dieser Arbeit beschriebenen Prototypen ist das jedoch erst einmal nicht nötig.
-\pagebreak
+Darüber hinaus sollen auch die nicht-funktionalen Anforderungen einer Cloud-nativen Anwendung umgesetzt werden. Dazu gehören in diesem Fall die Mehrbenutzerfähigkeit, Skalierbarkeit und Fehlertoleranz der Anwendung. Um die Agilität in der Entwicklung zu steigern soll außerdem eine CI/CD Pipeline eingesetzt werden, die die Aktualisierung der Anwendung automatisiert. Diese schnelle Bereitstellung von Updates is in dem aktuellen Setup deutlich komplizierter, wenn die Anwendung von anderen Anwendern außer dem Urheber dieser verwendet wird.
+
+Die \textbf{Skalierbarkeit} dieser Anwendung soll durch die in Kapitel \ref{sec:cloud-native-anwendungen} beschriebene horizontale Skalierung, durch das Starten weiterer Container im Lastfall, erreicht werden. Die \textbf{Mehrbenutzerfähigkeit} kann in diesem Fall ebenfalls durch die horizontale Skalierung gewährleistet werden, da jeder Container die Anwendung für einen Benutzer zur Verfügung stellen kann. \pagebreak
