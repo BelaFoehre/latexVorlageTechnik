@@ -3,8 +3,8 @@ Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitä
 
 Folgende Testfälle wurden dazu definiert:
 \begin{enumerate}
-    \item Die Anzahl aktiver Mitarbeiter im PMO-File variieren und prüfen ob jeweils entsprechende Timesheets kopiert werden.
-    \item Abgleichen kopierter Timesheets mit den Timesheets aus dem Ursprungsverzeichnis.
+    \item Die Anzahl aktiver Mitarbeiter im PMO-File variieren und prüfen ob jeweils entsprechende \textit{\glspl{Timesheet}} kopiert werden.
+    \item Abgleichen kopierter \textit{\glspl{Timesheet}} mit den \textit{\glspl{Timesheet}} aus dem Ursprungsverzeichnis.
     \item Monat in Konfiguration variieren zum Prüfen, ob entsprechend neuer Ordner erstellt wird.
     \item Test mit sehr großem Timesheet.
     \item Manueller Abgleich und Untersuchung auf potenzielle Verluste.
@@ -15,4 +15,12 @@ Folgende Testfälle wurden dazu definiert:
 
 Beim Prüfen aud Erfüllung dieser Testfälle konnte bestätigt werden, dass die grundlegende Funktionalität der Anwendung auch nach der Cloud Migration verfügbar ist, jedoch durch das Refactoring der Anwendung noch nicht alle Qualitätsanforderungen erfüllt werden können. So werden die Testfälle 1-5 und 8 wie erwartet erfüllt, jedoch fehlt unter anderem das ausführliche Logging und das erwartete Fehlerhandling. Da  die Umsetzung des Prototypen mit wenigen Testdatensätzen erfolgte, wurde die Erfüllung der Testfälle manuell überprüft.
 
-Grundlegend war der größte Aufwand bei der Realisierung in diesem Fall das Refactoring, da die ursprüngliche Python Anwendung in ein Spring Boot Projekt umgeschrieben wurde. Die Prinzipien von Microservices waren in der Ursprünglichen Anwendung bereits umgesetzt, entsprechend ist auch der neu geschriebene Collect Service als ein solcher vorgesehen, da in der weiteren Umsetzung auch die anderen Services folgen sollen. \pagebreak
+Grundlegend war der größte Aufwand bei der Realisierung in diesem Fall das Refactoring, da die ursprüngliche Python Anwendung in ein Spring Boot Projekt umgeschrieben wurde. Die Prinzipien von Microservices waren in der Ursprünglichen Anwendung bereits umgesetzt, entsprechend ist auch der neu geschriebene Collect Service als ein solcher vorgesehen, da in der weiteren Umsetzung auch die anderen Services folgen sollen.
+
+\section{Untersuchung der nicht-funktionalen Anforderungen}
+Neben den technischen und funktionalen Anforderungen haben sich auch nicht-funktionale Anforderungen, wie die Skalierbarkeit oder Fehlertoleranz ergeben, die im folgenden untersucht werden sollen.
+
+\textbf{Skalierbarkeit:} Von der Anwendung wird erwartet, dass sie im Falle höherer Last, zum Beispiel durch mehrere Benutzer auf mehr Containern deployed werden kann. Diese Mehrnutzerfähigkeit ist durch \gls{Spring Boot} bereits gegeben und das Bereitstellen weiterer Container wird von \gls{Fargate} verwaltet.
+
+\textbf{Fehlertoleranz:} Außerdem soll mit der Fehlertoleranz zm Beispiel der Fall abgedeckt sein, dass ein abgestürzter oder fehlerhafter Container durch einen neuen, weiteren Container ersetzt werden kann, damit die Anwendung jederzeit zur Verfügung steht. Auch diese Anforderung wird durch den Einsatz von \gls{Fargate} erfüllt.
+\pagebreak

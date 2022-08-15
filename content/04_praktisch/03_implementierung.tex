@@ -5,7 +5,9 @@ Nachfolgend wird in einem kurzen Abschnitt die Implementierung des Prototypen be
 \section{Lokale Implementierung}
 Der erste Entwicklungsschritt für die Anwendung ist eine lokale Implementierung des Konzeptes, welches später in die Cloud migriert werden soll. Die zuvor identifizierten Services und \ac{API} Anbindungen wurden implementiert und die Funktionen der Anwendung werden über eine \ac{REST}-\ac{API} bereitgestellt.
 
-Schritt für Schritt wurden hierzu die Funktionen der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation.
+Schritt für Schritt wurden hierzu die Business-Logik der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation. Um die Anwendung ansprechen zu können wurden außerdem Endpoints definiert und über eine \ac{API} bereitgestellt.
+
+Anschließend wurde ein \textit{Dockerfile} definiert, in welchem die Schritte beschrieben sind, wie ein Docker-Image der Anwendung erstellt werden kann.
 
 Um die Funktion der neuen \gls{Spring Boot} Anwendung zu testen wurden Testdatensätze nach dem Vorbild der realen Daten erstellt und in ein \gls{Box}-Verzeichnis gelegt. Über die von der Anwendung bereitgestellte \ac{API} können nun die Funktionen der Anwendung getestet werden. \pagebreak
 
@@ -24,4 +26,6 @@ Abschließend für das Implementierungs-Kapitel wird der Prozess der Anwendungsm
 
 Zuerst wurde untersucht, welche Migrationsstrategie für die vorliegende Anwendung in Frage kommen könnte. Im vorliegenden Beispiel ist die Entscheidung auf ein Refactoring gefallen, um die Vorteile der Cloud mit einer Spring Boot Anwendung nutzen zu können. Ein Rehosting der existierenden Python Anwendung wäre dazu nicht ausreichend gewesen, da der Service zwar in einem Container laufen würde, jedoch ohne die Vorteile der Cloud nutzen zu können, da diese dann zwar über das Internet erreichbar wäre, aber sich die Art der Ausführung dieser im Vergleich zu einer lokalen Anwendung nur geringfügig ändert.
 
-Um testen zu können, ob die Migration in diesem Fall überhaupt die gewünschten Vorteile mit sich bringt, wurde außerdem entschieden, für die erste testweise Umsetzung nur einen der vier Services zu migrieren. Für diesen Service wurde anschließend konzeptioniert, wie die Funktionen der Anwendung nun in Spring umgesetzt werden können, um der ursprünglichen Funktionalität zu entsprechen. Darüber hinaus musste dann für die Anwendung auch ein Cloud Provider und eine entsprechende Architektur für die Cloud Umgebung entworfen und danach umgesetzt werden. Nach dem Aufsetzen der Cloud Umgebung und Konfiguration der Pipeline konnte der Anwendungscode ein erstes Mal testweise in die Container ausgespielt werden. \pagebreak
+Um testen zu können, ob die Migration in diesem Fall überhaupt die gewünschten Vorteile mit sich bringt, wurde außerdem entschieden, für die erste testweise Umsetzung nur einen der vier Services zu migrieren. Für diesen Service wurde anschließend konzeptioniert, wie die Funktionen der Anwendung nun in Spring umgesetzt werden können, um der ursprünglichen Funktionalität zu entsprechen. Darüber hinaus musste dann für die Anwendung auch ein Cloud Provider und eine entsprechende Architektur für die Cloud Umgebung entworfen und danach umgesetzt werden. Nach dem Aufsetzen der Cloud Umgebung und Konfiguration der Pipeline konnte der Anwendungscode ein erstes Mal testweise in die Container ausgespielt werden.
+
+Die ersten manuellen Tests zeigen, dass die Anwendung wie gewünscht funktioniert und die \textit{\glspl{Timesheet}} kopiert. \pagebreak
