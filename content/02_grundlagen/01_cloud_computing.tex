@@ -1,22 +1,20 @@
 \section{Cloud Computing}
 \label{sec:cloud-computing}
-
-Im folgenden Unterkapitel werden die Grundlagen und eine Definition des Cloud Computing erarbeitet. Hierbei werden die Grundlegenden Konzepte, Bereitstellungsmodelle und Abstraktionsebenen des Cloud Computing erläutert.
+Im folgenden Kapitel werden die Grundlagen und eine Definition des Cloud Computing erarbeitet. Hierbei werden die Grundlegenden Konzepte, Bereitstellungsmodelle und Abstraktionsebenen des Cloud Computing erläutert.
 
 \subsection{Was ist Cloud Computing}
-
 Das \ac{NIST}, auf dessen Definition sich in der Literatur häufig bezogen wird \cite[Vgl.][S. 4f]{Reinheimer2018}, hat Cloud Computing wie folgt definiert: Cloud Computing ist ein Modell der Zurverfügungstellung von Computing Ressourcen (z.B. Netzwerke, Server, Speicher, Anwendungen und Services). Diese werden über das Netzwerk zu Verfügung gestellt um mit geringem Managementaufwand schnell freigegeben und bereitgestellt werden können \cite[Vgl.][S. 2]{Mell2011}\cite[Vgl.][S. 5]{Reinheimer2018}.
 
-Nach Hentschel und Leyh (2018), Zhao (2014), Maenhaut (2016) und Surianarayanan (2019) kann man Cloud Services grundsätzlich in drei Abstraktionsebenen einteilen. Diese sind \textbf{\ac{SaaS}}, \textbf{\ac{PaaS}} und \textbf{\ac{IaaS}}, welche auch zu \ac{XaaS} zusammengefasst werden \cite[Vgl.][S. 9]{Reinheimer2018}\cite[Vgl.][S. 143f]{Zhao2014}\cite[Vgl.][S. 32ff]{Maenhaut2016}\cite[Vgl.][S. 226ff]{Surianarayanan2019}. Darüber hinaus haben sich jedoch noch einige weitere Bereitstellungsmodelle entwickelt, die überwiegend als \glqq{Unterkategorien}\grqq{} von \ac{PaaS} einzuordnen sind. Dazu gehören unter anderem \ac{CaaS} \cite[Vgl.][]{Luber2019}, \ac{BaaS} und \ac{FaaS} \cite[Vgl.][]{Luber2022}.
+Nach Hentschel und Leyh (2018), Zhao (2014), Maenhaut (2016) und Surianarayanan (2019) kann man Cloud Services grundsätzlich in drei Abstraktionsebenen einteilen. Diese sind \textbf{\ac{SaaS}}, \textbf{\ac{PaaS}} und \textbf{\ac{IaaS}}, welche auch zu \ac{XaaS} zusammengefasst werden \cite[Vgl.][S. 9]{Reinheimer2018}\cite[Vgl.][S. 143f]{Zhao2014}\cite[Vgl.][S. 32ff]{Maenhaut2016}\cite[Vgl.][S. 226ff]{Surianarayanan2019}. Darüber hinaus haben sich jedoch noch einige weitere Bereitstellungsmodelle entwickelt, die überwiegend als \glqq{Unterkategorien}\grqq{} von \ac{PaaS} einzuordnen sind. Dazu gehören unter anderem \ac{CaaS} \cite[Vgl.][]{Luber2019}, \ac{BaaS} und \ac{FaaS} \cite[Vgl.][]{Luber2022}. \pagebreak
+
+Die in Abbildung \ref{fig:XaaS} dargestellte unterste der drei genannten Abstraktionsschichten ist \ac{IaaS}, welche die Basisinfrastruktur, wie zum Beispiel Netzwerk, Server oder Speicher, bereitstellt. Ein Beispiel für einen \ac{IaaS} Service ist das deutsche Unternehmen Profitbricks, welches Rechenleistung und Speicherkapazität in einem Virtuellen Rechenzentrum bereitstellt, die zu Virtuellen Servern konfiguriert werden können \cite[Vgl.][S. 12]{Reinheimer2018}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=0.4\textwidth]{xaas.png}
+    \includegraphics[height=0.5\textwidth]{xaas.png}
     \caption{Eine Übersicht der Cloud Service Modelle \cite[Eigene Darstellung nach][S. 33]{Maenhaut2016}\cite[Ergänzt durch][]{Toroman2018}}
     \label{fig:XaaS}
 \end{figure}
-
-Die in Abbildung \ref{fig:XaaS} dargestellte unterste der drei genannten Abstraktionsschichten ist \ac{IaaS}, welche die Basisinfrastruktur, wie zum Beispiel Netzwerk, Server oder Speicher, bereitstellt. Ein Beispiel für einen \ac{IaaS} Service ist das deutsche Unternehmen Profitbricks, welches Rechenleistung und Speicherkapazität in einem Virtuellen Rechenzentrum bereitstellt, die zu Virtuellen Servern konfiguriert werden können \cite[Vgl.][S. 12]{Reinheimer2018}.
 
 Diese Infrastruktur kann sowohl physisch als auch virtuell zur Verfügung gestellt werden \cite[Vgl.][S. 9f]{Reinheimer2018}. Die darüberliegend dargestellte Schicht ist \ac{PaaS}, welche zu der Infrastrukturebene zusätzlich noch eine Basis zur Anwendungsentwicklung bietet, indem zum Beispiel bereits ein Betriebssystem und Middleware und eine Laufzeitumgebung bereitgestellt werden \cite[Vgl.][S. 10]{Reinheimer2018}. Anbieter für \ac{PaaS} Plattformen sind unter anderem Google (Google App Engine) und Jelastic mit einer Plattform zur Entwicklung von Webanwendungen in verschiedenen Entwicklungsumgebungen \cite[Vgl.][S. 13]{Reinheimer2018}. Die oberste Abstraktionsebene ist \ac{SaaS}, welche standardisierte Anwendungen zur Verfügung stellt und somit ohne Verwaltung der zugrundeliegenden Ressourcen genutzt werden kann. Die Bereitstellung der Anwendung wird vom Provider übernommen \cite[Vgl.][S. 11]{Reinheimer2018}. Als Beispiel für \ac{SaaS} wird von Hentschel und Leyh SAP S/4Hana herangezogen. Die Software wird in SAP eigenen Rechenzentren bereitgestellt und auch Support und Wartung vollständig von SAP übernommen. Anwender können sich vollständig auf die Nutzung der Software konzentrieren \cite[Vgl.][S. 14]{Reinheimer2018}. \pagebreak
 
@@ -28,7 +26,6 @@ Generell wird die Cloud darüber hinaus, wie in Abbildung \ref{fig:XaaS} bereits
 \end{itemize} \pagebreak
 
 \subsection{Entwicklung des Cloud Computing}
-
 Die Entwicklung des Cloud Computing und dessen Vorgängerkonzepte ist bis in die 90er Jahre zurückzuführen. Ein von Hentschel und Leyh (2018) hervorgehobener Vorgänger bildet das Grid Computing. Damit war bereits eine dezentrale Ressourcenkontrolle mir standardisierten Protokollen und Schnittstellen realisiert. Das Cloud Computing bietet vergleichbare Eigenschaften, jedoch rückt der Fokus hier auf wirtschaftliche Kriterien und die Zentralisierung von Ressourcen zum Beispiel in Rechenzentren \cite[Vgl.][S. 5f]{Reinheimer2018}.
 
 Salesforce war eines der ersten Unternehmen, welches 1999 Anwendungen über eine Webseite bereitgestellt hat, gefolgt von \ac{AWS} in 2002, welche Speicher und Rechenleistung als Services bereitstellten \cite[Vgl.][S. 17f]{Srivastava2018}.
@@ -40,3 +37,26 @@ Salesforce war eines der ersten Unternehmen, welches 1999 Anwendungen über eine
 \end{figure}
 
 Aus einem Dossier von Statista 2022 geht in der in Abbildung \ref{fig:public_cloud_spending} gezeigten Statistik hervor, dass sich die Ausgaben für Public Cloud Services von 2017 bis 2023 etwas mehr als vervierfacht haben werden \cite[Vgl.][S. 8]{Statista2022}. Auch weitere Statistiken desselben Dossiers machen einen stetig steigenden Trend hinsichtlich des Cloud Computing deutlich \cite[Vgl. unter anderem][S. 11ff]{Statista2022}. \pagebreak
+
+Abbildung \ref{fig:it-spending} zeigt darüber hinaus, wie sich die IT-Ausgaben in den letzten Jahren immer stärker auf Cloud Infrastruktur fokussiert haben.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{it_spending.png}
+    \caption{Verteilung der Verkaufsleistungen für IT-Infrastruktur \cite[S. 7]{Statista2022}}
+    \label{fig:it-spending}
+\end{figure}
+
+Daraus wird deutlich, wie Stark die Nutzung der Cloud, vorallem in den letzten Jahren, an Wert für Unternehmen gewonnen hat und dieser Trend sich fortsetzen wird. \pagebreak
+
+\subsection{Aktuelle Trends}
+Im nachfolgenden Unterkapitel werden aktuelle Trends im Bereich des Cloud Computing anhand einiger Statistiken und Studien aufgezeigt, um einen Ausblick auf zukünftige Entwicklungen geben zu können.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{Figure_1_The_Importance_of_Public_Cloud_in_Supporting_Digital_Business_Initiatives.png}
+    \caption{Verteilung der Verkaufsleistungen für IT-Infrastruktur \cite[S. 2]{Ganly2022}}
+    \label{fig:importance}
+\end{figure}
+
+Abbildung \ref{fig:importance} zeigt aus einer Gartner Studie, welchen Stellenwert die Public Cloud bei den meisten Unternehmen hat. Knapp 70\% der Unternehmen haben hierbei einen Wert von über 5 angegeben (auf einer Skala von 1 bis 7), wobei sogar 26\% den höchsten Wert vergeben haben \cite[Vgl.][S. 2]{Ganly2022}. 
+
+\pagebreak
