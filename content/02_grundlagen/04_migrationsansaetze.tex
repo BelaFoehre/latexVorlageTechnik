@@ -8,19 +8,32 @@
 Im folgenden Kapitel wird auf die unterschiedlichen Migrationsmethoden des Cloud Computing eingegangen. Durch die unterschiedlichen Abstraktionsebenen bedingt gibt es verschiedene Ansätze, wie die Cloud Migration realisierbar ist \cite[Vgl.][S. 226]{Surianarayanan2019}, angefangen mit dem auch als \glqq{Lift and Shift}\grqq{} bezeichneten Rehosting, bis hin zur Migration zu \ac{SaaS} verbunden mit der Entwicklung Cloud nativer Anwendungen \cite[Vgl.][S. 144]{Zhao2014}.
 
 \subsection{Rehosting}
-Nach Zhao (2014) wird das Rehosting vorallem für die Migration zu \ac{IaaS} eingesetzt \cite[Vgl.][S. 144]{Zhao2014}. Umgangssprachlich wird diese Vorgehensweise auch als \glqq{Lift and Shift}\grqq{} bezeichnet \cite[Vgl.][]{NetApp}. Bei diesen Strategien werden Anwendungen lediglich auf einer anderen Hardwareplattform installiert, die Anwendungsarchitektur bleibt dabei unverändert. Dieser Ansatz bietet eine schnelle Lösung zur Migration \cite[Vgl.][]{CIO}.
+Nach Zhao (2014) wird das \textit{Rehosting} vorallem für die Migration zu \ac{IaaS} eingesetzt \cite[Vgl.][S. 144]{Zhao2014}. Umgangssprachlich wird diese Vorgehensweise auch als \glqq{Lift and Shift}\grqq{} bezeichnet \cite[Vgl.][]{NetApp}. Bei diesen Strategien werden Anwendungen lediglich auf einer anderen Hardwareplattform installiert, die Anwendungsarchitektur bleibt dabei unverändert. Dieser Ansatz bietet eine schnelle Lösung zur Migration \cite[Vgl.][]{CIO}.
 
-Der wahrscheinlich größte Vorteil der Migration zu \ac{IaaS} ist, dass die Anwendungsarchitektur nicht verändert werden muss, weshalb das Rehosting vorallem dann eingesetzt wird, wenn die Migration schnell und ohne großen Aufwand vollzogen werden soll. Ein Nachteil ist dagegen, dass bei der Nutzung von \ac{IaaS} nicht die vollen Möglichkeiten der Cloud ausgeschöpft werden können, da die Anwendungen nicht entsprechend angepasst werden.
+Der wahrscheinlich größte Vorteil der Migration zu \ac{IaaS} ist, dass die Anwendungsarchitektur nicht verändert werden muss, weshalb das \textit{Rehosting} vorallem dann eingesetzt wird, wenn die Migration schnell und ohne großen Aufwand vollzogen werden soll. Ein Nachteil ist dagegen, dass bei der Nutzung von \ac{IaaS} nicht die vollen Möglichkeiten der Cloud ausgeschöpft werden können, da die Anwendungen nicht entsprechend angepasst werden.
+
+\subsection{Repurchase}
+\textit{Repurchase} bedeutet, Software in \ac{SaaS} Modellen einzukaufen \cite[Vgl.][S. 2]{Ahmad2018}. Die Migration zu einem \ac{SaaS}-Modell ist nach Zhao (2014) neben dem Ersetzen einer Software durch eingekaufte \acs{SaaS} auch durch entsprechendes überarbeiten von Software nach \ac{SaaS}-Prinzipien oder gänzlicher Umstrukturierung dieser \cite[Vgl.][S. 144]{Zhao2014}. 
+
+Das Aufgeben einer Anwendung und vollständige Ersetzen dieser durch Nutzung des \ac{SaaS} Modells bedarf eines größeren Aufwand und ein Entwicklungsteam zur Umsetzung der Anforderungen \cite[Vgl.][]{CIO}. \pagebreak
 
 \subsection{Refactoring/Rebuilding}
-Das Refactoring oder Rebuilding von Anwendungen gehört nach Zhao (2014) zu den eingesetzten Strategien für die Migration zu \ac{PaaS} \cite[Vgl.][S. 144]{Zhao2014}. Rebuilding bedeutet, die Architektur der bisherigen Anwendung anzupassen, um die Vorteile der Cloud Plattform nutzen zu können \cite[Vgl.][]{CIO}. Darunter fällt zum Beispiel das Umsetzen entsprechender Service Topologien im Code \cite[Vgl.][S. 2]{Holmes2018}.
+Das \textit{Refactoring} oder \textit{Rebuilding} von Anwendungen gehört nach Zhao (2014) zu den eingesetzten Strategien für die Migration zu \ac{PaaS} \cite[Vgl.][S. 144]{Zhao2014}. \textit{Refactoring} bedeutet, die Architektur der bisherigen Anwendung anzupassen, um Cloud-native Features \cite[Vgl.][S. 2]{Ahmad2018} und somit die Vorteile der Cloud Plattform nutzen zu können \cite[Vgl.][]{CIO}. Darunter fällt zum Beispiel das Umsetzen entsprechender Service Topologien im Code \cite[Vgl.][S. 2]{Holmes2018}.
 
 Durch die vom Cloud Provider teils vorgegebene Plattform (z.B. Middleware und Datenbanken) müssen Anwendungen dieser entsprechend angepasst werden \cite[Vgl.][S. 227]{Surianarayanan2019}. Der Mehrwert einer Migration zu \ac{PaaS} ist, dass der Anwender die IT-Infrastruktur nicht mehr verwalten muss und somit Aufwände reduziert werden können \cite[Vgl.][S. 6]{Pahl}.
 
-\subsection{Nutzung von SaaS}
-Der Schritt zu \ac{SaaS} ist nach Zhao (2014) auf verschiedenen Wegen zu erreichen. Demnach sei eine Anwendung durch einen SaaS Service entweder zu ersetzen, entsprechend der SaaS Prinzipien zu überarbeiten oder zu einem \ac{SaaS} Service umzustrukturieren \cite[Vgl.][S. 144]{Zhao2014}.
-
-Das Aufgeben einer Anwendung und vollständige Ersetzen dieser durch Nutzung des \ac{SaaS} Modells bedarf eines größeren Aufwand und ein Entwicklungsteam zur Umsetzung der Anforderungen \cite[Vgl.][]{CIO}. 
+Auch \textit{Rebuilding} wird eingesetzt um die Vorteile der Cloud mit Cloud-native Features zu nutzen, jedoch wie vom Namen schon abzuleiten durch das neu "bauen" einer Anwendung statt dem anpassen \cite[Vgl.][S. 2]{Ahmad2018}.
 
 \subsection{Strangler Pattern}
+Eine weiter Migrationsstrategie ist das von \ac{AWS} vorgestellte Strangler Pattern, welches in gewissem Maße die zuvor erläuterten Strategien in einer Schritt für Schritt Entwicklung kombiniert. Hierzu werden folgende Schritte durchgeführt \cite[Vgl. auch im Folgenden][]{MarshBoourdon2019}:
+
+\begin{enumerate}
+    \item Rehosting der monolithischen Anwendung
+    \item API Gateway als Schnittstelle einbinden
+    \item Hot Spots identifizieren
+    \item Hot Spots mit Lambda Funktionen ersetzen
+    \item Testweiser Release der Anwendung
+    \item Iterativ weiter abschnüren (stangulate)
+    \item Wenn Monolith vollständig ersetzt diesen verwerfen
+\end{enumerate}
 \pagebreak

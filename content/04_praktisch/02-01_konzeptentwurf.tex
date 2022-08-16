@@ -51,7 +51,7 @@ Neben der Erfüllung dieser funktionalen Anforderungen sollen auch die nicht-fun
 \subsection{Programmiersprache und Framework}
 Neben der Konzeptionierung einer Anwendungsarchitektur braucht es zur Entwicklung auch eine Programmiersprache und gegebenenfalls ein Framework, um die Anwendung optimal in der Cloud nutzen zu können. 
 
-Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll, da hier mit \gls{Spring Boot} die Cloud native Entwicklung erleichtert wird. Darüber hinaus gilt \gls{Spring Boot} als populärer Standard für den Einsatz von Microservices.
+Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll, da hier mit \gls{Spring Boot} die Cloud native Entwicklung erleichtert wird. Darüber hinaus gilt \gls{Spring Boot} als populärer Standard für den Einsatz von Microservices und die geplante und notwendige Einbindung der \gls{Box}-API wurde in Java als einfacher erachtet.
 
 \subsection{Auswahl eines Cloud Providers}
 Ein für die Cloud Migration unerlässlicher Schritt ist die Auswahl eines zu den Anforderungen passenden Cloud Providers. In diesem Fall wurde \ac{AWS} als einer der größten Provider \cite[Vgl.][S. 6]{Sustar2022} gewählt, da hier mit \ac{ECS} und Fargate gute Cloud native Möglichkeiten zum serverless Deployment von Containern zur Verfügung stehen um somit die Vorteile der Cloud optimal nutzen zu können. Darüber hinaus unterstützt \ac{AWS} viele offene Standards, wie zum Beispiel Terraform.
