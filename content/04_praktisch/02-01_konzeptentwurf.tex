@@ -49,6 +49,9 @@ Den \glqq{Hauptservice}\grqq{} der Anwendung soll der \textit{\gls{Timesheet}}-S
 Neben der Erfüllung dieser funktionalen Anforderungen sollen auch die nicht-funktionalen Aspekte betrachtet werden. Dazu gehören die in Kapitel \ref{sec:anforderungsanalyse} erarbeiteten Anforderungen an eine Cloud-native Anwendung, unter anderem die Skalierbarkeit und Fehlertoleranz. \pagebreak
 
 \subsection{Programmiersprache und Framework}
+% Dependecy Injektion sehr gut (Austauschbarkeit der Implementierung)
+% Spring MVC für REST-Anwendung in Springboot enthalen (Teil des Spring-Frameworks)
+% 
 Neben der Konzeptionierung einer Anwendungsarchitektur braucht es zur Entwicklung auch eine Programmiersprache und gegebenenfalls ein Framework, um die Anwendung optimal in der Cloud nutzen zu können. 
 
 Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll, da hier mit \gls{Spring Boot} die Cloud native Entwicklung erleichtert wird. Darüber hinaus gilt \gls{Spring Boot} als populärer Standard für den Einsatz von Microservices und die geplante und notwendige Einbindung der \gls{Box}-API wurde in Java als einfacher erachtet.

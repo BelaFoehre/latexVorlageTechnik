@@ -1,31 +1,46 @@
 \chapter{Implementierung des Prototypen}
 
-Nachfolgend wird in einem kurzen Abschnitt die Implementierung des Prototypen beschrieben, bevor die Notwendigen Schritte zur Cloud Migration der in dieser Arbeit untersuchten Anwendung zusammenfassend wiedergegeben werden, um einen Überblick über den Migrationsprozess zu geben.
+Nachfolgend wird in einem kurzen Abschnitt die Implementierung des Prototypen beschrieben, bevor die notwendigen Schritte zur Cloud Migration der in dieser Arbeit untersuchten Anwendung zusammenfassend wiedergegeben werden, um einen Überblick über den Migrationsprozess zu geben.
 
 \section{Lokale Implementierung}
-Der erste Entwicklungsschritt für die Anwendung ist eine lokale Implementierung des Konzeptes, welches später in die Cloud migriert werden soll. Die zuvor identifizierten Services und \ac{API} Anbindungen wurden implementiert und die Funktionen der Anwendung werden über eine \ac{REST}-\ac{API} bereitgestellt.
+% 1. Prototyp mit Mocks um Module einzeln und unabhängig voneinander oder von Daten zu testen
+% 2. Schrittweise ersetzen der Mocks durch Verknüpfung der Module und Anbindung der Box-API
+% 3. Bereitstellung der Anwendung über API
 
-Schritt für Schritt wurden hierzu die Business-Logik der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation. Um die Anwendung ansprechen zu können wurden außerdem Endpoints definiert und über eine \ac{API} bereitgestellt.
+Wie bereits im vorangehenden Kapitel erarbeitet, soll die untersuchte Anwendung für die Cloud Migration in eine \gls{Spring Boot}-Anwendung umgewandelt werden. Die neue Anwendung wird im ersten Entwicklungsschritt auf einem lokalen System implementiert und getestet , bevor diese in die Cloud migriert wird.
 
-Anschließend wurde ein \textit{Dockerfile} definiert, in welchem die Schritte beschrieben sind, wie ein Docker-Image der Anwendung erstellt werden kann.
+Schritt für Schritt werden hierzu die Business-Logik der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Dazu werden die einzelnen Services nacheinander prototypisch entwickelt und mithilfe von Mock-Daten unabhängig voneinander getestet. Diese Mocks werden dann Schrittweise durch die Verknüpfung der einzelnen Services und das Einbinden der \gls{Box}-\ac{API} ersetzt. Um die Anwendung erreichbar zu machen, wird darüber hinaus die Schnittstelle entwickelt und bereitgestellt. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation. Um die Anwendung ansprechen zu können wurden außerdem Endpoints definiert und über eine \ac{API} bereitgestellt.
 
-Um die Funktion der neuen \gls{Spring Boot} Anwendung zu testen wurden Testdatensätze nach dem Vorbild der realen Daten erstellt und in ein \gls{Box}-Verzeichnis gelegt. Über die von der Anwendung bereitgestellte \ac{API} können nun die Funktionen der Anwendung getestet werden. \pagebreak
+Anschließend wird die Anwendung Containerisiert. Dazu wird ein \textit{Dockerfile} definiert, in welchem die Schritte beschrieben sind, wie ein Docker-Image der Anwendung erstellt werden kann.
 
-% Um die Box \ac{API} direkt nutzen zu können wird im ersten Entwurf darüber hinaus ein privater Box Account verwendet, um die Zulassungsprozesse der Enterprise Box zu umgehen. Die Einbindung dieser wird auf einen späteren Entwicklungsschritt verschoben.
-
-% Initial wurde ein \textit{\gls{Springboot}} Projekt in \textit{\gls{IntelliJ}} aufgesetzt. Parallel dazu wurde in einem privaten Box Account die Ordnerstruktur des Projektverzeichnisses repliziert und eine Box-App erstellt, die die Zugriffsdaten für die Nutzung der \ac{API} bereitstellt.
-
-% Im nächsten Schritt wurde als erste Funktion dann der Box Service erstellt und getestet. Um diesen über eine \ac{REST}-\ac{API} verfügbar zu machen wurde außerdem ein \textit{BoxController} erstellt, welcher die \ac{API} Anfragen verarbeitet. Die erste getestete Funktion war der allgemeine Zugriff auf das Box Verzeichnis mit den Zugriffsdaten der Box-App. Über die \ac{API} Dokumentation von Box sind für die gängigsten Methoden und Programmiersprachen bereits beispielhafte \textit{Codesnippets} bereitstellt. Hierbei wurde unter anderem festgestellt, dass die \ac{API}-Dokumentation einige Lücken enthält, die eine reibungslose Implementierung erschweren. So fehlten zum Beispiel die Information, dass die zuvor erstellte Box-App einen eigenen Serviceuser erstellt und dieser erst auf die entsprechenden Verzeichnisse zugelassen werden muss, bevor ein Zugriff möglich ist. Nachdem diese Hürde jedoch überwunden war, funktionierte der Zugriff wie gewünscht und Ordner und Dateien aus dem Verzeichnis konnten Angezeigt werden.
-
-% Die nächste entwickelte Funktion war die automatisierte Ermittlung der Folder-IDs, da diese für den Zugriff auf die Unterordner benötigt werden. Bei der Ausgabe aller im Projektordner enthaltenen Elemente, werden diese mit Namen, IDs und einigen weiteren Informationen im \ac{JSON}-Format ausgegeben. Da die Namensgebung der Ordner einem vorgegebenen Prinzip folgt, kann anhand der Ordnernamen die ID des jeweils gesuchten Ordners ermittelt werden.
-
-% Zuerst wird das temporäre Verzeichnis geleert, falls noch alte Dateien enthalten sind, danach wird die Projektmanagement-Datei geladen und gelesen, bevor die entsprechenden Timesheets in das temporäre Verzeichnis kopiert werden.
+Um die Funktionen der neuen \gls{Spring Boot} Anwendung zu testen werden Testdatensätze nach dem Vorbild der realen Daten erstellt und in ein \gls{Box}-Verzeichnis gelegt. Über die von der Anwendung bereitgestellte \ac{API} können nun die Funktionen der Anwendung getestet werden. \pagebreak
 
 \section{Migration in die Cloud}
-Abschließend für das Implementierungs-Kapitel wird der Prozess der Anwendungsmigration in die Cloud für den Untersuchten Fall zusammengefasst. Dazu wurden die nachfolgend beschriebenen Schritte durchgeführt.
+% Lokal im Container laufende Anwendung
+% Zuvor definierte Infrastriktur mithilfe von Trraform aufgesetzt (-> reproduzierbar)
+% - Aufsetzen einer CodePipeline zur automatisierten Bereitstellung
+% Schreiben der TaskDefinition um Container als workload in ECS auszuführen
+% Initiale Ausführung von CodePipeline
+% -> Build Anwendung
+% -> Build + Push Image
+% -> Deployment ECS
+% => Anpassung von Security Konfiguration notwendig
+% Wieder die gleichen Tests wie lokal, diesmal gegen API Gateway API
 
-Zuerst wurde untersucht, welche Migrationsstrategie für die vorliegende Anwendung in Frage kommen könnte. Im vorliegenden Beispiel ist die Entscheidung auf ein Refactoring gefallen, um die Vorteile der Cloud mit einer Spring Boot Anwendung nutzen zu können. Ein Rehosting der existierenden Python Anwendung wäre dazu nicht ausreichend gewesen, da der Service zwar in einem Container laufen würde, jedoch ohne die Vorteile der Cloud nutzen zu können, da diese dann zwar über das Internet erreichbar wäre, aber sich die Art der Ausführung dieser im Vergleich zu einer lokalen Anwendung nur geringfügig ändert.
+Nachdem die Anwendung lokal bereits in einem Container bereitgestellt wird, kann diese nun in die Cloud migriert werden.
 
-Um testen zu können, ob die Migration in diesem Fall überhaupt die gewünschten Vorteile mit sich bringt, wurde außerdem entschieden, für die erste testweise Umsetzung nur einen der vier Services zu migrieren. Für diesen Service wurde anschließend konzeptioniert, wie die Funktionen der Anwendung nun in Spring umgesetzt werden können, um der ursprünglichen Funktionalität zu entsprechen. Darüber hinaus musste dann für die Anwendung auch ein Cloud Provider und eine entsprechende Architektur für die Cloud Umgebung entworfen und danach umgesetzt werden. Nach dem Aufsetzen der Cloud Umgebung und Konfiguration der Pipeline konnte der Anwendungscode ein erstes Mal testweise in die Container ausgespielt werden.
+Die zuvor in Kapitel \ref{chapter:cloud-architektur} definierte Cloud-Infrastruktur wird in einem \gls{Terraform}-Skript aufgesetzt. Damit ist die Cloud-Umgebung jederzeit reproduzierbar. Zusätzlich wird eine CodePipeline aufgesetzt zur automatisierten Bereitstellung der Anwendung.
 
-Die ersten manuellen Tests zeigen, dass die Anwendung wie gewünscht funktioniert und die \textit{\glspl{Timesheet}} kopiert. \pagebreak
+Um die Container als Workload in ECS auszuführen, wird außerdem eine \textit{TaskDefinition} erstellt. Diese beschreibt unter anderem, welches Anwendungsimage in einem Container deployed werden, wie viel Arbeitsspeicher und Prozessorleistung zur Verfügung gestellt werden und wie zum Beispiel mit dem Abstürzen eines Containers umgegangen werden soll \cite[Vgl.][]{AWSECS}.
+
+Mit dem Aufsetzen der Cloud-Umgebung kann nun die Anwendung initial ausgeführt werden. \textit{CodeStar} lädt den Anwendungscode aus dem \gls{Repository}, welcher dann von \textit{CodeBuild} gebaut und im \ac{ECR} abgelegt wird. Dieses Bild der Anwendung kann dann in \ac{ECS} deployed werden.
+
+Bei der Initialisierung der Anwendung ist aufgefallen, dass die standard Sicherheitskonfiguration des Subnetzes der \ac{VPC} nicht den Anforderungen entspricht und Netzwerkverbindungen blockiert, die zur Ausführung der Anwendung notwendig sind. Diese Konfiguration muss entsprechend angepasst werden, damit die Services untereinander kommunizieren können und zum Beispiel die \gls{Box}-\ac{API} erreichbar ist.
+
+Die migrierte Anwendung kann nun mit den gleichen Testdaten, wie die lokale Anwendung getestet werden.
+
+% Zuerst wurde untersucht, welche Migrationsstrategie für die vorliegende Anwendung in Frage kommen könnte. Im vorliegenden Beispiel ist die Entscheidung auf ein Refactoring gefallen, um die Vorteile der Cloud mit einer Spring Boot Anwendung nutzen zu können. Ein Rehosting der existierenden Python Anwendung wäre dazu nicht ausreichend gewesen, da der Service zwar in einem Container laufen würde, jedoch ohne die Vorteile der Cloud nutzen zu können, da diese dann zwar über das Internet erreichbar wäre, aber sich die Art der Ausführung dieser im Vergleich zu einer lokalen Anwendung nur geringfügig ändert.
+
+% Um testen zu können, ob die Migration in diesem Fall überhaupt die gewünschten Vorteile mit sich bringt, wurde außerdem entschieden, für die erste testweise Umsetzung nur einen der vier Services zu migrieren. Für diesen Service wurde anschließend konzeptioniert, wie die Funktionen der Anwendung nun in Spring umgesetzt werden können, um der ursprünglichen Funktionalität zu entsprechen. Darüber hinaus musste dann für die Anwendung auch ein Cloud Provider und eine entsprechende Architektur für die Cloud Umgebung entworfen und danach umgesetzt werden. Nach dem Aufsetzen der Cloud Umgebung und Konfiguration der Pipeline konnte der Anwendungscode ein erstes Mal testweise in die Container ausgespielt werden.
+
+% Die ersten manuellen Tests zeigen, dass die Anwendung wie gewünscht funktioniert und die \textit{\glspl{Timesheet}} kopiert. \pagebreak
