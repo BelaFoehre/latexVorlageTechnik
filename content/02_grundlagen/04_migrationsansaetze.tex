@@ -25,15 +25,20 @@ Durch die vom Cloud Provider teils vorgegebene Plattform (z.B. Middleware und Da
 Auch \textit{Rebuilding} wird eingesetzt um die Vorteile der Cloud mit Cloud-native Features zu nutzen, jedoch wie vom Namen schon abzuleiten durch das neu "bauen" einer Anwendung statt dem anpassen \cite[Vgl.][S. 2]{Ahmad2018}.
 
 \subsection{Strangler Pattern}
-Eine weiter Migrationsstrategie ist das von \ac{AWS} vorgestellte Strangler Pattern, welches in gewissem Maße die zuvor erläuterten Strategien in einer Schritt für Schritt Entwicklung kombiniert. Hierzu werden folgende Schritte durchgeführt \cite[Vgl. auch im Folgenden][]{MarshBoourdon2019}:
+Eine Strategie die Migration einer Anwendung umzusetzen ist das von Martin Fowler eingeführte \textit{Strangler Pattern}. Den Namen hat Fowler von der im Englischen \textit{Strangler Fig} genannten Würgefeige, die von den Ästen eines Baumes herabwächst, bis die diesen langsam abwürgt und ersetzt und mataphorisch für den Prozess des Neuschreibens einer Anwendung übernommen \cite[Vgl.][]{Fowler2004}\cite[Vgl.][]{Ibryam2021}.
+
+Zur Anwendung des \textit{Strangler Pattern} werden folgende Schritte durchgeführt \cite[Vgl. auch im Folgenden][]{Ibryam2021}:
 
 \begin{enumerate}
-    \item Rehosting der monolithischen Anwendung
-    \item API Gateway als Schnittstelle einbinden
-    \item Hot Spots identifizieren
-    \item Hot Spots mit Lambda Funktionen ersetzen
-    \item Testweiser Release der Anwendung
-    \item Iterativ weiter abschnüren (stangulate)
-    \item Wenn Monolith vollständig ersetzt diesen verwerfen
+    \item Identifizieren funktionaler Grenzen zur Abgrenzung einzelner Services voneinander
+    \item Funktionalität einzelner Services migrieren
+    \item Migration / Anpassung der Datenbank
+    \item Testweiser Release der neuen Services
 \end{enumerate}
+
+Die neue Anwendung wird so parallel zu der noch aktiven, nicht migrierten Anwendung aufgebaut und die Services nach und nach in Betrieb genommen, bis die alte Anwendung vollständig ersetzt wurde und nicht mehr benötigt wird \cite[Vgl.][]{MarshBoourdon2019}\cite[Vgl.][]{Ibryam2021}\cite[Vgl.][]{Fowler2004}.
+\pagebreak
+
+\subsection{Big Bang Migration}
+\dots
 \pagebreak

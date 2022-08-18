@@ -1,13 +1,14 @@
 \chapter{Untersuchung}
-% NUR beschreiben wie und was untersucht wird, Ergebnis in Kapitel
-\section{Beurteilung der technischen Realisierung}
-Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitätsanforderungen für den modellierten Use-Case wird für jedes Kriterium ein Testfall definiert, der die Mindestanforderungen für eine erfolgreiche Bewertung abdeckt. Darüber hinaus soll untersucht werden, welche Aufwände die Umsetzung mit sich gebracht hat.
+% NUR beschreiben wie und was untersucht wird, Ergebnis in Kapitel Evaluation
 
-Folgende Testfälle wurden dazu definiert:
+\section{Beurteilung der technischen Realisierung}
+Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitätsanforderungen für den modellierten Use-Case wird für jedes Kriterium ein Testfall definiert, um untersuchen zu können, ob die Mindestanforderungen für eine erfolgreiche Bewertung abgedeckt werden. Darüber hinaus soll untersucht werden, welche Aufwände die Umsetzung mit sich gebracht hat.
+
+Folgende Testfälle werden dazu definiert:
 \begin{enumerate}
-    \item Die Anzahl aktiver Mitarbeiter im PMO-File variieren und prüfen ob jeweils entsprechende \textit{\glspl{Timesheet}} kopiert werden.
+    \item Variation der Anzahl aktiver Mitarbeiter im PMO-File.
     \item Abgleichen kopierter \textit{\glspl{Timesheet}} mit den \textit{\glspl{Timesheet}} aus dem Ursprungsverzeichnis.
-    \item Monat in Konfiguration variieren zum Prüfen, ob entsprechend neuer Ordner erstellt wird.
+    \item Variation des Monats in Konfiguration.
     \item Test mit sehr großem Timesheet.
     \item Manueller Abgleich und Untersuchung auf potenzielle Verluste.
     \item Logfile auslesen.
@@ -15,14 +16,31 @@ Folgende Testfälle wurden dazu definiert:
     \item Test mit unterschiedlichen Root Verzeichnissen.
 \end{enumerate}
 
-Beim Prüfen aud Erfüllung dieser Testfälle konnte bestätigt werden, dass die grundlegende Funktionalität der Anwendung auch nach der Cloud Migration verfügbar ist, jedoch durch das Refactoring der Anwendung noch nicht alle Qualitätsanforderungen erfüllt werden können. So werden die Testfälle 1-5 und 8 wie erwartet erfüllt, jedoch fehlt unter anderem das ausführliche Logging und das erwartete Fehlerhandling. Da  die Umsetzung des Prototypen mit wenigen Testdatensätzen erfolgte, wurde die Erfüllung der Testfälle manuell überprüft.
+Zum Testen der Anwendung wird in einem \gls{Box}-Verzeichnis die Ordnerstruktur der Projektumgebung nachgebildet und mit Testdatensätzen befüllt. In dem PMO-File kann der Status jeder eingetragenen Person auf \glqq{\textit{active}}\grqq{} oder \glqq{\textit{inactive}}\grqq{} gesetzt werden. Durch Variieren der Kennzeichnung für die simulierten Mitarbeiter kann geprüft werden, ob in dem \textit{Collect}-Verzeichnis tatsächlich nur die \textit{\glspl{Timesheet}} der als \glqq{\textit{active}}\grqq{} eingetragenen Mitarbeiter kopiert werden.
 
-Grundlegend war der größte Aufwand bei der Realisierung in diesem Fall das Refactoring, da die ursprüngliche Python Anwendung in ein Spring Boot Projekt umgeschrieben wurde. Die Prinzipien von Microservices waren in der Ursprünglichen Anwendung bereits umgesetzt, entsprechend ist auch der neu geschriebene Collect Service als ein solcher vorgesehen, da in der weiteren Umsetzung auch die anderen Services folgen sollen.
+Da die Dateinamen der \textit{\glspl{Timesheet}} einer klaren Struktur folgen, die für die weitere Verarbeitung der \textit{\glspl{Timesheet}} relevant ist, soll durch eine visuelle Prüfung festgestellt werden, ob diese unverändert im Zielverzeichnis beibehalten werden. Auch soll kurz untersucht werden, ob die Inhalte gleich bleiben.
+
+Durch eine Änderung in der Konfigurationsdatei kann überprüft werden, ob bei Anpassung des Monats ein entsprechend neuer Ordner für diesen Monat im Zielverzeichnis angelegt wird und die \textit{\glspl{Timesheet}} in diesen neuen Ordner kopiert werden.
+
+Eines der \textit{gemockten} \textit{\glspl{Timesheet}} enthält verhältnismäßig viele Einträge um die Speichergröße künstlich zu erhöhen. Damit soll getestet werden, ob der Kopiervorgang trotz der Größe fehlerfrei funktioniert.
+
+Um zu überprüfen, ob der Kopiervorgang verlustfrei funktioniert, werden die \textit{\glspl{Timesheet}} aus dem Ursprungsverzeichnis mit den kopierten \textit{\glspl{Timesheet}} im Zielverzeichnis manuell verglichen.
+
+Da für jeder einzelne Kopiervorgang einer Datei in eine Log-Datei geschrieben werden soll, um über Erfolg oder Misserfolg des Vorgangs für jede Datei zu informieren, soll geprüft werden, ob das Logging in \textit{CloudWatch} diese Vorgänge ausreichend erfasst oder separates Logging nötig ist.
+
+Die Anwendung soll fehlerhafte Dateien im Kopiervorgang überspringen können, ohne dass diese zum Abbruch führen. Dazu wird absichtlich der Dateiname einer Testdatei geändert, um einen Fehler zu simulieren und geprüft, ob die Anwendung trotzdem durchläuft und die übrigen Dateien kopiert.
+
+Damit die Anwendung wie gewünscht in Zukunft auch für andere Projekte eingesetzt werden kann, muss sich das Rootverzeichnis unkompliziert ändern lassen. Dazu kann die Ordnerstruktur ein weiteres mal in einem anderen Verzeichnis reproduziert  werden und in der Konfiguration die Ordner-ID entsprechend angepasst.
+
+% Beim Prüfen aud Erfüllung dieser Testfälle konnte bestätigt werden, dass die grundlegende Funktionalität der Anwendung auch nach der Cloud Migration verfügbar ist, jedoch durch das Refactoring der Anwendung noch nicht alle Qualitätsanforderungen erfüllt werden können. So werden die Testfälle 1-5 und 8 wie erwartet erfüllt, jedoch fehlt unter anderem das ausführliche Logging und das erwartete Fehlerhandling. Da  die Umsetzung des Prototypen mit wenigen Testdatensätzen erfolgte, wurde die Erfüllung der Testfälle manuell überprüft.
+
+% Grundlegend war der größte Aufwand bei der Realisierung in diesem Fall das Refactoring, da die ursprüngliche Python Anwendung in ein Spring Boot Projekt umgeschrieben wurde. Die Prinzipien von Microservices waren in der Ursprünglichen Anwendung bereits umgesetzt, entsprechend ist auch der neu geschriebene Collect Service als ein solcher vorgesehen, da in der weiteren Umsetzung auch die anderen Services folgen sollen.
+\pagebreak
 
 \section{Untersuchung der nicht-funktionalen Anforderungen}
 Neben den technischen und funktionalen Anforderungen haben sich auch nicht-funktionale Anforderungen, wie die Skalierbarkeit oder Fehlertoleranz ergeben, die im folgenden untersucht werden sollen.
 
-\textbf{Skalierbarkeit:} Von der Anwendung wird erwartet, dass sie im Falle höherer Last, zum Beispiel durch mehrere Benutzer auf mehr Containern deployed werden kann. Diese Mehrnutzerfähigkeit ist durch \gls{Spring Boot} bereits gegeben und das Bereitstellen weiterer Container wird von \gls{Fargate} verwaltet.
+\textbf{Skalierbarkeit:} Von der Anwendung wird erwartet, dass diese Skalierbar ist, um zum Beispiel mehr Container zu starten, wenn notwendig und diese aber auch wieder zu stoppen, wenn sie nicht mehr benötigt werden.
 
-\textbf{Fehlertoleranz:} Außerdem soll mit der Fehlertoleranz zm Beispiel der Fall abgedeckt sein, dass ein abgestürzter oder fehlerhafter Container durch einen neuen, weiteren Container ersetzt werden kann, damit die Anwendung jederzeit zur Verfügung steht. Auch diese Anforderung wird durch den Einsatz von \gls{Fargate} erfüllt.
+\textbf{Fehlertoleranz:} Außerdem soll mit der Fehlertoleranz zm Beispiel der Fall abgedeckt sein, dass ein abgestürzter oder fehlerhafter Container durch einen neuen, weiteren Container ersetzt werden kann, damit die Anwendung jederzeit zur Verfügung steht.
 \pagebreak
