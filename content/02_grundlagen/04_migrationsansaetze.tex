@@ -10,6 +10,8 @@ Im folgenden Kapitel wird auf die unterschiedlichen Migrationsmethoden des Cloud
 \subsection{Rehosting}
 Nach Zhao (2014) wird das \textit{Rehosting} vorallem für die Migration zu \ac{IaaS} eingesetzt \cite[Vgl.][S. 144]{Zhao2014}. Umgangssprachlich wird diese Vorgehensweise auch als \glqq{Lift and Shift}\grqq{} bezeichnet \cite[Vgl.][]{NetApp}. Bei diesen Strategien werden Anwendungen lediglich auf einer anderen Hardwareplattform installiert, die Anwendungsarchitektur bleibt dabei unverändert. Dieser Ansatz bietet eine schnelle Lösung zur Migration \cite[Vgl.][]{CIO}.
 
+\textbf{(Siehe Feedback Steffen: Ein/zwei Sätze zu "Lift ausführen")}
+
 Der wahrscheinlich größte Vorteil der Migration zu \ac{IaaS} ist, dass die Anwendungsarchitektur nicht verändert werden muss, weshalb das \textit{Rehosting} vorallem dann eingesetzt wird, wenn die Migration schnell und ohne großen Aufwand vollzogen werden soll. Ein Nachteil ist dagegen, dass bei der Nutzung von \ac{IaaS} nicht die vollen Möglichkeiten der Cloud ausgeschöpft werden können, da die Anwendungen nicht entsprechend angepasst werden.
 
 \subsection{Repurchase}
@@ -25,7 +27,7 @@ Durch die vom Cloud Provider teils vorgegebene Plattform (z.B. Middleware und Da
 Auch \textit{Rebuilding} wird eingesetzt um die Vorteile der Cloud mit Cloud-native Features zu nutzen, jedoch wie vom Namen schon abzuleiten durch das neu "bauen" einer Anwendung statt dem anpassen \cite[Vgl.][S. 2]{Ahmad2018}.
 
 \subsection{Strangler Pattern}
-Eine Strategie die Migration einer Anwendung umzusetzen ist das von Martin Fowler eingeführte \textit{Strangler Pattern}. Den Namen hat Fowler von der im Englischen \textit{Strangler Fig} genannten Würgefeige, die von den Ästen eines Baumes herabwächst, bis die diesen langsam abwürgt und ersetzt und mataphorisch für den Prozess des Neuschreibens einer Anwendung übernommen \cite[Vgl.][]{Fowler2004}\cite[Vgl.][]{Ibryam2021}.
+Eine Strategie die Migration einer Anwendung umzusetzen ist das von Martin Fowler eingeführte \textit{Strangler Pattern}. Den Namen hat Fowler von der im Englischen \textit{Strangler Fig} genannten Würgefeige, die von den Ästen eines Baumes herabwächst, bis die diesen langsam abwürgt und ersetzt und metaphorisch für den Prozess des Neuschreibens einer Anwendung übernommen \cite[Vgl.][]{Fowler2004}\cite[Vgl.][]{Ibryam2021}.
 
 Zur Anwendung des \textit{Strangler Pattern} werden folgende Schritte durchgeführt \cite[Vgl. auch im Folgenden][]{Ibryam2021}:
 

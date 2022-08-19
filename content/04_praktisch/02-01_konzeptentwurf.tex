@@ -21,24 +21,11 @@ Die bisher existierende Anwendung ist eine Python Anwendung, die grundsätzlich 
 
 Jeder dieser drei Services ist ein eigenes Python Modul. Diese greifen jeweils auf weitere Services wie einen Excel-Helper und Checking-Tools zurück.
 
-Da es sich bei dieser Arbeit um eine Machbarkeitsstudie mit Erstellung eines Prototypen handelt, wird im ersten Schritt nur die Migration des \textit{Collect Service} untersucht, bevor die anderen, komplexeren Services migriert werden. Dies ist in Abbildung \ref{fig:pmo_python} entsprechend durch den gelben Rahmen gekennzeichnet. Der \textit{Collect Service} benötigt eine Verbindung zu dem \gls{Box}-Verzeichnis und einen Ablageort für die \glqq{eingesammelten}\grqq{} \textit{\glspl{Timesheet}}. \pagebreak
-
-\subsection{Placeholder}
-Da die ursprüngliche Anwendung einige Funktionalitäten auf eine Weise umsetzt, die nicht in der Cloud funktionieren würde (z.B. das Lesen und Schreiben in Box) und eine Bereitstellung über einen \ac{API}-Endpunkt, müssen diese überarbeitet oder neu geschrieben werden. Ein simples Rehosting ist durch die anfallenden Anpassungen, wie bereits im vorangehenden Kapitel erarbeitet, nicht möglich.
-
-Abbildung \ref{fig:Architektur} zeigt einen groben  Entwurf der Anwendung und wie die Services miteinander kommunizieren sollen. Der \textit{\gls{Timesheet}}Service soll zu einem späteren Zeitpunkt alle Funktionen aus der Ursprünglichen Anwendung bündeln, für den Prototypen wird sich jedoch, wie bereits in der Anforderungsanalyse erwähnt, auf den \textit{Collect Service} beschränkt.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{architektur.png}
-    \caption{Grober Architekturentwurf}
-    \label{fig:Architektur}
-\end{figure}
-
+Da es sich bei dieser Arbeit um eine Machbarkeitsstudie mit Erstellung eines Prototypen handelt, wird im ersten Schritt nur die Migration des \textit{Collect Service} untersucht, bevor die anderen, komplexeren Services migriert werden. Dies ist in Abbildung \ref{fig:pmo_python} entsprechend durch den gelben Rahmen gekennzeichnet. Der \textit{Collect Service} benötigt eine Verbindung zu dem \gls{Box}-Verzeichnis und einen Ablageort für die \glqq{eingesammelten}\grqq{} \textit{\glspl{Timesheet}}.
 \pagebreak
 
 \subsection{Entwurf der neuen Architektur}
-Kern der Anwendung soll trotz der Weiterentwicklung und anstehenden Änderungen die in Kapitel \ref{sec:use-case-modellierung} beschriebene Business-Logik bilden
+Kern der Anwendung soll trotz der Weiterentwicklung und anstehenden Änderungen die in Kapitel \ref{sec:use-case-modellierung} beschriebene Business-Logik bilden.
 
 In der ursprünglichen Anwendung ist der Zugriff auf die \gls{Box} mithilfe einer Erweiterung umgesetzt worden, die es ermöglicht, Verzeichnisse in der \gls{Box} wie einen lokalen Dateipfad ansprechen zu können. Somit konnte der Box-Pfad in eine Konfigurationsdatei geschrieben und als Parameter an die Anwendung übergeben werden. Da in einem Container in der Cloud Umgebung kein zugriff auf ein lokales Verzeichnis mit entsprechender \gls{Box}-Erweiterung hergestellt werden kann, muss hier in der neuen Anwendung entsprechend die \gls{Box}-\ac{API} eingebunden werden um den Zugriff auf die Verzeichnisse weiterhin zu ermöglichen.
 
@@ -46,17 +33,25 @@ Außerdem enthalten die PMO-Tools ein Skript, welches den Umgang mit Excel Sprea
 
 Den \glqq{Hauptservice}\grqq{} der Anwendung soll der \textit{\gls{Timesheet}}-Service bilden. Dieser soll alle Funktionen bereitstellen, die unter Verwendung der anderen Services die letztendlich gewünschte Funktionalität des Einsammeln der \textit{\glspl{Timesheet}} bieten. Darüber hinaus soll dieser für eine Spätere Anwendungsversion auch die anderen Funktionalitäten aus der ursprünglichen Anwendung bereitstellen. In der ursprünglichen Anwendung wurden die Services durch eine Konsoleneingabe im Terminal gestartet. Dies ist so bei der Cloud Anwendung nicht mehr möglich, weshalb die Anwendung zukünftig auch über einen \ac{API}-Endpunkt bereitgestellt wird.
 
+Abbildung \ref{fig:Architektur} zeigt einen groben  Entwurf der Anwendung und wie die Services miteinander kommunizieren sollen. Der \textit{\gls{Timesheet}}Service soll zu einem späteren Zeitpunkt alle Funktionen aus der Ursprünglichen Anwendung bündeln, für den Prototypen wird sich jedoch, wie bereits in der Anforderungsanalyse erwähnt, auf den \textit{Collect Service} beschränkt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{architektur.png}
+    \caption{Architekturentwurf der neuen Anwendung}
+    \label{fig:Architektur}
+\end{figure}
+
 Neben der Erfüllung dieser funktionalen Anforderungen sollen auch die nicht-funktionalen Aspekte betrachtet werden. Dazu gehören die in Kapitel \ref{sec:anforderungsanalyse} erarbeiteten Anforderungen an eine Cloud-native Anwendung, unter anderem die Skalierbarkeit und Fehlertoleranz. \pagebreak
 
 \subsection{Programmiersprache und Framework}
 % Dependecy Injektion sehr gut (Austauschbarkeit der Implementierung)
-% Spring MVC für REST-Anwendung in Springboot enthalen (Teil des Spring-Frameworks)
-% 
+% Spring MVC für REST-Anwendung in Springboot enthalten (Teil des Spring-Frameworks)
 Neben der Konzeptionierung einer Anwendungsarchitektur braucht es zur Entwicklung auch eine Programmiersprache und gegebenenfalls ein Framework, um die Anwendung optimal in der Cloud nutzen zu können. 
 
-Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll, da hier mit \gls{Spring Boot} die Cloud native Entwicklung erleichtert wird. Darüber hinaus gilt \gls{Spring Boot} als populärer Standard für den Einsatz von Microservices und die geplante und notwendige Einbindung der \gls{Box}-API wurde in Java als einfacher erachtet.
+Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll, da hier mit \gls{Spring Boot} die Cloud-native Entwicklung erleichtert wird. Darüber hinaus gilt \gls{Spring Boot} als populärer Standard für den Einsatz von Microservices und die Bereitstellung einer \ac{API} ist mit \gls{Spring Boot} einfacher umzusetzen, da mit \textit{Spring MVC} bereits ein Web-Framework in \gls{Spring} enthalten ist, zur Bereitstellung von \ac{REST}-Endpunkten.
 
 \subsection{Auswahl eines Cloud Providers}
-Ein für die Cloud Migration unerlässlicher Schritt ist die Auswahl eines zu den Anforderungen passenden Cloud Providers. In diesem Fall wurde \ac{AWS} als einer der größten Provider \cite[Vgl.][S. 6]{Sustar2022} gewählt, da hier mit \ac{ECS} und Fargate gute Cloud native Möglichkeiten zum serverless Deployment von Containern zur Verfügung stehen um somit die Vorteile der Cloud optimal nutzen zu können. Darüber hinaus unterstützt \ac{AWS} viele offene Standards, wie zum Beispiel Terraform.
+Ein für die Cloud Migration unerlässlicher Schritt ist die Auswahl eines zu den Anforderungen passenden Cloud Providers. In diesem Fall wurde \ac{AWS} als einer der größten Provider \cite[Vgl.][S. 6]{Sustar2022} gewählt, da hier mit \ac{ECS} und \gls{Fargate} gute Cloud native Möglichkeiten zum serverless Deployment von Containern zur Verfügung stehen um somit die Vorteile der Cloud optimal nutzen zu können. Darüber hinaus unterstützt \ac{AWS} viele offene Standards, wie zum Beispiel Terraform.
 
-Alternativ wurden auch die Services der IBM-Cloud in Betracht gezogen, da hier mit \textit{Cloud Functions} oder \textit{Terraform} ebenfalls Plattformen zum Deployment von Containern existieren, die jedoch zum einen schwieriger aufzusetzen schienen und zum anderen bezüglich Administration und Einfachheit der Bedienung nicht mit \ac{ECS} vergleichbar sind. Ebenfalls hätte Azure, die Cloud Plattform von Microsoft infrage kommen können, da jedoch \ac{AWS} auch im Projektumfeld eingesetzt wird, wurde diese Alternative bevorzugt. \pagebreak
+Alternativ wurden auch die Services der IBM-Cloud in Betracht gezogen, da hier mit \textit{Cloud Functions} oder \textit{CodeEngine} ebenfalls Plattformen zum Deployment von Containern existieren, die jedoch zum einen schwieriger aufzusetzen schienen und zum anderen bezüglich Administration und Einfachheit der Bedienung nicht mit \ac{ECS} vergleichbar sind. Ebenfalls hätte Azure, die Cloud Plattform von Microsoft infrage kommen können, da jedoch \ac{AWS} auch im Projektumfeld eingesetzt wird, wurde diese Alternative bevorzugt. \pagebreak
