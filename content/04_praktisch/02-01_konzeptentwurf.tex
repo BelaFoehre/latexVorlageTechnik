@@ -16,7 +16,7 @@ Die bisher existierende Anwendung ist eine Python Anwendung, die grundsätzlich 
 \begin{itemize}
 \item \textbf{Timesheet Collector: }Einsammeln der \textit{\glspl{Timesheet}}, der in dem Projekt aktiven Mitarbeiter
 \item \textbf{Timesheet Checker: }Überprüfen der \textit{\glspl{Timesheet}} auf Korrektheit und Vollständigkeit und gegebenenfalls Reparatur dieser
-\item \textbf{Report Creator: }Erzeugung eines Reports, Zusammenfassung der \textit{reporteten} Stunden und Verteilung dieser auf die unterschiedlichen Beauftragungen, Erstellung von Nachweisdokumenten und automatisierte Rechnungsstellung
+\item \textbf{Report Creator: }Erzeugung eines Reports, Zusammenfassung der dokumentierten Stunden und Verteilung dieser auf die unterschiedlichen Beauftragungen, Erstellung von Nachweisdokumenten für die Konzerneigene Rechnungsstellung
 \end{itemize}
 
 Jeder dieser drei Services ist ein eigenes Python Modul. Diese greifen jeweils auf weitere Services wie einen Excel-Helper und Checking-Tools zurück.
@@ -33,7 +33,7 @@ Außerdem enthalten die PMO-Tools ein Skript, welches den Umgang mit Excel Sprea
 
 Den ''Hauptservice'' der Anwendung soll der \textit{\gls{Timesheet}}-Service bilden. Dieser soll alle Funktionen bereitstellen, die unter Verwendung der anderen Services die letztendlich gewünschte Funktionalität des Einsammeln der \textit{\glspl{Timesheet}} bieten. Darüber hinaus soll dieser für eine Spätere Anwendungsversion auch die anderen Funktionalitäten aus der ursprünglichen Anwendung bereitstellen. In der ursprünglichen Anwendung wurden die Services durch eine Konsoleneingabe im Terminal gestartet. Dies ist so bei der Cloud Anwendung nicht mehr möglich, weshalb die Anwendung zukünftig auch über einen \ac{API}-Endpunkt bereitgestellt wird.
 
-Abbildung \ref{fig:Architektur} zeigt einen groben  Entwurf der Anwendung und wie die Services miteinander kommunizieren sollen. Der \textit{\gls{Timesheet}}Service soll zu einem späteren Zeitpunkt alle Funktionen aus der Ursprünglichen Anwendung bündeln, für den Prototypen wird sich jedoch, wie bereits in der Anforderungsanalyse erwähnt, auf den \textit{Collect Service} beschränkt.
+Abbildung \ref{fig:Architektur} zeigt einen groben  Entwurf der Anwendung und wie die Services miteinander kommunizieren sollen. Der \textit{\gls{Timesheet}} Service soll zu einem späteren Zeitpunkt alle Funktionen aus der Ursprünglichen Anwendung bündeln, für den Prototypen wird sich jedoch, wie bereits in der Anforderungsanalyse erwähnt, auf den \textit{Collect Service} beschränkt.
 
 \begin{figure}[H]
     \centering
@@ -49,7 +49,7 @@ Neben der Erfüllung dieser funktionalen Anforderungen sollen auch die nicht-fun
 % Spring MVC für REST-Anwendung in Springboot enthalten (Teil des Spring-Frameworks)
 Neben der Konzeptionierung einer Anwendungsarchitektur braucht es zur Entwicklung auch eine Programmiersprache und gegebenenfalls ein Framework, um die Anwendung optimal in der Cloud nutzen zu können. 
 
-Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll, da hier mit \gls{Spring Boot} die Cloud-native Entwicklung erleichtert wird. Darüber hinaus gilt \gls{Spring Boot} als populärer Standard für den Einsatz von Microservices und die Bereitstellung einer \ac{API} ist mit \gls{Spring Boot} einfacher umzusetzen, da mit \textit{Spring MVC} bereits ein Web-Framework in \gls{Spring} enthalten ist, zur Bereitstellung von \ac{REST}-Endpunkten.
+Im Falle der PMO-Tools wurde ursprünglich Python verwendet, jedoch erschien im Zuge des Refactoring ein Wechsel zu Java und dem \gls{Spring} Framework sinnvoll, da hier mit \gls{Spring Boot} die Cloud-native Entwicklung erleichtert wird. Darüber hinaus gilt \gls{Spring Boot} als populärer Standard für den Einsatz von Microservices und die Bereitstellung einer \ac{REST}-\ac{API} ist mit \gls{Spring Boot} einfacher umzusetzen, da mit \textit{Spring MVC} bereits ein Web-Framework in \gls{Spring} enthalten ist, zur Bereitstellung von \ac{REST}-Endpunkten.
 
 \subsection{Auswahl eines Cloud Providers}
 Ein für die Cloud Migration unerlässlicher Schritt ist die Auswahl eines zu den Anforderungen passenden Cloud Providers. In diesem Fall wurde \ac{AWS} als einer der größten Provider \cite[Vgl.][S. 6]{Sustar2022} gewählt, da hier mit \ac{ECS} und \gls{Fargate} gute Cloud native Möglichkeiten zum serverless Deployment von Containern zur Verfügung stehen um somit die Vorteile der Cloud optimal nutzen zu können. Darüber hinaus unterstützt \ac{AWS} viele offene Standards, wie zum Beispiel Terraform.

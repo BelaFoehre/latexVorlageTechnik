@@ -1,11 +1,44 @@
 \chapter{Evaluation}
-\textbf{(To be specified)}
 % Ergebinsse der Untersuchung
+Im nachfolgenden Kapitel werden neben der Untersuchung auf Erfüllung der in Kapitel \ref{sec:anforderungsanalyse} erarbeiteten Anforderungen auch die Vor- und Nachteile, die in dieser Arbeit aufgekommen sind aufgezeigt.
 
 \section{Ergebnisse der Untersuchung}
-\subsection{Beurteilung der technischen Realisierung}
-\subsection{Untersuchung der nicht-funktionalen Anforderungen}
+In Kapitel \ref{chap:untersuchung} wurde beschrieben, wie die Anwendung auf Erfüllung der Anforderungen untersucht wird. Nachfolgend werden die Ergebnisse der Untersuchung aufgezeigt.
 
+\subsection{Beurteilung der technischen Realisierung}
+Das Durchlaufen der einzelnen Testfälle hat ergeben, dass nicht alle der funktionalen Anforderungen im Prototypen bereits vollständig realisiert wurden.
+
+Die ersten zwei Anforderungen werden vollumfänglich erfüllt. Die Anzahl aktiver Mitarbeiter lässt sich variieren und es werden auch nur die entsprechend relevantem \textit{\glspl{Timesheet}} in das neue Verzeichnis kopiert. auch wird an dem Dateinamen nichts verändert. Dazu wurde eine Methode geschrieben, die die Dateinamen der kopierten Dateien entsprechend der Vorgaben setzt. Auch der Monat ist bereits anpassbar, jedoch in der aktuellen Anwendungsversion noch als Variable im Code und nicht in der Konfigurationsdatei selbst. Das anzupassen sollte jedoch kein großer Aufwand sein.
+
+Auch der Test mit einem besonders großen \gls{Timesheet} war erfolgreich, genauso wie bei manueller Überprüfung keine Verlusten innerhalb der Dateien festgestellt werden konnten.
+
+Das von \gls{Spring Boot} bereitgestellte Logging deckt nicht die gewünschten Anforderungen ab. An dieser Stelle muss der Code manuell angepasst werden und weiteres Logging in den zutreffenden Funktionen implementiert werden. Genauso wird die Anwendung in ihrer aktuellen Version bei einem Fehler sofort beendet und ist noch nicht in der Lage das Kopieren fehlerhafter \textit{\glspl{Timesheet}} zu überspringen. \pagebreak
+
+Eine Anpassung der Rootverzeichnisses dagegen ist jedoch ohne Probleme möglich, solange die in dem Verzeichnis befindliche Ordnerstruktur den Vorgaben entspricht.
+
+Damit ist ein großer Teil der funktionalen Anforderungen bereits in diesem Prototypen erfüllt, das korrekte Logging und Fehlerhandling sind jedoch für eine zukünftige Anwendungsversion unumgänglich.
+
+\subsection{Untersuchung der nicht-funktionalen Anforderungen}
+\textbf{Skalierbarkeit:}
+
+Der vorliegende Prototyp ist durch die von \ac{ECS} bereitgestellten Funktionalitäten horizontal Skalierbar. Es können zu jedem Zeitpunkt weitere Container gestartet werden, um die Anwendung zu skalieren. Genauso werden diese bei Inaktivität wieder entfernt.
+
+\textbf{Fehlertoleranz:}
+
+Die Fehlertoleranz der Anwendung wird in \ac{ECS} ebenfalls gewährleistet. Stürzt ein Container ab oder wird unerwartet beendet, wird automatisch ein neuer Container gestartet um den Workload abzufangen.
+
+\textbf{Schnelle Bereitstellung:}
+
+Durch den Einsatz von \textit{CodePipeline} kann jede Anwendungsaktualisierung nahezu in Echtzeit bereitgestellt werden. Wird der Anwendungscode aktualisiert (es reicht zum Testen das hinzufügen eines Kommentars), startet automatisch ein neues Deployment und die Anwendung wird aktualisiert.
+
+\textbf{Mehrbenutzerfähigkeit:}
+
+Die Mehrbenutzerfähigkeit der Anwendung ist bereits in \gls{Spring Boot} gegeben, da in \gls{Spring Boot}-Anwendungen standardmäßig mehrere Personen auf eine Anwendungsinstanz zugreifen können. \pagebreak
+
+\textbf{Sicherheit:}
+
+Die Sicherheitsanforderungen an die Anwendung werden trotz aktuell verwendeter Testdatensätze bereits umgesetzt oder sind nachträglich leicht umsetzbar. Die Cloud Infrastruktur ist in einem \ac{VPC} mit privatem Subnetz implementiert, welches in sich geschlossen ist. Das API-Gateway ermöglicht zudem zusätzliche Authentifizierungsmöglichkeiten, die jedoch für den Test des Prototypen deaktiviert wurden. Darüber hinaus können auch in \gls{Spring Boot} Module zur Prüfung von Nutzerberechtigungen mithilfe von zum Beispiel Token eingesetzt werden. Damit sind die in der Private Cloud möglichen Sicherheitsstandards umgesetzt. Bei der Sensibilität der realen Anwendungsdaten ist jedoch zu untersuchen, ob diese als ausreichend erachtet werden.
+\pagebreak
 
 \section{Vor- und Nachteile der Cloud Migration}
 Wie einleitend in dieser Arbeit aufgezeigt, nutzen immer mehr Unternehmen das Cloud Computing in den verschiedensten Unternehmensbereichen. Nachfolgend soll bewertet werden, in welcher Form sich Vor- und Nachteile aus der in dieser Arbeit untersuchten Migration ergeben haben und wie diese sich auf das Gesamtbild der Cloud Migration übertragen lassen.
@@ -15,8 +48,7 @@ Aus der beispielhaften Migration des \textit{Collect Service} in die Cloud ergeb
 
 In der Cloud bereitgestellt ist der Service fortan rund um die Uhr verfügbar und unabhängig von der ausführenden Maschine. Es ist nicht mehr notwendig die Anwendung auf einem lokalen Rechner zu installieren (oder einen Rechner zu verwenden, wo diese bereits installiert ist) und jeder Benutzer kann diese nun über eine \ac{API} erreichen.
 
-Updates der Anwendung werden automatisiert über die \ac{CI/CD}-Pipeline deployed und müssen nicht mehr manuell durchgeführt werden. Damit entfällt der Aufwand, vor jeder Nutzung die Aktualität der Anwendung zu überprüfen für alle Anwender.
-\pagebreak
+Updates der Anwendung werden automatisiert über die \ac{CI/CD}-Pipeline deployed und müssen nicht mehr manuell durchgeführt werden. Damit entfällt der Aufwand, vor jeder Nutzung die Aktualität der Anwendung zu überprüfen für alle Anwender. \pagebreak
 
 \subsection{Nachteile}
 Neben den positiven Aspekten die bei der Migration in die Cloud aufgekommen sind, haben sich auch einige Nachteile ergeben:

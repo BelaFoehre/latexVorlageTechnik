@@ -1,4 +1,5 @@
 \chapter{Untersuchung}
+\label{chap:untersuchung}
 % NUR beschreiben wie und was untersucht wird, Ergebnis in Kapitel Evaluation
 
 \section{Beurteilung der technischen Realisierung}
@@ -42,15 +43,20 @@ Neben den technischen und funktionalen Anforderungen haben sich auch nicht-funkt
 
 \textbf{Skalierbarkeit:}
 
-Von der Anwendung wird erwartet, dass diese Skalierbar ist, um zum Beispiel mehr Container zu starten, wenn notwendig und diese aber auch wieder zu stoppen, wenn sie nicht mehr benötigt werden.
+Von der Anwendung wird erwartet, dass diese Skalierbar ist, um zum Beispiel mehr Container zu starten, wenn notwendig und diese aber auch wieder zu stoppen, wenn sie nicht mehr benötigt werden. Zum Testen der Skalierbarkeit, wird künstlich ein Workload erzeugt, der das Starten eines weiteren Containers erfordert.
 
 \textbf{Fehlertoleranz:}
 
-Außerdem soll mit der Fehlertoleranz zm Beispiel der Fall abgedeckt sein, dass ein abgestürzter oder fehlerhafter Container durch einen neuen, weiteren Container ersetzt werden kann, damit die Anwendung jederzeit zur Verfügung steht.
+Außerdem soll mit der Fehlertoleranz zm Beispiel der Fall abgedeckt sein, dass ein abgestürzter oder fehlerhafter Container durch einen neuen, weiteren Container ersetzt werden kann, damit die Anwendung jederzeit zur Verfügung steht. Um diese untersuchen zu können, werden gezielt Container beendet oder zum Absturz gebracht, um dann zu sehen, wie der Containerservice damit umgeht.
 
 \textbf{Schnelle Bereitstellung:}
 
-Wird der Anwendungscode aktualisiert, sei es eine Optimierung oder eine neue Version der Anwendung, so soll diese schnellstmöglich bereitgestellt werden und nicht auf ein Updatefenster oder ähnliches warten müssen.
+Wird der Anwendungscode aktualisiert, sei es eine Optimierung oder eine neue Version der Anwendung, so soll diese schnellstmöglich bereitgestellt werden und nicht auf ein Updatefenster oder ähnliches warten müssen. Diese Anforderung kann durch eine Änderung im Anwendungscode untersucht werden.
 
-\dots
-\pagebreak
+\textbf{Mehrbenutzerfähigkeit:}
+
+Mit dem Ziel die Anwendung für mehr Personen innerhalb des Projekts, als auch anderen Projekten zur Verfügung zu stellen, muss im Cloud-Betrieb die Möglichkeit gegeben sein, dass mehrere Nutzer gleichzeitig mit der Anwendung arbeiten können, ohne sich dabei gegenseitig in die Quere zu kommen. Um auch die Mehrbenutzerfähigkeit zu testen, werden gleichzeitig von verschiedenen Geräten Anfragen an die Anwendung gesendet.
+
+\textbf{Sicherheit:}
+
+Zudem soll untersucht werden, wie die in Kapitel \ref{sec:anforderungsanalyse} herausgearbeiteten Anforderungen an die Sicherheit und den Schutz personenbezogener und unternehmenskritischer Daten eingehalten werden. Dazu soll zum einen die Cloud Infrastruktur der Anwendung untersucht werden, als auch die Anwendung selbst. \pagebreak

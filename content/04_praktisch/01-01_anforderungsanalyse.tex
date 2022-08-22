@@ -1,4 +1,4 @@
-\section{Anforderungsanalyse}
+\section{Analyse der nicht-funktionalen Anforderungen}
 \label{sec:anforderungsanalyse}
 
 % Merkmale Cloud Native Anwendungen
@@ -18,23 +18,27 @@ Wird eine Anwendung in die Cloud migriert werden unter anderem folgende Vorteile
 
 Die finanziellen Aspekte, wie die Kostensenkung und -vermeidung werden in dieser Arbeit nicht weitergehend behandelt, genauso wie die operative Belastbarkeit.
 
-Darüber hinaus muss vor der Migration untersucht und festgelegt werden, welche der in Kapitel \ref{sec:migrationsansaetze} herausgearbeiteten Migrationsstrategien verfolgt werden soll \cite[Vgl.][10:38-13:23min]{AWS2019}. Jede dieser Strategien bietet ihre Vor- und Nachteile, weshalb diese Entscheidung individuell von der Anwendungsarchitektur und der Art der Benutzung abhängig ist. \pagebreak
+Hiermit verbunden muss vor der Migration untersucht und festgelegt werden, welche der in Kapitel \ref{sec:migrationsansaetze} herausgearbeiteten Migrationsstrategien verfolgt werden soll \cite[Vgl.][10:38-13:23min]{AWS2019}. Jede dieser Strategien bietet ihre Vor- und Nachteile, weshalb diese Entscheidung individuell von der Anwendungsarchitektur und der Art der Benutzung abhängig ist. \pagebreak
 
 Grundlegend kann der Migrationsprozess  in vier Schritte zusammengefasst werden \cite[Vgl. auch im Folgenden][S. 34f]{Maenhaut2016}:
 \begin{enumerate}
 \item \textbf{Auswahl der Komponenten:} Die Auswahl der zu migrierenden Komponenten sollte als erster Schritt vorgenommen werden. Wird die ganze Anwendung migriert ist dieser entsprechend einfach. Zu beachten ist hier vorallem die Kommunikation zwischen den Komponenten und damit verbundenen Sicherheitsanforderungen.
 \item \textbf{Feststellen kompatibler Cloud Provider:} Verschiedene Provider bieten verschiedene Möglichkeiten und haben unterschiedliche limitierende Faktoren. Somit sollte ein Provider gefunden werden, der alle gewünschten Features abdecken kann.
-\item \textbf{Einfluss auf das Client Netzwerk untersuchen:} Da die Kommunikation zwischen einzelnen Komponenten ins Internet verlagert wird, muss möglicher Weise die Bandbreite des Client Netzwerks angehoben werden.
+\item \textbf{Einfluss auf den Client untersuchen:} Da die Kommunikation zwischen einzelnen Komponenten ins Internet verlagert wird, muss möglicher Weise die Bandbreite des Client Netzwerks angehoben werden.
 \item \textbf{Skalierung der Anwendung:} Einer der Vorteile des Cloud Computing ist die Skalierbarkeit, also die Fähigkeit, bei großer Last weitere Instanzen einer Anwendung zu starten. Um diese Skalierbarkeit bereitstellen zu können müssen die Komponenten lokalisiert werden, die entsprechend angepasst werden müssten.
 \end{enumerate}
 
 % Thema Sicherheit ?!
 
-Bei dem in dieser Arbeit untersuchten Prototypen werden alle Komponenten des Collect Service migriert, weshalb keine speziellen Komponenten ausgewählt werden müssen oder die Kommunikation zwischen diesen geprüft werden muss. Somit ist der erste Schritt recht einfach abzuschließen. Die Auswahl eines Passenden Providers wird im weiteren Verlauf dieser Arbeit beschrieben. Einen Einfluss auf das Client Netzwerk wird der Prototyp nicht haben, es sollte lediglich hinsichtlich der Auswahl des Cloud Providers darauf geachtet werden, dass die Netzwerkanbindung ausreicht um zum Beispiel das Projektmanagement-File zuverlässig herunterzuladen. \pagebreak
+Bei dem in dieser Arbeit untersuchten Prototypen werden alle Komponenten des Services migriert, weshalb die Auswahl spezieller Komponenten und das Überprüfen der Kommunikation zwischen diesen entfällt. Somit ist der erste Schritt recht einfach abzuschließen. Die Auswahl eines Passenden Providers wird im weiteren Verlauf dieser Arbeit beschrieben. Die Auswirkungen auf den Client werden an dem vorliegenden Prototypen nicht näher untersucht werden, da dies nicht in den Fokus der Forschungsfrage fällt \pagebreak
 
-Zudem ist zu untersuchen, ob eine Public, Hybrid oder Private Cloud verwendet werden kann. Für den Prototypen ist der Einsatz einer Public Cloud Infrastruktur unproblematisch, da hier nur Testdatensätze verwendet werden. Würden die realen Daten verwendet, so müsste auf eine Private Cloud umgestellt werden, da die \textit{\glspl{Timesheet}} personenbezogene Daten enthalten und unternehmenskritische Daten wie Informationen über das Budget und Gewinn/Verlust im PMO-File enthalten sind.
+Da der Prototyp fürs erste in einer Public Cloud Umgebung bereitgestellt werden soll, müssen die Sicherheitsanforderungen hinsichtlich der personenbezogenen und unternehmenskritische Daten, die von der Anwendung verarbeitet werden, erfüllt werden. Bei diesen handelt es sich um Dateien, die dokumentieren, wie viel Zeit ein Mitarbeiter für bestimmte Aufgaben benötigt hat und Informationen über das Budget und Gewinn/Verlust in einem Projektmanagement-File.
 
-Darüber hinaus sollen auch die nicht-funktionalen Anforderungen einer Cloud-nativen Anwendung umgesetzt werden. Dazu gehören in diesem Fall die Mehrbenutzerfähigkeit, Skalierbarkeit und Fehlertoleranz der Anwendung. Um die Agilität in der Entwicklung zu steigern soll außerdem eine CI/CD Pipeline eingesetzt werden, die die Aktualisierung der Anwendung automatisiert. Diese schnelle Bereitstellung von Updates is in dem aktuellen Setup deutlich komplizierter, wenn die Anwendung von anderen Anwendern außer dem Urheber dieser verwendet wird.
+Zu den Sicherheitsanforderungen gehören, wie in Kapitel \ref{sec:herausforderungen} bereits beleuchtet, unter anderem Authentifizierung und Zugangsbeschränkungen \cite[Vgl.][S. 695]{Kumar2018}, der Ort (sowohl physisch als auch logisch), an welchem die Daten verarbeitet und gespeichert werden \cite[Vgl.][S. 696]{Kumar2018} und die Sicherheit der (personenbezogenen) Daten \cite[Vgl.][S. 696]{Kumar2018}. Es ist jedoch zu beachten, dass für den Prototypen nur Testdatensätze eingesetzt werden, weshalb der Fokus hier noch nicht vollständig auf der Einhaltung dieser Anforderungen liegt.
+
+% Zudem ist zu untersuchen, ob eine Public, Hybrid oder Private Cloud verwendet werden kann. Für den Prototypen wäre der Einsatz einer Public Cloud Infrastruktur unproblematisch, da hier nur Testdatensätze verwendet werden. Würden die realen Daten verwendet, so müsste auf eine Private Cloud umgestellt werden, da die in der untersuchten Anwendung verwendeten Dateien personenbezogene Daten enthalten und unternehmenskritische Daten wie Informationen über das Budget und Gewinn/Verlust in einem Projektmanagement-File enthalten sind.
+
+Darüber hinaus sollen vorallem auch die nachfolgend genannten nicht-funktionalen Anforderungen einer Cloud-nativen Anwendung umgesetzt werden. Dazu gehören in diesem Fall die \textbf{Mehrbenutzerfähigkeit}, die zuvor bereits erwähnte\textbf{Skalierbarkeit} und \textbf{Fehlertoleranz} der Anwendung. Um die \textbf{Agilität} in der Entwicklung zu steigern soll außerdem eine CI/CD Pipeline eingesetzt werden, die die Aktualisierung der Anwendung automatisiert. Diese schnelle Bereitstellung von Updates ist in dem aktuellen Setup deutlich komplizierter, wenn die Anwendung von anderen Anwendern außer dem Entwickler dieser verwendet wird.
 
 % Für die \textbf{Skalierbarkeit} der untersuchten Anwendung kann wie in Kapitel \ref{sec:cloud-native-anwendungen} beschriebene vertikale oder horizontale Skalierung eingesetzt werden. Bei der für diesen Fall gewählten horizontalen Skalierung werden im Lastfall weitere Container mit derselben Anwendung gestartet. Die \textbf{Mehrbenutzerfähigkeit} kann in diesem Fall ebenfalls durch die horizontale Skalierung gewährleistet werden, da jeder Container die Anwendung für einen Benutzer zur Verfügung stellen kann.
 \pagebreak

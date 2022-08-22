@@ -1,26 +1,26 @@
 \section{Use-Case Modellierung für funktionale Anforderungen}
 \label{sec:use-case-modellierung}
 
-Nachfolgend wird die ursprüngliche Anwendung funktional Beschrieben, um daraus die Qualitätsanforderungen für die Migrierte Anwendung abzuleiten. Durch das Testen auf die Qualitätsanforderungen soll untersucht werden, ob sich eine Veränderung im Nutzungsverhalten bei der Migration in die Cloud ergibt.
+Nachfolgend wird die ursprüngliche Anwendung funktional Beschrieben, um daraus die Qualitätsanforderungen für die migrierte Anwendung abzuleiten. Durch das Testen auf die Qualitätsanforderungen soll untersucht werden, ob sich eine Veränderung im Nutzungsverhalten bei der Migration in die Cloud ergibt und ob das Migrationsziel erreicht wurde.
 
 \subsection{Funktionale Beschreibung der bisherigen Anwendung}
-Die Funktionalität der bisherigen Anwendung besteht darin, den Prozess der Rechnungsstellung zu automatisieren und somit management Aufwände zu reduzieren. Dazu besteht die Anwendung hauptsächlich aus drei Services, dem \textit{Collect Service}, dem \textit{Check Service} und dem dem \textit{Report Service}. Ausgeführt wird die Anwendung bisher auf einem lokalen System und greift über das lokale Verzeichnis mithilfe einer \gls{Box}-Integration auf diese zu. Zur Ausführung der Anwendung wird eine Konfigurationsdatei benötigt, die alle notwendigen Pfade und Parameter enthält. In dem \gls{Box}-Verzeichnis liegen die \textit{\glspl{Timesheet}} der Mitarbeiter des Projektes und eine Projektmanagementdatei (PMO-File), die allgemeine Informationen zum Projekt und den Mitarbeitern enthält.
+Die Funktionalität der bisherigen Anwendung besteht darin, den Prozess der Rechnungsstellung zu automatisieren und somit management Aufwände zu reduzieren. Dazu besteht die Anwendung hauptsächlich aus drei Services, dem \textit{Collect Service}, dem \textit{Check Service} und dem dem \textit{Report Service}. Ausgeführt wird die Anwendung bisher auf einem lokalen System und greift über das lokale Verzeichnis mithilfe einer \gls{Box}-Integration auf diese zu. Zur Ausführung der Anwendung wird eine Konfigurationsdatei benötigt, die alle notwendigen Pfade und Parameter enthält. In dem \gls{Box}-Verzeichnis liegen die \textit{\glspl{Timesheet}} der Mitarbeiter des Projektes und eine Projektmanagementdatei (PMO-File), die projektspezifische Informationen zum Projekt und den Mitarbeitern enthält.
 
-Aufgabe des \textit{Collect Service} ist es, aus dem PMO-File oder einer alternativen Mitarbeiterliste alle, aktuell in dem Projekt aktiven Mitarbeiter zu ermitteln und die \textit{\glspl{Timesheet}} dieser in ein \textit{Collect}-Verzeichnis zu kopieren. Der \textit{Check Service} gleicht die von den Mitarbeitern manuell ausgefüllten \textit{\glspl{Timesheet}} mit den Daten aus einem Zeiterfassungstool und ermittelt, ob die Daten korrekt sind oder gegebenenfalls korrigiert werden müssen. Abschließend werden im \textit{Report Service} aus den Daten die Rechnungen für den Kunden erstellt, indem die Informationen aus den \textit{\glspl{Timesheet}} detailliert auf die einzelnen Teilprojekten aufgeteilt und abgerechnet werden.
+Aufgabe des \textit{Collect Service} ist es, aus dem PMO-File oder einer alternativen Mitarbeiterliste alle, aktuell in dem Projekt aktiven Mitarbeiter zu ermitteln und die \textit{\glspl{Timesheet}} dieser in ein \textit{Collect}-Verzeichnis zu kopieren. Der \textit{Check Service} gleicht die von den Mitarbeitern manuell ausgefüllten \textit{\glspl{Timesheet}} mit den Daten aus einem Zeiterfassungstool ab und ermittelt, ob die Daten korrekt sind oder korrigiert diese automatisiert, sofern eine automatische Korrektur möglich ist. Abschließend werden im \textit{Report Service} aus Rechnungsdaten (Rechnungssumme, Leistungstext und Leistungsnachweise) für den konzerneigenen Rechnungsprozess ermittelt, erstellt und in einem Zielordner bereitgestellt. Da der Rechnungsprozess auf Einzelaufträgen basiert, wird die Information aus den \textit{\glspl{Timesheet}} detailliert auf die einzelnen Teilprojekten aufgeteilt.
 
-In dieser Arbeit soll untersucht werden, ob sich eine Veränderung im Nutzungsverhalten bei der Migration in die Cloud ergibt und ob die Business-Logik entsprechend angepasst werden muss. \pagebreak
+In dieser Arbeit soll untersucht werden, ob sich eine Veränderung im Nutzungsverhalten durch die Migration in die Cloud ergibt und ob die Business-Logik entsprechend angepasst werden muss. \pagebreak
 
 \subsection{Wie könnte ein Cloud Setup Aussehen?}
 Durch die Migration in die Cloud ergeben sich viele Möglichkeiten für die Anwendung. Unter anderem bringt die Cloud-Migration \textit{\gls{Multi-Tenancy}}, also eine Mehrbenutzerfähigkeit mit sich, damit die Anwendung von mehreren Nutzern gleichzeitig verwendet werden kann, ohne dass diese sich beeinflussen oder behindern.
 
 Um die Anwendung allgemein in die Cloud zu migrieren, könnte diese so wie sie ist mit \textit{Lift-and-Shift} in eine virtuelle Maschine Kopiert werden und würde somit in der Cloud bereitgestellt. Dadurch könnte jedoch keine Aussage darüber getroffen werden, inwiefern die Anwendung oder ihre Architektur verändert werden muss, um die Vorteile einer Cloud-nativen Anwendung in der Cloud auszunutzen.
 
-Aus diesem Grund soll die Anwendung zu einer Web-Anwendung weiterentwickelt werden. Dadurch verändert sich die Art und Weise, wie die Use-Cases Ausgeführt werden und wie die Anwendung benutzt wird. Diese Veränderungen werden am Beispiel der Migration des \textit{Collect Service} untersucht.
+Aus diesem Grund soll die Anwendung zu einer Web-Anwendung weiterentwickelt werden. Dadurch verändert sich die Art und Weise, wie die Use-Cases ausgeführt und angestoßen werden und wie die Anwendung benutzt wird. Diese Veränderungen werden am Beispiel der Migration des \textit{Collect Service} untersucht.
 
 \subsection{Collect Service}
 \textbf{Bisherige Verwendung:}
 
-Der für den Prototypen ausgewählte Use-Case ist das ''Einsammeln'' der \textit{\glspl{Timesheet}}. Aus einer Konfigurationsdatei hinaus soll festgelegt werden für welches Projekt und welchen Zeitraum diese von dem Projektverzeichnis in ein temporäres Verzeichnis kopiert werden sollen. 
+Der für den Prototypen ausgewählte Use-Case ist das ''Einsammeln'' der \textit{\glspl{Timesheet}}. Aus einer Konfigurationsdatei heraus soll festgelegt werden, für welches Projekt und welchen Zeitraum diese von dem Projektverzeichnis in ein temporäres Verzeichnis kopiert werden sollen. 
 
 \textbf{Möglichkeiten einer Web-Anwendung:}
 
@@ -58,11 +58,11 @@ Abbildung \ref{fig:use-case-diagram} stellt grafisch dar, welche Aufgaben der \t
         \multicolumn{2}{|l|}{Siehe Normalverlauf} \\
         \multicolumn{2}{|l|}{\textbf{Qualitätsanforderungen}} \\
         \hline
-        \multicolumn{2}{|l|}{1. Für jeden aktiven Mitarbeiter soll ein \textit{\gls{Timesheet}}im temporären Ordner liegen} \\
+        \multicolumn{2}{|l|}{1. Für jeden aktiven Mitarbeiter soll ein \textit{\gls{Timesheet}} im temporären Ordner liegen} \\
         \multicolumn{2}{|l|}{2. Die \textit{\glspl{Timesheet}} sollen unverändert sein (Dateiname, Inhalt)} \\
-        \multicolumn{2}{|l|}{3. Eigener Zielordner pro Monat zur Vermiedung von Vermischungen} \\
+        \multicolumn{2}{|l|}{3. Eigener Zielordner pro Monat zur Vermeidung von Vermischungen} \\
         \multicolumn{2}{|l|}{4. Die \textit{\gls{Timesheet}} Größe kann variieren -> keine Limitierungen} \\
-        \multicolumn{2}{|l|}{5. Es darf keine Kompression mit Formatänderung eingesetz werden} \\
+        \multicolumn{2}{|l|}{5. Es darf keine Kompression mit Formatänderung eingesetzt werden} \\
         \multicolumn{2}{|l|}{6. Ein Logfile soll Erfolg und Misserfolg von Kopiervorgängen enthalten} \\
         \multicolumn{2}{|l|}{7. Fehlersituationen auf einzelnen Dateien dürfen den Ablauf nicht unterbrechen} \\
         \multicolumn{2}{|l|}{8. Root-Verzeichnisse für Ziel und Quelle müssen konfigurierbar sein} \\
@@ -72,4 +72,4 @@ Abbildung \ref{fig:use-case-diagram} stellt grafisch dar, welche Aufgaben der \t
     \label{tab:use-case-analyse-timesheets}
 \end{table}
 
-Anschließend an diesen Prozess würden die weiteren Services der Toolsuite folgen, die für den Umfang dieser Arbeit ausgelassen wurden.
+Anschließend an diesen Prozess würden die weiteren Services der Gesamtanwendung folgen, die für den Umfang dieser Arbeit ausgelassen wurden.
