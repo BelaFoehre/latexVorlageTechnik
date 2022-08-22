@@ -1,15 +1,8 @@
-%!TEX root = ../../dokumentation.tex
-
 \chapter{Einleitung}
-% Erste Erwähnung eines Akronyms wird als Fußnote angezeigt. Jede weitere wird
-% nur verlinkt: \acf{AGPL}. % \cite{fsf:2007}
-
-% Verweise auf das Glossar: \gls{Glossareintrag}, \glspl{Glossareintrag}
-
 % Motivation
 % -Cloud Vorteile
 % -> bestehende Anwendungen in Cloud migrieren
-Steigende Nutzerzahlen und zunehmende Digitalisierung bringen nach Hentschel und Leyh (2018) einen wachsenden Bedarf an Rechenleistung und immer höhere Anforderungen an Informationssysteme mit sich, denen klassische Modelle der Datenverarbeitung nicht mehr gerecht werden können. Cloud Computing dagegen ist durch Charakteristika wie der Zurverfügungstellung von Infrastruktur für größere Gruppen und Elastizität \cite[Vgl.][S. 2]{Mell2011} in der Lage diese Anforderungen zu erfüllen \cite[Vgl.][S. 6]{Reinheimer2018}.
+Steigende Nutzerzahlen und zunehmende Digitalisierung bringen nach Hentschel und Leyh (2018) einen wachsenden Bedarf an Rechenleistung und immer höhere Anforderungen an Informationssysteme mit sich, denen klassische Modelle der Datenverarbeitung nicht mehr gerecht werden können. Cloud Computing dagegen ist, durch Charakteristika wie der Bereitstellung von Infrastruktur für größere Workloads auf der einen und Elastizität dieser Ressourcen auf der anderen Seite \cite[Vgl.][S. 2]{Mell2011}, in der Lage die heutigen Anforderungen an IT-Systeme zu erfüllen \cite[Vgl.][S. 6]{Reinheimer2018}.
 
 % Problemstellung
 % -Wie lassen sich bei bestehenden Anwendungen die Vorteile von Cloud Ausnutzen?
@@ -17,20 +10,19 @@ Steigende Nutzerzahlen und zunehmende Digitalisierung bringen nach Hentschel und
 %  -zwingend? (konsumieren der Anwendung: rich Client -> Webanwendung)
 %  -refactor/rebuild?
 %  -Zielarchitektur
-Der zuvor gezeigte, anhaltende Trend Anwendungen in der Cloud bereitzustellen zeigt sich auch darin, dass legacy Anwendungen nach und nach in die Cloud Migriert werden. Nach Kazanavičius, et al. (2019) stellt die Wahl der zum Unternehmen passenden Migrationsmethode eine schwierige Aufgabe dar. Die erste Frage die hier beantwortet werden sollte sei demnach "refactor or rebuild?" \cite[Vgl.][S. 4]{Kazanavicius2019}. Darüber hinaus ergeben sich auch Herausforderungen wie die Frage nach einem adäquaten Architekturdesign für die Cloud \cite[Vgl.][S. 14]{Pahl} und der Untersuchung potenzieller Vor- und Nachteile
-von zum Beispiel einer Microservice-Architektur und der Untersuchung möglicher Alternativen \cite[Vgl.][S. 3]{Carrasco2018}.
+Dieser, anhaltende Trend Anwendungen in der Cloud bereitzustellen zeigt sich auch darin, dass legacy Anwendungen nach und nach in die Cloud Migriert werden. Nach Kazanavičius, et al. (2019) stellt die Wahl der zum Unternehmen passenden Migrationsmethode eine schwierige Aufgabe dar. Die erste Frage die hier beantwortet werden sollte sei demnach ''refactor or rebuild?'' \cite[Vgl.][S. 4]{Kazanavicius2019}, wobei \textit{refactor} bedeutet, eine Anwendungsarchitektur anzupassen und \textit{rebuild} bedeutet eine eine Anwendung mit neuer Architektur zu entwickeln \cite[Vgl.][S. 2]{Ahmad2018}. Darüber hinaus ergeben sich auch Herausforderungen wie die Frage nach einem adäquaten Architekturdesign für die Cloud \cite[Vgl.][S. 14]{Pahl} und der Untersuchung potenzieller Vor- und Nachteile neuer Architekturstile, wie zum Beispiel einer Microservice-Architektur und weiterer möglicher Alternativen \cite[Vgl.][S. 3]{Carrasco2018}.
 
 % Zielsetzung
 % -Notwendigkeit
 % -Vor- / Nachteile -> Vorteile Cloud
 % -Zielarchitektur
-Aus der zuvor erarbeiteten Problemstellung ergibt sich als Ziel dieser Arbeit für eine Unternehmensinterne, lokale Anwendung herauszuarbeiten, wie die Migration diese in die Cloud vollzogen werden kann, welche Veränderungen in der Architektur und in Bezug auf die Benutzung vorgenommen werden müssen und in welchen dieser Aufgaben sich größere Herausforderungen befinden.
+Aus der hier erarbeiteten Problemstellung ergibt sich als Ziel dieser Arbeit für eine Unternehmensinterne, lokale Anwendung herauszuarbeiten, wie die Migration und Bereitstellung dieser in die Cloud vollzogen werden kann, welche Veränderungen in der Architektur und in Bezug auf die Benutzung vorgenommen werden müssen und in welche Herausforderungen sich dadurch ergeben.
 
 Explizit nicht betrachtet werden in dieser Arbeit die folgenden Aspekte \textbf{(To be specified)}:
 \begin{itemize}
 \item Finanzielle Auswirkung der Cloud Migration (im dargestellten Beispiel keine Relevanz)
-\item Sicherheitsrisiken bei der Migration einer Anwendung mit Personenbezogenen Daten
-\item drittens
+\item Sicherheitsrisiken bei der Migration z.B. durch die Verarbeitung Personenbezogener Daten
+\item Performance Vergleich der Hyperscaler
 \end{itemize}
 
 \pagebreak

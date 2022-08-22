@@ -1,16 +1,14 @@
 \section{Migrationsansätze}
 \label{sec:migrationsansaetze}
-
 % Architekturpattern
-% Strangler Pattern
 % Wann Einsatz der jeweiligen Pattern?
 
-Im folgenden Kapitel wird auf die unterschiedlichen Migrationsmethoden des Cloud Computing eingegangen. Durch die unterschiedlichen Abstraktionsebenen bedingt gibt es verschiedene Ansätze, wie die Cloud Migration realisierbar ist \cite[Vgl.][S. 226]{Surianarayanan2019}, angefangen mit dem auch als \glqq{Lift and Shift}\grqq{} bezeichneten Rehosting, bis hin zur Migration zu \ac{SaaS} verbunden mit der Entwicklung Cloud nativer Anwendungen \cite[Vgl.][S. 144]{Zhao2014}.
+Im folgenden Kapitel wird auf die unterschiedlichen Migrationsmethoden des Cloud Computing eingegangen. Durch die unterschiedlichen Abstraktionsebenen bedingt gibt es verschiedene Ansätze, wie die Cloud Migration realisierbar ist \cite[Vgl.][S. 226]{Surianarayanan2019}, angefangen mit dem auch als ''Lift and Shift'' bezeichneten Rehosting, bis hin zur Migration zu \ac{SaaS} verbunden mit der Entwicklung Cloud nativer Anwendungen \cite[Vgl.][S. 144]{Zhao2014}.
 
 \subsection{Rehosting}
-Nach Zhao (2014) wird das \textit{Rehosting} vorallem für die Migration zu \ac{IaaS} eingesetzt \cite[Vgl.][S. 144]{Zhao2014}. Umgangssprachlich wird diese Vorgehensweise auch als \glqq{Lift and Shift}\grqq{} bezeichnet \cite[Vgl.][]{NetApp}. Bei diesen Strategien werden Anwendungen lediglich auf einer anderen Hardwareplattform installiert, die Anwendungsarchitektur bleibt dabei unverändert. Dieser Ansatz bietet eine schnelle Lösung zur Migration \cite[Vgl.][]{CIO}.
+Nach Zhao (2014) wird das \textit{Rehosting} vorallem für die Migration zu \ac{IaaS} eingesetzt \cite[Vgl.][S. 144]{Zhao2014}. Umgangssprachlich wird diese Vorgehensweise auch als ''Lift and Shift'' bezeichnet \cite[Vgl.][]{NetApp}. Bei diesen Strategien werden Anwendungen lediglich auf einer anderen Hardwareplattform installiert, die Anwendungsarchitektur bleibt dabei unverändert. Dieser Ansatz bietet eine schnelle Lösung zur Migration \cite[Vgl.][]{CIO}.
 
-\textbf{(Siehe Feedback Steffen: Ein/zwei Sätze zu "Lift ausführen")}
+\textbf{(Siehe Feedback Steffen: Ein/zwei Sätze zu ''Lift'' ausführen)}
 
 Der wahrscheinlich größte Vorteil der Migration zu \ac{IaaS} ist, dass die Anwendungsarchitektur nicht verändert werden muss, weshalb das \textit{Rehosting} vorallem dann eingesetzt wird, wenn die Migration schnell und ohne großen Aufwand vollzogen werden soll. Ein Nachteil ist dagegen, dass bei der Nutzung von \ac{IaaS} nicht die vollen Möglichkeiten der Cloud ausgeschöpft werden können, da die Anwendungen nicht entsprechend angepasst werden.
 
@@ -24,8 +22,9 @@ Das \textit{Refactoring} oder \textit{Rebuilding} von Anwendungen gehört nach Z
 
 Durch die vom Cloud Provider teils vorgegebene Plattform (z.B. Middleware und Datenbanken) müssen Anwendungen dieser entsprechend angepasst werden \cite[Vgl.][S. 227]{Surianarayanan2019}. Der Mehrwert einer Migration zu \ac{PaaS} ist, dass der Anwender die IT-Infrastruktur nicht mehr verwalten muss und somit Aufwände reduziert werden können \cite[Vgl.][S. 6]{Pahl}.
 
-Auch \textit{Rebuilding} wird eingesetzt um die Vorteile der Cloud mit Cloud-native Features zu nutzen, jedoch wie vom Namen schon abzuleiten durch das neu "bauen" einer Anwendung statt dem anpassen \cite[Vgl.][S. 2]{Ahmad2018}.
+Auch \textit{Rebuilding} wird eingesetzt um die Vorteile der Cloud mit Cloud-native Features zu nutzen, jedoch wie vom Namen schon abzuleiten durch das neu ''bauen'' einer Anwendung statt dem anpassen \cite[Vgl.][S. 2]{Ahmad2018}.
 
+% Strangler Pattern
 \subsection{Strangler Pattern}
 Eine Strategie die Migration einer Anwendung umzusetzen ist das von Martin Fowler eingeführte \textit{Strangler Pattern}. Den Namen hat Fowler von der im Englischen \textit{Strangler Fig} genannten Würgefeige, die von den Ästen eines Baumes herabwächst, bis die diesen langsam abwürgt und ersetzt und metaphorisch für den Prozess des Neuschreibens einer Anwendung übernommen \cite[Vgl.][]{Fowler2004}\cite[Vgl.][]{Ibryam2021}.
 

@@ -3,7 +3,7 @@ Die Architektur von Anwendungen in den meisten Fällen als monolithisch oder als
 
 \subsection{Monolithische Anwendungsarchitektur}
 % Was sind monolithische Anwendungen?
-Monolithische Anwendungen, wie sie in der Vergangenheit oft eingesetzt wurden, bestehen aus verschiedenen Komponenten, die zu einem Programm kombiniert werden. Die einzelnen Komponenten funktionieren nur zusammen innerhalb des Programmes \cite[Vgl.][S. 1]{Gos2020}.
+Monolithische Anwendungen, wie sie in der Vergangenheit oft eingesetzt wurden, bestehen aus verschiedenen Komponenten, die zu einem Programm kombiniert werden. Die einzelnen Komponenten funktionieren nur zusammen innerhalb des Monolithen, einzelne Komponenten können also nicht unabhängig betrieben werden. \cite[Vgl.][S. 1]{Gos2020}.
 
 \begin{figure}[H]
     \centering
@@ -12,14 +12,14 @@ Monolithische Anwendungen, wie sie in der Vergangenheit oft eingesetzt wurden, b
     \label{fig:monolith}
 \end{figure}
 
-Abbildung \ref{fig:monolith} zeigt, wie eine monolithische Architektur aufgebaut sein kann, am Beispiel des in dieser Arbeit untersuchten Collect-Services. Hier sind die Komponenten eng miteinander verwoben und voneinander abhängig.
+Abbildung \ref{fig:monolith} zeigt, wie eine monolithische Architektur aufgebaut sein kann. Hier sind die Komponenten eng miteinander verwoben und voneinander abhängig.
 % In Bezug auf Cloud Native -> warum nicht geeignet
 \pagebreak
 
 \subsection{Microservice Architektur}
 Der Einsatz von Microservice Architekturen hat in den letzten Jahren stark zugenommen \cite[Vgl.][S. 150]{Gos2020}.
 
-Microservices bedeutet, dass eine Anwendung aus einer Zusammenstellung einzelner Services besteht, wobei jeder Service einen Teil der Business-Logik erfüllt. Diese services sind dabei, wie in Abbildung \ref{fig:microservice} dargestellt voneinander unabhängig und werden durch einen zentralen Service als Anwendung gebündelt \cite[Vgl.][S. 150]{Gos2020}\cite[Vgl.][]{Janssen2021}\cite[Vgl.][]{Fowler2014}.
+Microservices bedeutet, dass eine Anwendung aus einer Zusammenstellung einzelner Services besteht, wobei jeder Service einen Teil der Business-Logik erfüllt. Diese services sind dabei, wie in Abbildung \ref{fig:microservice} dargestellt voneinander unabhängig um einen Single-Point of Failure zu erzeugen \cite[Vgl.][S. 150]{Gos2020}\cite[Vgl.][]{Janssen2021}\cite[Vgl.][]{Fowler2014}.
 
 \begin{figure}[H]
     \centering
