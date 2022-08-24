@@ -11,7 +11,7 @@ Cloud Computing birgt jedoch auch einige Herausforderungen, welche in der Entwic
 
 Neben der steigenden Nutzung von Cloud Computing und der Entwicklung Cloud basierter Anwendungen können auch legacy Anwendungen von Cloud Computing profitieren, woraus sich der Trend abzeichnet, dass auch solche Anwendungen auf eine Cloud Infrastruktur migriert werden, um die Ressourcen dieser nutzen zu können und Kosten zu sparen \cite[Vgl.][S. 31]{Maenhaut2016}.
 
-Abhängig vom gewählten Migrationsansatz sind Änderungen in der Anwendung vorzunehmen, damit die Vorteile der Cloud genutzt werden können. Verbesserung des Anwendungsdesigns und die Optimierung von Ressourcennutzung sind nach Feathers (2004) zwei der vier möglichen Hauptgründe Änderungen an Software vorzunehmen \cite[Vgl.][S. 3]{Feathers2004}. Diese lassen sich auch auf die vorzunehmenden Änderungen für die Cloud Migration übertragen. Die Herausforderung die bei der Änderung von Software aufkommt, ist sicherzustellen, dass das grundlegende Verhalten der Anwendungen nicht verändert wird. Die Schwierigkeit liegt darin, oft nicht genau zu wissen wie Stark das Verhalten verändert wird, wenn Änderungen vorgenommen werden \cite[Vgl.][S. 7]{Feathers2004}. 
+Abhängig vom gewählten Migrationsansatz sind Änderungen in der Anwendung vorzunehmen, meist um die Vorteile der Cloud ausnutzen zu können. Verbesserung des Anwendungsdesigns und die Optimierung von Ressourcennutzung sind nach Feathers (2004) zwei der vier möglichen Hauptgründe Änderungen an Software vorzunehmen \cite[Vgl.][S. 3]{Feathers2004}. Diese lassen sich auch auf die vorzunehmenden Änderungen für eine Cloud Migration übertragen. Die Herausforderung die bei der Änderung von Software aufkommt, ist sicherzustellen, dass das grundlegende Verhalten der Anwendungen nicht verändert wird. Die Schwierigkeit liegt darin, oft nicht genau zu wissen wie Stark das Verhalten verändert wird, wenn Änderungen vorgenommen werden \cite[Vgl.][S. 7]{Feathers2004}. 
 
 \subsection{Entwicklung von Cloud-basierten Anwendungen}
 
@@ -20,12 +20,13 @@ Eine weitere Herausforderung bei der Cloud Migration von legacy Anwendungen ist,
 \subsection{Datenschutz und Datensicherheit in der Cloud}
 Personenbezogene und sensible (z.B. geschäftliche) Daten bedürfen einer guten Datensicherheit, vor allem im Kontext des Cloud Computing und dort insbesondere für die Private Cloud, wo Speicherressourcen nicht direkt in den Händen des Anwenders liegen, sondern in den Rechenzentren der Provider verarbeitet und gespeichert werden \cite[Vgl.][S. 1ff]{Sun2019}. Aus diesem Grund ist es wichtig, mögliche Risiken und damit verbundene Herausforderungen zu identifizieren \cite[Vgl.][S. 3]{Sun2019}.
 
-Folgende Risiken können für Datenschutz und Datensicherheit in der Cloud existieren \cite[Vgl. auch im folgenden][S. 3]{Sun2019}:
+Folgende Risiken können für Datenschutz und Datensicherheit in der Cloud existieren \cite[Vgl. auch im folgenden][S. 694]{Kumar2018}:
 
 \begin{itemize}
-    \item Offenlegung personenbezogener Daten und sensitiver Informationen
-    \item Unberechtigtes Lesen, Teilen oder Löschen von Daten
-    \item Unrechtmäßige Verarbeitung personenbezogener Daten
+    \item Risiken in Zusammenhang mit \ac{CIA} 
+    \item Herausforderungen bei der Authentifizierungs- und Zugriffskontrolle
+    \item Fehlerhafte Authentifizierungs-, Sitzungs- und Zugriffskontrollen
+    \item Weitere Risiken, die durch z.B. Speicherort der Daten, Mehrbenutzerfähigkeit oder Backups entstehen können
 \end{itemize}
 
 \pagebreak

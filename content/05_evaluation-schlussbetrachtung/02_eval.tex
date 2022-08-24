@@ -46,12 +46,19 @@ Wie einleitend in dieser Arbeit aufgezeigt, nutzen immer mehr Unternehmen das Cl
 \subsection{Vorteile}
 Aus der beispielhaften Migration des \textit{Collect Service} in die Cloud ergeben sich folgende Vorteile für die Anwendung:
 
-In der Cloud bereitgestellt ist der Service fortan rund um die Uhr verfügbar und unabhängig von der ausführenden Maschine. Es ist nicht mehr notwendig die Anwendung auf einem lokalen Rechner zu installieren (oder einen Rechner zu verwenden, wo diese bereits installiert ist) und jeder Benutzer kann diese nun über eine \ac{API} erreichen.
+In der Cloud bereitgestellt ist der Service fortan rund um die Uhr verfügbar und unabhängig von der ausführenden Maschine. Es ist nicht mehr notwendig die Anwendung auf einem lokalen Rechner zu installieren (oder einen Rechner zu verwenden, wo diese bereits installiert ist) und jeder Benutzer kann diese nun, unabhängig vom lokalen Betriebssystem, über eine \ac{API} erreichen. Statt des \ac{API}-Endpoints könnte der Prozess außerdem zum Beispiel über einen Batch-Job oder einen Trigger automatisiert werden.
 
-Updates der Anwendung werden automatisiert über die \ac{CI/CD}-Pipeline deployed und müssen nicht mehr manuell durchgeführt werden. Damit entfällt der Aufwand, vor jeder Nutzung die Aktualität der Anwendung zu überprüfen für alle Anwender. \pagebreak
+Updates der Anwendung werden automatisiert über die \ac{CI/CD}-Pipeline deployed und müssen nicht mehr manuell durchgeführt werden. Damit entfällt der Aufwand, vor jeder Nutzung die Aktualität der Anwendung zu überprüfen für alle Anwender und diese erhalten automatisch die neueste Version der Anwendung. So können zum Beispiel Bugfixes schneller und einfacher ausgerollt werden. 
+
+Darüber hinaus bietet sich bei lokalen Anwendungen, wie der in dieser Arbeit untersuchten, eine Benutzeroberfläche nicht unbedingt an. Durch die Umwandlung dieser zu einer Web-Anwendung und Bereitstellung in der Cloud ergeben sich hier neue Möglichkeiten.
+\pagebreak
 
 \subsection{Nachteile}
 Neben den positiven Aspekten die bei der Migration in die Cloud aufgekommen sind, haben sich auch einige Nachteile ergeben:
 
-Das Rebuilding einer Anwendung bringt, bevor die Anwendung fertig entwickelt ist, zuerst einen großen Entwicklungsaufwand mit sich. Ein Entwickler muss die Funktionen der Anwendung verstehen und reproduzieren ohne, dass Funktionen aus der ursprünglichen Anwendung verloren gehen.
+Das Rebuilding einer Anwendung bringt, bevor die Anwendung fertig entwickelt ist, zuerst einen großen Entwicklungsaufwand mit sich. Ein Entwickler muss die Funktionen der Anwendung verstehen und reproduzieren ohne, dass Funktionen aus der ursprünglichen Anwendung verloren gehen. Dieser Aufwand war mit dem in dieser Arbeit untersuchten \textit{Collect Service} zwar noch nicht allzu groß, jedoch ist bereits bei diesem Aufgefallen, dass noch nicht alle logischen Bausteine entsprechend reproduziert wurden. Die übrigen Services übertreffen den \textit{Collect Service} in ihrer Komplexität um ein vielfaches, da diese unter anderem Makros aus Excel verarbeiten können und viele Daten aufeinander abstimmen müssen.
+
+Darüber hinaus ist die Gewährleistung der Sicherheitsanforderungen und der Schutz der Daten zwar grundsätzlich innerhalb der Cloud-Umgebung möglich und auch innerhalb der Anwendungen zu implementieren, jedoch nicht ohne weitere Aufwände, was in sicherheitskritischen Fällen zu kostenintensiven Positionen führen kann. 
+
+Im Falle der hier untersuchten Anwendung sollte außerdem hinterfragt werden, ob die im vorangehenden Kapitel aufgezeigten Vorteile die Betriebskosten für den Cloud Provider aufwiegen. Den teaminternen Informationen nach ist das für diese Anwendung nicht der Fall, solange die Benutzerzahl nicht deutlich ansteigt. Individuelle Aufwände und Betriebskosten werden hier in einer Höhe eingeschätzt, die sich nicht rechtfertigen lassen. Desweiteren muss bei der Migration in eine andere Programmiersprache erneut eine vollständige Qualitätssicherung der Anwendung durchgeführt werden, da der Anspruch and die Richtigkeit der erzeugten Dokumente extrem hoch ist.
 \pagebreak

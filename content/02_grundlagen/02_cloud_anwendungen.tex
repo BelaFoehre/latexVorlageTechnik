@@ -1,11 +1,11 @@
 \section{Merkmale von Cloud-Nativen Anwendungen}
 \label{sec:cloud-native-anwendungen}
-Mit Cloud-nativen Anwendungen kann das maximale Potenzial des Cloud Computing ausgenutzt werden \cite[Vgl.][]{VMwareb}. Produktivität und Effizienz werden gesteigert und die Anwendungen können schneller ausgeliefert werden \cite[Vgl][S. 12]{Chandrasekaran2022}.
+Mit Cloud-nativen Anwendungen kann das maximale Potenzial des Cloud Computing ausgenutzt werden \cite[Vgl.][]{VMwareb}. So können Produktivität und Effizienz gesteigert die Anwendungen schneller ausgeliefert werden \cite[Vgl][S. 12]{Chandrasekaran2022}. Im Folgenden werden die Merkmale von Cloud-nativen Anwendungen genauer untersucht.
 
 % Was ist eine Cloud Native Anwendung?
 % Merkmale
 \subsection{Skalierbarkeit}
-Von \textit{Cloud-native} Anwendungen wird unter anderem erwartet, dass diese schnell hoch skalieren können um einer steigenden Nutzerzahl gerecht zu werden \cite[Vgl.][S. 1ff]{Armbrust2009} \cite[Vgl.][S. 234]{Villamizar2017}. Um die Vorteile der Cloud aber auch hinsichtlich der Kosten nutzen zu können müssen die Services genauso herunter zu skalieren sein \cite[Vgl.][S. 884]{Adzic2017}.
+Von \textit{Cloud-native} Anwendungen wird unter anderem erwartet, dass diese schnell skalieren können, um unter anderem einer steigenden Nutzerzahl gerecht zu werden \cite[Vgl.][S. 1ff]{Armbrust2009} \cite[Vgl.][S. 234]{Villamizar2017}. Um die Vorteile der Cloud aber auch hinsichtlich der Kosten nutzen zu können, müssen die Services genauso herunter zu skalieren sein \cite[Vgl.][S. 884]{Adzic2017}.
 
 Skalierbarkeit bedeutet in diesem Zusammenhang, dass die bereitgestellten IT-Ressourcen, wie Rechen- oder Speicherkapazität an die aktuelle Last angepasst werden können und entsprechen erhöht oder oder reduziert werden \cite[Vgl.][S. 15]{Reinheimer2018}\cite[Vgl.][]{Geißler2019}. Dabei wird in zwei Arten der Skalierung eines Systems unterschieden: \textbf{vertikale Skalierung} und \textbf{horizontale Skalierung} \cite[Vgl.][]{Geißler2019}\cite[Vgl.][]{VMware}
 
@@ -30,6 +30,10 @@ Eine weitere Anforderung an Cloud-native Anwendungen ist die Fehlertoleranz. Es 
 Mit \textit{Continous Delivery}, zu deutsch kontinuierliche Bereitstellung, können Änderungen in der Anwendung unmittelbar ausgeliefert werden, ohne zum Beispiel auf ein Wartungsfenster nachts warten zu müssen oder die Änderungen mit weiteren Updates zu einem Release zu bündeln, bevor diese ausgeliefert werden \cite[Vgl.][]{VMwareb}.
 
 \subsection{Containerisierung}
-\textbf{(To be done)}
+Gegenüber der Verwendung von \acp{VM} bieten Container eine höhere Effizienz und Geschwindigkeit. Das Starten und Beenden von Containern ist ein einer \ac{VM} zeitlich voraus. Darüber hinaus benötigt eine \ac{VM} weitere Pakete, da diese die Hardware virtualisiert, wogegen in Containern nur das Betriebssystem virtualisiert wird \cite[Vgl.][]{VMwareb}.
+
+\subsection{Weitere Merkmale}
+% Vorhersehbarkeit, kollaborative Entwicklung, Microservices
+Weitere Merkmale Cloud-nativer Anwendungen sind unter anderem eine bessere Verlässlichkeit, durch eine gewährleistete ''Ausfallsicherheit'' und die Verwendung vieler unabhängiger Microservices (siehe Kapitel \ref{sec:architekturstile}), wodurch auch die Entwicklung in Teams erleichtert wird, da die Services unabhängig voneinander aktualisiert werden können \cite[Vgl.][]{VMwareb}.
 
 \pagebreak
