@@ -38,6 +38,65 @@ Die Mehrbenutzerfähigkeit der Anwendung ist bereits in \gls{Spring Boot} gegebe
 \textbf{Sicherheit:}
 
 Die Sicherheitsanforderungen an die Anwendung werden trotz aktuell verwendeter Testdatensätze bereits umgesetzt oder sind nachträglich leicht umsetzbar. Die Cloud Infrastruktur ist in einem \ac{VPC} mit privatem Subnetz implementiert, welches in sich geschlossen ist. Das API-Gateway ermöglicht zudem zusätzliche Authentifizierungsmöglichkeiten, die jedoch für den Test des Prototypen deaktiviert wurden. Darüber hinaus können auch in \gls{Spring Boot} Module zur Prüfung von Nutzerberechtigungen mithilfe von zum Beispiel Token eingesetzt werden. Damit sind die in der Private Cloud möglichen Sicherheitsstandards umgesetzt. Bei der Sensibilität der realen Anwendungsdaten ist jedoch zu untersuchen, ob diese als ausreichend erachtet werden.
+
+\subsection{Beurteilung der finanziellen Aspekte}
+Um die oberflächliche finanzielle Betrachtung zu beurteilen,folgt zuerst die Berechnung der geschätzten anfallenden Kosten, bevor diese gegeneinander aufgewogen werden um einschätzen zu können, ob oder wann sich die Cloud Migration der untersuchten Anwendung lohnt.
+
+\textbf{Ursprüngliche Anwendung:}
+
+\begin{align}
+    Updatezeit: \frac{4}{Jahr} \times \left(1min \times 20\right) = \frac{80min}{Jahr}
+\end{align}
+
+Zur Kalkulation des benötigten Zeitaufwand wird mit 4 Updates/Jahr, die ausgerollt werden. Als benötigte Zeit wird hier eine Minute für das aktualisieren des \gls{Repository} geschätzt. Bei ungefähr 20 Anwendern macht das 80 Minuten/Jahr.
+
+\begin{align}
+    Ausführungszeit: \frac{720}{Jahr} \times \left(2min \times 20\right)  = \frac{28.800min}{Jahr}
+\end{align}
+
+Um die Ausführungszeit für die Anwendung schätzen zu können, wird davon ausgegangen, dass diese 12x/Jahr, immer am Monatsende ausgeführt wird. Bei ungefähr 60 Ausführungen, von denen jede einzelne ungefähr zwei Minuten braucht und ebenfalls von 20 Personen durchgeführt wird, ergibt das 28.800 Minuten/Jahr (480h/Jahr).
+
+\begin{align}
+    Entwicklungszeit: \frac{4800min}{Jahr}
+\end{align}
+
+Die Entwicklungszeit ist schwer vorherzusagen, es ist jedoch zu schätzen, dass der Entwickler ungefähr an 30 Tagen im Jahr zwischen 3 und 4 Stunden in die Weiterentwicklung der Anwendung investiert, was eienen Schätzwert von 80h/Jahr ergibt.
+
+\begin{align}
+    Zeitaufwand = Updatezeit + Ausführungszeit + Entwicklungszeit = \\
+    \frac{80min}{Jahr} + \frac{28.800min}{Jahr} + \frac{4.800min}{Jahr} = \frac{33.680min}{Jahr}
+\end{align}
+
+Der Zeitaufwand summiert sich also zu 560 Personenstunden/Jahr. Davon ausgegangen, dass ein durchschnittlicher Consultant ca. 5.500€/Monat verdient, kosten 560 Personenstunden knapp 15.000€/Jahr. \\
+
+\textbf{Migrierte Anwendung:}
+
+\begin{align}
+    Updatezeit: \frac{0min}{Jahr}
+\end{align}
+
+Die Updatezeit für die Migrierte Anwendung fällt durch die Bereitstellung in der Cloud auf Null.
+
+\begin{align}
+    Ausführungszeit: \frac{720}{Jahr} \times \left(2min \times 20\right)  = \frac{28.800min}{Jahr}
+\end{align}
+
+Bei der Ausführungszeit wird davon ausgegangen, dass diese sich trotz einiger Änderungen an der Anwendung nicht stark ändern wird.
+
+\begin{align}
+    Entwicklungszeit: \frac{4800min}{Jahr} + 3.000min = \frac{7.800min}{Jahr}
+\end{align}
+
+Die Grundlegende Entwicklungszeit wird sich ebenfalls nicht verändern, jedoch ergänzt, durch die erforderliche Zeit zur Migration der Anwendung. Dabei sind ca. 10 Stunden für das erste Modul verwendet worden und es wird von mindestens der doppelten Entwicklungszeit für die weiteren Module ausgegangen, da diese wesentlich komplexere Logik enthalten.
+
+\begin{align}
+    Zeitaufwand = Updatezeit + Ausführungszeit + Entwicklungszeit = \\
+    \frac{0min}{Jahr} + \frac{28.800min}{Jahr} + \frac{7.800min}{Jahr} = \frac{36.600min}{Jahr}
+\end{align}
+
+Für das erste Jahr mit der migrierten Anwendung werden ca. 610 Personenstunden erwartet, was Kosten von ungefähr 16.100€/Jahr ergibt. Zusätzlich dazu sind außerdem noch die Betriebskosten für die Cloud Infrastruktur einzukalkulieren, die laut \ac{AWS}-Preisrechner bei ca. 75\$/Monat und somit 900\$/Jahr erwartet ergeben. Bei dem aktuellen Kurs des Euro (1€ = 1\$) ergeben das insgesamt 17.000€/Jahr.
+
+Durch diese Kalkulation ergibt sich, dass die Kosten für die Cloud Migration der untersuchte Anwendung im ersten Jahr definitiv höher sind, als die Anwendung einfach weiter zu betreiben. Selbst, wenn ab dem zweiten Jahr ca. 50h wegfallen, in der Annahme, dass die Neuentwicklung danach abgeschlossen ist, werden die Kosten für den Cloudbetrieb fürs erste nicht unter die aktuellen Kosten fallen.
 \pagebreak
 
 \section{Vor- und Nachteile der Cloud Migration}

@@ -60,3 +60,35 @@ Mit dem Ziel die Anwendung für mehr Personen innerhalb des Projekts, als auch a
 \textbf{Sicherheit:}
 
 Zudem soll untersucht werden, wie die in Kapitel \ref{sec:anforderungsanalyse} herausgearbeiteten Anforderungen an die Sicherheit und den Schutz personenbezogener und unternehmenskritischer Daten eingehalten werden. Dazu soll zum einen die Cloud Infrastruktur der Anwendung untersucht werden, als auch die Anwendung selbst. \pagebreak
+
+\section{Oberflächliche Untersuchung Finanzieller Aspekte}
+Zwar wird eine detaillierte Untersuchung finanzieller Auswirkungen der Cloud Migration einleitend für diese Arbeit ausgeschlossen, jedoch ist eine oberflächliche Betrachtung unerlässlich, um die Cloud Migration der untersuchten Anwendung bewerten zu können. Für diese oberflächliche Betrachtung werden Kostenpositionen, wie zum Beispiel mögliche Lizenzkosten explizit ausgelassen. Es werden lediglich die Betriebskosten der Cloud Infrastruktur und geschätzte Aufwände in Personenstunden berücksichtigt um eine grobe Einschätzung über mögliche Kosten zu geben.
+
+Untersucht werden soll wir folgt:
+
+Als Betriebskosten werden für die Betrachtung lediglich die Kosten für den Infrastrukturbetrieb in der Cloud, da diese in \ac{AWS} einsehbar sind. Zusätzlich dazu soll grob geschätzt werden, wie viel Zeit für die Ausführung der Anwendung beansprucht wird. Dafür wird für die ursprüngliche Anwendung auch berücksichtigt, wie viel Zeit für die Installation der Anwendung benötigt wird, davon ausgehend, dass diese ungefähr vier mal im Jahr ein Update erhält. Die benötigte Zeit für Installation und Ausführung wird dann in Personenstunden pro Jahr zusammengefasst um eine Orientierung für durch die Anwendung verursachten Kosten zu erhalten.
+
+\begin{align}
+    Updatezeit: \frac{U}{J} \times \left(T \times P\right) 
+\end{align}
+
+Wobei U für die Anzahl an durchgeführten Updates im Jahr (J) steht, T für die Zeit pro Update (in Personenstunden) und P für die Anzahl an Nutzern steht. Die Updatezeit gibt wieder, wie viel Zeit pro Jahr dafür vom Anwender verwendet wird, um die Anwendung auf seinem lokalen Gerät aktuell zu halten.
+
+\begin{align}
+    Ausführungszeit: \frac{N}{J} \times \left(T \times P\right) 
+\end{align}
+
+Die Ausführungszeit für die Anwendung ergibt sich aus der Anzahl an durchgeführten Ausführungen (N) im Jahr (J) und der Zeit pro Ausführung (in Personenstunden). Diese kalkuliert die Zeit, die ein Anwender mit der Ausführung beschäftigt ist. \pagebreak
+
+\begin{align}
+    Entwicklungszeit: \frac{T}{J}
+\end{align}
+
+Die Entwicklungszeit ergibt sich aus der Zeit (T) pro Jahr (J), die vom Entwickler der Anwendung in Bugfixes, Updates und Erweiterungen investiert wird.
+
+\begin{align}
+    Zeitaufwand = Updatezeit + Ausführungszeit + Entwicklungszeit
+\end{align}
+
+Aus diesen einzelnen Kostenpositionen kann dann ein Schätzwert für die Personenstunden pro Jahr berechnet werden und mit dem durchschnittlichen Gehalt eines Consultant multipliziert um die Kosten zu schätzen. Zusätzlich dazu muss für die migrierte Anwendung bedacht werden, dass die Neuentwicklung der Anwendung und der Betrieb in der Cloud ebenfalls kosten verursachen.
+\pagebreak
