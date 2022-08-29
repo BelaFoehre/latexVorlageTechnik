@@ -1,15 +1,24 @@
 \chapter{Schlussbetrachtung}
 \label{chap:schlussbetrachtung}
-In dieser Arbeit wird aufgezeigt, wie sich das Cloud Computing in den vergangenen Jahren entwickelt hat und die Nutzung dessen stetig zunimmt. Anschließend werden einige Herausforderungen aufgezeigt, die eine Migration von Anwendungen in die Cloud mit sich bringen kann, bevor diese an einem praktischen Beispiel untersucht wurde.
+In dieser Arbeit wird aufgezeigt, wie sich das Cloud Computing in den vergangenen Jahren entwickelt hat und die Nutzung dessen stetig zunimmt. Anschließend werden einige Herausforderungen aufgezeigt, die eine Migration von Anwendungen in die Cloud mit sich bringen kann, bevor diese an einem praktischen Beispiel untersucht wurde. In diesem letzten Kapitel wird noch einmal abschließend auf die untersuchten Aspekte eingegangen und ein Ausblick auf mögliche zukünftige Forschung im Themenumfeld Cloud Computing und Cloud Migration.
 
 % Generelle Cloud Adaption
 \textbf{Generelle Cloud Adaption}
-Eine \textit{Forrester} Studie zeigt, dass in Deutschland, Frankreich und dem Vereinigtem Königreich bereits ungefähr 92\% der Unternehmen mittlerweile Cloud-Anwender sind, also Unternehmen, die mindestens ein Organisationsmodell (Private, Public oder Hybrid Cloud) der Cloud nutzen. Ungefähr 78\% nutzen darüber hinaus noch ein weiteres Organisationsmodell und ca. 75\% haben mehr als einen Cloud Provider \cite[Vgl.][S. 4]{Rajamani2022} 
+Die in Kapitel \ref{sec:cloud-computing} beschriebene Entwicklung des Cloud Computing gibt auch einen kleinen Vorgeschmack für die Zukunft. So wurde in Abbildung \ref{fig:public_cloud_spending} dargestellt, dass auch für 2023 ein Anstieg in den Verkaufsleistungen der Public Cloud erwartet wird und es zeichnet sich nicht ab, dass der Anstieg über 2023 abflacht. Auch eine \textit{Forrester} Studie zeigt, dass in Deutschland, Frankreich und dem Vereinigtem Königreich bereits ungefähr 92\% der Unternehmen mittlerweile Cloud-Anwender sind, also Unternehmen, die mindestens ein Organisationsmodell (Private, Public oder Hybrid Cloud) der Cloud nutzen. Ungefähr 78\% nutzen darüber hinaus noch ein weiteres Organisationsmodell und ca. 75\% haben mehr als einen Cloud Provider \cite[Vgl.][S. 4]{Rajamani2022} 
+
+% Migration des Collect Service
+\textbf{Migration des Collect Service}
+
+Nach erfolgreicher Migration des \textit{Collect Service}, steht einer Migration der übrigen Services aus technischer Sicht nichts im weg. Aus wirtschaftlicher Sicht, sollten jedoch zuvor weitere Untersuchungen angestellt werden, um Finanzielle und Sicherheitsrisiken besser abschätzen zu können. Nachfolgend dazu die in dieser Arbeit gewonnen Erkenntnisse um einen Ausblick geben zu können.
 
 % Finanziell
 \textbf{Finanziell}
 
-Eine ausführliche finanzielle Betrachtung der Cloud Migration wurde zwar eingangs dieser Arbeit ausgeschlossen, da diese den Rahmen der Arbeit gesprengt hätte. Oberflächlich ist jedoch festzuhalten, dass sich die Cloud Migration, in dem vorliegenden untersuchten Fall, aus finanzieller Sicht nicht lohnt, da der Zeit- und Entwicklungsaufwand zu hoch ist. So lange die Benutzerzahl für die Anwendung nicht deutlich steigt, ist es daher aktuell nicht sinnvoll, diese Anwendung vollständig in die Cloud zu migrieren.
+Eine ausführliche finanzielle Betrachtung der Cloud Migration wurde zwar eingangs dieser Arbeit ausgeschlossen, da diese den Rahmen der Arbeit gesprengt hätte.
+
+Oberflächlich ist jedoch festzuhalten, dass sich die Cloud Migration, in dem vorliegenden untersuchten Fall, aus finanzieller Sicht nicht lohnt, da der Zeit- und Entwicklungsaufwand zu hoch ist. So lange die Benutzerzahl für die Anwendung nicht deutlich steigt, ist es daher aktuell nicht sinnvoll, diese Anwendung vollständig in die Cloud zu migrieren.
+
+Die in Kapitel \ref{sec:untersuchung} angestellte Kostenkalkulation gibt nur einen groben Überblick und gibt den Anlass, eine detaillierte Kostenanalyse als separate Studie zu dem Thema durchzuführen, bevor über die Durchführung einer vollständigen Migration weiter bedacht werden sollte.
 
 % Sicherheit
 \textbf{Sicherheit}
@@ -17,10 +26,9 @@ Eine ausführliche finanzielle Betrachtung der Cloud Migration wurde zwar eingan
 Mit einer abschließenden Betrachtung der Sicherheit der Daten in der migrierten Anwendung muss festgestellt werden, dass, trotz der Erfüllung der meisten Sicherheitskriterien für die Public Cloud, die realen Anwendungsdaten so sensibel und projektkritisch sind, dass eine Verarbeitung dieser Daten besser in einer Private Cloud durchgeführt werden sollte. Das Projekt in dessen Umfeld die Anwendung eingesetzt wird generiert hohe Umsätze, sollten Unbefugte Kenntnis darüber erlangen wäre Integrität nicht mehr gewährleistet.
 
 Bei allgemeiner Betrachtung ist jedoch festzustellen, dass Datenschutz und Datensicherheit auch in einer Public Cloud durchaus gegeben sind, sofern die zur Verfügung stehenden Möglichkeiten, wie die Nutzung eines privaten Subnetzes und Authentifizierung und Autorisierung innerhalb der Anwendungen, umgesetzt werden.
-\pagebreak
 
 % Zusammenfassung der Forschungsergebnisse
-\textbf{Zusammenfassung der Forschungsergebnisse}
+\textbf{Abschließende Zusammenfassung der Forschungsergebnisse}
 
 Abschließend sollen noch einmal alle Forschungsergebnisse dieser Arbeit zusammengefasst werden.
 
