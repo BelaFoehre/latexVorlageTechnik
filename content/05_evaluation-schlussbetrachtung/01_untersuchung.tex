@@ -9,7 +9,7 @@ Folgende Testfälle werden dazu definiert:
 \begin{enumerate}
     \item Variation der Anzahl aktiver Mitarbeiter im PMO-File.
     \item Abgleichen kopierter \textit{\glspl{Timesheet}} mit den \textit{\glspl{Timesheet}} aus dem Ursprungsverzeichnis.
-    \item Variation des Monats in Konfiguration.
+    \item Variation des Monats in der Konfiguration.
     \item Test mit sehr großem Timesheet.
     \item Manueller Abgleich und Untersuchung auf potenzielle Verluste.
     \item Logfile auslesen.
@@ -29,7 +29,7 @@ Um zu überprüfen, ob der Kopiervorgang verlustfrei funktioniert, werden die \t
 
 Da für jeder einzelne Kopiervorgang einer Datei in eine Log-Datei geschrieben werden soll, um über Erfolg oder Misserfolg des Vorgangs für jede Datei zu informieren, soll geprüft werden, ob das Logging in \textit{CloudWatch} diese Vorgänge ausreichend erfasst oder separates Logging nötig ist.
 
-Die Anwendung soll fehlerhafte Dateien im Kopiervorgang überspringen können, ohne dass diese zum Abbruch führen. Dazu wird absichtlich der Dateiname einer Testdatei geändert, um einen Fehler zu simulieren und geprüft, ob die Anwendung trotzdem durchläuft und die übrigen Dateien kopiert.
+Die Anwendung soll fehlerhafte Dateien im Kopiervorgang überspringen können, ohne dass diese zum Abbruch führen. Dazu wird absichtlich der Dateiname einer Testdatei geändert, um einen Fehler zu simulieren um zu prüfen, ob die Anwendung trotzdem durchläuft und die übrigen Dateien kopiert.
 
 Damit die Anwendung wie gewünscht in Zukunft auch für andere Projekte eingesetzt werden kann, muss sich das Rootverzeichnis unkompliziert ändern lassen. Dazu kann die Ordnerstruktur ein weiteres mal in einem anderen Verzeichnis reproduziert  werden und in der Konfiguration die Ordner-ID entsprechend angepasst.
 
@@ -39,27 +39,27 @@ Damit die Anwendung wie gewünscht in Zukunft auch für andere Projekte eingeset
 \pagebreak
 
 \section{Untersuchung der nicht-funktionalen Anforderungen}
-Neben den technischen und funktionalen Anforderungen haben sich auch nicht-funktionale Anforderungen, wie die Skalierbarkeit oder Fehlertoleranz ergeben, die im folgenden untersucht werden sollen.
+Neben den funktionalen Anforderungen müssen auch die in Kapitel \ref{sec:anforderungsanalyse} nicht-funktionale Anforderungen, wie die Skalierbarkeit oder Fehlertoleranz erfüllt werden. Diese werden im folgenden untersucht. \\
 
 \textbf{Skalierbarkeit:}
 
-Von der Anwendung wird erwartet, dass diese Skalierbar ist, um zum Beispiel mehr Container zu starten, wenn notwendig und diese aber auch wieder zu stoppen, wenn sie nicht mehr benötigt werden. Zum Testen der Skalierbarkeit, wird künstlich ein Workload erzeugt, der das Starten eines weiteren Containers erfordert.
+Von der Anwendung wird erwartet, dass diese Skalierbar ist, um zum Beispiel mehr Container zu starten, wenn notwendig und diese aber auch wieder zu stoppen, wenn sie nicht mehr benötigt werden. Zum Testen der Skalierbarkeit, wird künstlich ein Workload erzeugt, der das Starten eines weiteren Containers erfordert. Ebenso soll dieser wieder reduziert werden, um feststellen zu können, ob der Cluster auch wieder runter sklaiert. \\
 
 \textbf{Fehlertoleranz:}
 
-Außerdem soll mit der Fehlertoleranz zm Beispiel der Fall abgedeckt sein, dass ein abgestürzter oder fehlerhafter Container durch einen neuen, weiteren Container ersetzt werden kann, damit die Anwendung jederzeit zur Verfügung steht. Um diese untersuchen zu können, werden gezielt Container beendet oder zum Absturz gebracht, um dann zu sehen, wie der Containerservice damit umgeht.
+Außerdem soll mit der Fehlertoleranz zm Beispiel der Fall abgedeckt sein, dass ein abgestürzter oder fehlerhafter Container durch einen neuen Container ersetzt werden kann, damit die Anwendung jederzeit zur Verfügung steht. Um diese untersuchen zu können, werden gezielt Container beendet oder zum Absturz gebracht, um zu sehen, wie der Containerservice damit umgeht. \\
 
 \textbf{Schnelle Bereitstellung:}
 
-Wird der Anwendungscode aktualisiert, sei es eine Optimierung oder eine neue Version der Anwendung, so soll diese schnellstmöglich bereitgestellt werden und nicht auf ein Updatefenster oder ähnliches warten müssen. Diese Anforderung kann durch eine Änderung im Anwendungscode untersucht werden.
+Wird der Anwendungscode aktualisiert, sei es eine Optimierung oder eine neue Version der Anwendung, so soll diese schnellstmöglich bereitgestellt werden und nicht auf ein Updatefenster oder ähnliches warten müssen. Diese Anforderung kann durch eine Änderung im Anwendungscode untersucht werden, verbunden mit einer Anschließenden Betrachtung in \ac{AWS}, ob die neue Anwendungsversion deployed wird. \\
 
 \textbf{Mehrbenutzerfähigkeit:}
 
-Mit dem Ziel die Anwendung für mehr Personen innerhalb des Projekts, als auch anderen Projekten zur Verfügung zu stellen, muss im Cloud-Betrieb die Möglichkeit gegeben sein, dass mehrere Nutzer gleichzeitig mit der Anwendung arbeiten können, ohne sich dabei gegenseitig in die Quere zu kommen. Um auch die Mehrbenutzerfähigkeit zu testen, werden gleichzeitig von verschiedenen Geräten Anfragen an die Anwendung gesendet.
+Mit dem Ziel die Anwendung für mehr Personen innerhalb des Projekts, als auch anderen Projekten zur Verfügung zu stellen, muss im Cloud-Betrieb die Möglichkeit gegeben sein, dass mehrere Nutzer gleichzeitig mit der Anwendung arbeiten können, ohne sich dabei gegenseitig in die Quere zu kommen. Um auch die Mehrbenutzerfähigkeit zu testen, werden gleichzeitig von verschiedenen Geräten Anfragen an die Anwendung gesendet. \pagebreak
 
 \textbf{Sicherheit:}
 
-Zudem soll untersucht werden, wie die in Kapitel \ref{sec:anforderungsanalyse} herausgearbeiteten Anforderungen an die Sicherheit und den Schutz personenbezogener und unternehmenskritischer Daten eingehalten werden. Dazu soll zum einen die Cloud Infrastruktur der Anwendung untersucht werden, als auch die Anwendung selbst. \pagebreak
+Zudem soll untersucht werden, wie die in Kapitel \ref{sec:anforderungsanalyse} herausgearbeiteten Anforderungen an die Sicherheit und den Schutz personenbezogener und unternehmenskritischer Daten eingehalten werden. Dazu soll zum einen die Cloud Infrastruktur der Anwendung untersucht werden, als auch die Anwendung selbst.
 
 \section{Untersuchung der finanziellen Aspekte}
 Zwar wird eine detaillierte Untersuchung finanzieller Auswirkungen der Cloud Migration einleitend für diese Arbeit ausgeschlossen, jedoch ist eine oberflächliche Betrachtung unerlässlich, um die Cloud Migration der untersuchten Anwendung bewerten zu können. Für diese oberflächliche Betrachtung werden Kostenpositionen, wie zum Beispiel mögliche Lizenzkosten explizit ausgelassen. Es werden lediglich die Betriebskosten der Cloud Infrastruktur und geschätzte Aufwände in Personenstunden berücksichtigt um eine grobe Einschätzung über mögliche Kosten zu geben.
@@ -78,7 +78,7 @@ Wobei U für die Anzahl an durchgeführten Updates im Jahr (J) steht, T für die
     Ausführungszeit: \frac{N}{J} \times \left(T \times P\right) 
 \end{align}
 
-Die Ausführungszeit für die Anwendung ergibt sich aus der Anzahl an durchgeführten Ausführungen (N) im Jahr (J) und der Zeit pro Ausführung (in Personenstunden). Diese kalkuliert die Zeit, die ein Anwender mit der Ausführung beschäftigt ist. \pagebreak
+Die Ausführungszeit für die Anwendung ergibt sich aus der Anzahl an durchgeführten Ausführungen (N) im Jahr (J) und der Zeit pro Ausführung (in Personenstunden). Diese kalkuliert die Zeit, die ein Anwender mit der Ausführung beschäftigt ist.
 
 \begin{align}
     Entwicklungszeit: \frac{T}{J}

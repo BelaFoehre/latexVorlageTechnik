@@ -7,11 +7,11 @@ Nachfolgend wird die Implementierung des Prototypen beschrieben, bevor die notwe
 % 2. Schrittweise ersetzen der Mocks durch Verknüpfung der Module und Anbindung der Box-API
 % 3. Bereitstellung der Anwendung über API
 
-Wie bereits im vorangehenden Kapitel erarbeitet, soll die untersuchte Anwendung für die Cloud Migration in eine \gls{Spring Boot}-Anwendung umgewandelt werden. Die neue Anwendung wird im ersten Entwicklungsschritt auf einem lokalen System implementiert und getestet , bevor diese in die Cloud migriert wird.
+Wie bereits im vorangehenden Kapitel erarbeitet, soll die untersuchte Anwendung für die Cloud Migration in eine \gls{Spring Boot}-Anwendung umgewandelt werden. Die neue Anwendung wird im ersten Entwicklungsschritt auf einem lokalen System implementiert und getestet, bevor diese in die Cloud migriert wird.
 
-Schritt für Schritt werden hierzu die Business-Logik der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Dazu werden die einzelnen Services nacheinander prototypisch entwickelt und mithilfe von Mock-Daten unabhängig voneinander getestet. Diese Mocks werden dann Schrittweise durch die Verknüpfung der einzelnen Services und das Einbinden der \gls{Box}-\ac{API} ersetzt. Um die Anwendung erreichbar zu machen, wird darüber hinaus die Schnittstelle entwickelt und bereitgestellt. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation von \gls{Box}. Um die Anwendung ansprechen zu können wurden außerdem Endpoints definiert und über eine \ac{API} bereitgestellt.
+Schritt für Schritt werden hierzu die Business-Logik der ursprünglichen Anwendung reproduziert und die \gls{Box}-\ac{API} eingebunden. Dazu werden die einzelnen Services nacheinander prototypisch entwickelt und mithilfe von Mock-Daten unabhängig voneinander getestet. Diese Mocks werden dann Schrittweise durch die Verknüpfung der einzelnen Services und das Einbinden der \gls{Box}-\ac{API} ersetzt. Schwierigkeiten haben sich dadurch vorallem durch Unvollständigkeiten in der \ac{API}-Dokumentation von \gls{Box}. Um die Anwendung ansprechen zu können wurden außerdem Endpoints definiert und über eine \ac{API} bereitgestellt.
 
-Anschließend wird die Anwendung Containerisiert. Dazu wird ein \textit{Dockerfile} definiert, in welchem die Schritte beschrieben sind, wie ein Docker-Image der Anwendung erstellt werden kann.
+Anschließend wird die Anwendung containerisiert. Dazu wird ein \textit{Dockerfile} definiert, in welchem die Schritte beschrieben sind, wie ein Docker-Image der Anwendung erstellt werden kann.
 
 Um die Funktionen der neuen \gls{Spring Boot} Anwendung zu testen werden Testdatensätze nach dem Vorbild der realen Daten erstellt und in ein \gls{Box}-Verzeichnis gelegt. Über die von der Anwendung bereitgestellte \ac{API} können nun die Funktionen der Anwendung getestet werden. \pagebreak
 
@@ -29,15 +29,15 @@ Um die Funktionen der neuen \gls{Spring Boot} Anwendung zu testen werden Testdat
 
 Nachdem die Anwendung lokal bereits in einem Container bereitgestellt wird, kann diese nun in die Cloud migriert werden.
 
-Die zuvor in Kapitel \ref{chapter:cloud-architektur} definierte Cloud-Infrastruktur wird in einem \gls{Terraform}-Skript aufgesetzt. Damit ist die Cloud-Umgebung jederzeit reproduzierbar. Zusätzlich wird eine CodePipeline aufgesetzt um eine automatisierten Bereitstellung der Anwendung zu ermöglichen.
+Die zuvor in Kapitel \ref{chapter:cloud-architektur} definierte Cloud-Infrastruktur wird in einem \gls{Terraform}-Skript aufgesetzt. Damit ist die Cloud-Umgebung jederzeit reproduzierbar. Hierin wird eine CodePipeline aufgesetzt um eine automatisierten Bereitstellung der Anwendung zu ermöglichen.
 
-Um die Container als Workload in ECS auszuführen, wird außerdem eine \textit{TaskDefinition} erstellt. Diese beschreibt unter anderem, welches Anwendungsimage in einem Container deployed werden, wie viel Arbeitsspeicher und Prozessorleistung zur Verfügung gestellt werden und wie zum Beispiel mit dem Abstürzen eines Containers umgegangen werden soll \cite[Vgl.][]{AWSECS}.
+Um die Container als Workload in ECS auszuführen, wird außerdem eine \textit{TaskDefinition} über \gls{Terraform} erstellt. Diese beschreibt unter anderem, welches Anwendungsimage in einem Container deployed wird, wie viel Arbeitsspeicher und Prozessorleistung zur Verfügung gestellt werden und wie zum Beispiel mit dem Abstürzen eines Containers umgegangen werden soll \cite[Vgl.][]{AWSECS}.
 
-Mit dem Aufsetzen der Cloud-Umgebung kann nun die Anwendung initial ausgeführt werden. \textit{CodeStar} lädt den Anwendungscode aus dem \gls{Repository}, welcher dann von \textit{CodeBuild} als \textit{Image} gebaut und in der \ac{ECR} abgelegt wird. Dieses \textit{Image} der Anwendung kann dann in \ac{ECS} deployed werden.
+Mit dem Aufsetzen der Cloud-Umgebung kann nun die Anwendung initial in der Cloud deployed werden. \textit{CodeStar} lädt den Anwendungscode aus dem \gls{Repository}, welcher dann von \textit{CodeBuild} als \textit{Image} gebaut und in der \ac{ECR} abgelegt wird. Dieses \textit{Image} der Anwendung kann dann in \ac{ECS} deployed werden.
 
-Bei der Initialisierung der Anwendung ist aufgefallen, dass die standard Sicherheitskonfiguration des Subnetzes der \ac{VPC} nicht den Anforderungen entspricht und Netzwerkverbindungen blockiert, die zur Ausführung der Anwendung notwendig sind. Diese Konfiguration muss entsprechend angepasst werden, damit die Services untereinander kommunizieren können und zum Beispiel die \gls{Box}-\ac{API} erreichbar ist. Zusätzlich sind noch Schwierigkeiten im Routing aufgetreten, da neben der eigentlichen \ac{API} zusätzlich noch ein \ac{API}-Gateway eingesetzt wurde.
+Bei der Initialisierung der Anwendung ist aufgefallen, dass die Standard Sicherheitskonfiguration des Subnets der \ac{VPC} nicht den Anforderungen entspricht und Netzwerkverbindungen blockiert, die zur Ausführung der Anwendung notwendig sind. Diese Konfiguration muss entsprechend angepasst werden, damit die Services untereinander kommunizieren können und zum Beispiel die \gls{Box}-\ac{API} erreichbar ist. Zusätzlich sind noch Schwierigkeiten im Routing aufgetreten, da neben der eigentlichen \ac{API} zusätzlich noch ein \ac{API}-Gateway eingesetzt wurde.
 
-Die migrierte Anwendung kann nun mit den gleichen Testdaten, wie die lokale Anwendung getestet werden.
+Nachdem diese Probleme gelöst wurden, kann die migrierte Anwendung nun mit den gleichen Testdaten, wie die lokale Anwendung getestet werden.
 
 % Zuerst wurde untersucht, welche Migrationsstrategie für die vorliegende Anwendung in Frage kommen könnte. Im vorliegenden Beispiel ist die Entscheidung auf ein Refactoring gefallen, um die Vorteile der Cloud mit einer Spring Boot Anwendung nutzen zu können. Ein Rehosting der existierenden Python Anwendung wäre dazu nicht ausreichend gewesen, da der Service zwar in einem Container laufen würde, jedoch ohne die Vorteile der Cloud nutzen zu können, da diese dann zwar über das Internet erreichbar wäre, aber sich die Art der Ausführung dieser im Vergleich zu einer lokalen Anwendung nur geringfügig ändert.
 

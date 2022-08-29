@@ -22,26 +22,26 @@ Damit ist ein großer Teil der funktionalen Anforderungen bereits in diesem Prot
 \subsection{Untersuchung der nicht-funktionalen Anforderungen}
 \textbf{Skalierbarkeit:}
 
-Der vorliegende Prototyp ist durch die von \ac{ECS} bereitgestellten Funktionalitäten horizontal Skalierbar. Es können zu jedem Zeitpunkt weitere Container gestartet werden, um die Anwendung zu skalieren. Genauso werden diese bei Inaktivität wieder entfernt.
+Der vorliegende Prototyp ist durch die von \ac{ECS} bereitgestellten Funktionalitäten horizontal Skalierbar. Es können zu jedem Zeitpunkt weitere Container gestartet werden, um die Anwendung zu skalieren. Genauso werden diese bei Inaktivität wieder entfernt. \\
 
 \textbf{Fehlertoleranz:}
 
-Die Fehlertoleranz der Anwendung wird in \ac{ECS} ebenfalls gewährleistet. Stürzt ein Container ab oder wird unerwartet beendet, wird automatisch ein neuer Container gestartet um den Workload abzufangen.
+Die Fehlertoleranz der Anwendung wird in \ac{ECS} ebenfalls gewährleistet. Stürzt ein Container ab oder wird unerwartet beendet, wird automatisch ein neuer Container gestartet um den Workload abzufangen. \\
 
 \textbf{Schnelle Bereitstellung:}
 
-Durch den Einsatz von \textit{CodePipeline} kann jede Anwendungsaktualisierung nahezu in Echtzeit bereitgestellt werden. Wird der Anwendungscode aktualisiert (es reicht zum Testen das hinzufügen eines Kommentars), startet automatisch ein neues Deployment und die Anwendung wird aktualisiert.
+Durch den Einsatz von \textit{CodePipeline} kann jede Anwendungsaktualisierung nahezu in Echtzeit bereitgestellt werden. Wird der Anwendungscode aktualisiert (es reicht zum Testen das hinzufügen eines Kommentars), startet automatisch ein neues Deployment und die Anwendung wird aktualisiert. \\
 
 \textbf{Mehrbenutzerfähigkeit:}
 
-Die Mehrbenutzerfähigkeit der Anwendung ist bereits in \gls{Spring Boot} gegeben, da in \gls{Spring Boot}-Anwendungen standardmäßig mehrere Personen auf eine Anwendungsinstanz zugreifen können. \pagebreak
+Die Mehrbenutzerfähigkeit der Anwendung ist bereits in \gls{Spring Boot} gegeben, da in \gls{Spring Boot}-Anwendungen standardmäßig mehrere Personen auf eine Anwendungsinstanz zugreifen können. Hierfür stellt \gls{Spring Boot} bzw. der darunter laufende Anwendungsserver einen Pool von \textit{Threads} bereit. Wird ein \textit{Request} durch einen Nutzer ausgelöst, wird dieser durch einen \textit{Thread} verarbeitet. Greift ein weiterer Nutzer auf die Anwendung zu, wird ein weiterer \textit{Thread} beansprucht. Wurde eine Anfrage abgeschlossen, wird der \textit{Thread} wieder Teil des Pools. \pagebreak
 
 \textbf{Sicherheit:}
 
-Die Sicherheitsanforderungen an die Anwendung werden trotz aktuell verwendeter Testdatensätze bereits umgesetzt oder sind nachträglich leicht umsetzbar. Die Cloud Infrastruktur ist in einem \ac{VPC} mit privatem Subnetz implementiert, welches in sich geschlossen ist. Das API-Gateway ermöglicht zudem zusätzliche Authentifizierungsmöglichkeiten, die jedoch für den Test des Prototypen deaktiviert wurden. Darüber hinaus können auch in \gls{Spring Boot} Module zur Prüfung von Nutzerberechtigungen mithilfe von zum Beispiel Token eingesetzt werden. Damit sind die in der Private Cloud möglichen Sicherheitsstandards umgesetzt. Bei der Sensibilität der realen Anwendungsdaten ist jedoch zu untersuchen, ob diese als ausreichend erachtet werden.
+Die Sicherheitsanforderungen an die Anwendung werden trotz aktuell verwendeter Testdatensätze bereits umgesetzt oder sind nachträglich leicht umsetzbar. Die Cloud Infrastruktur ist in einem \ac{VPC} mit privatem Subnet implementiert, welches in sich geschlossen ist. Das API-Gateway ermöglicht zudem zusätzliche Authentifizierungsmöglichkeiten, die jedoch für den Test des Prototypen deaktiviert wurden. Darüber hinaus können auch in \gls{Spring Boot} Module zur Prüfung von Nutzerberechtigungen mithilfe von \textit{Spring Security} und zum Beispiel JWT Token eingesetzt werden. Damit sind die in der Public Cloud möglichen Sicherheitsstandards umgesetzt. Bei der Sensibilität der realen Anwendungsdaten ist jedoch zu untersuchen, ob diese als ausreichend erachtet werden.
 
 \subsection{Beurteilung der finanziellen Aspekte}
-Um die oberflächliche finanzielle Betrachtung zu beurteilen,folgt zuerst die Berechnung der geschätzten anfallenden Kosten, bevor diese gegeneinander aufgewogen werden um einschätzen zu können, ob oder wann sich die Cloud Migration der untersuchten Anwendung lohnt.
+Um die oberflächliche finanzielle Betrachtung zu beurteilen, folgt zuerst die Berechnung der geschätzten anfallenden Kosten, bevor diese gegeneinander aufgewogen werden um einschätzen zu können, ob oder wann sich die Cloud Migration der untersuchten Anwendung lohnt.
 
 \textbf{Ursprüngliche Anwendung:}
 
@@ -78,7 +78,7 @@ Der Zeitaufwand summiert sich also zu 560 Personenstunden/Jahr. Davon ausgegange
     Updatezeit: \frac{0min}{Jahr}
 \end{align}
 
-Die Updatezeit für die Migrierte Anwendung fällt durch die Bereitstellung in der Cloud auf Null.
+Die Updatezeit für die migrierte Anwendung fällt durch die Bereitstellung in der Cloud auf Null.
 
 \begin{align}
     Ausführungszeit: \frac{720}{Jahr} \times \left(2min \times 20\right)  = \frac{28.800min}{Jahr}
@@ -97,7 +97,7 @@ Die Grundlegende Entwicklungszeit wird sich ebenfalls nicht verändern, jedoch e
     \frac{0min}{Jahr} + \frac{28.800min}{Jahr} + \frac{7.800min}{Jahr} = \frac{36.600min}{Jahr}
 \end{align}
 
-Für das erste Jahr mit der migrierten Anwendung werden ca. 610 Personenstunden erwartet, was Kosten von ungefähr 16.100€/Jahr ergibt. Zusätzlich dazu sind außerdem noch die Betriebskosten für die Cloud Infrastruktur einzukalkulieren, die laut \ac{AWS}-Preisrechner bei ca. 75\$/Monat und somit 900\$/Jahr erwartet ergeben. Bei dem aktuellen Kurs des Euro (1€ = 1\$) ergeben das insgesamt 17.000€/Jahr.
+Für das erste Jahr mit der migrierten Anwendung werden ca. 610 Personenstunden erwartet, was Kosten von ungefähr 16.100€/Jahr ergibt. Zusätzlich dazu sind außerdem noch die Betriebskosten für die Cloud Infrastruktur einzukalkulieren, die laut \ac{AWS}-Preisrechner bei ca. 75\$/Monat und somit 900\$/Jahr erwartet ergeben. Bei dem aktuellen Kurs des Euro (1€ = 1\$ [Stand: 29.08.2022]) ergeben das insgesamt 17.000€/Jahr.
 
 Durch diese Kalkulation ergibt sich, dass die Kosten für die Cloud Migration der untersuchte Anwendung im ersten Jahr definitiv höher sind, als die Anwendung einfach weiter zu betreiben. Selbst, wenn ab dem zweiten Jahr ca. 50h wegfallen, in der Annahme, dass die Neuentwicklung danach abgeschlossen ist, werden die Kosten für den Cloudbetrieb fürs erste nicht unter die aktuellen Kosten fallen.
 \pagebreak
@@ -112,8 +112,7 @@ In der Cloud bereitgestellt ist der Service fortan rund um die Uhr verfügbar un
 
 Updates der Anwendung werden automatisiert über die \ac{CI/CD}-Pipeline deployed und müssen nicht mehr manuell durchgeführt werden. Damit entfällt der Aufwand, vor jeder Nutzung die Aktualität der Anwendung zu überprüfen für alle Anwender und diese erhalten automatisch die neueste Version der Anwendung. So können zum Beispiel Bugfixes schneller und einfacher ausgerollt werden. 
 
-Darüber hinaus bietet sich bei lokalen Anwendungen, wie der in dieser Arbeit untersuchten, eine Benutzeroberfläche nicht unbedingt an. Durch die Umwandlung dieser zu einer Web-Anwendung und Bereitstellung in der Cloud ergeben sich hier neue Möglichkeiten.
-\pagebreak
+Darüber hinaus bietet sich bei lokalen Anwendungen, wie der in dieser Arbeit untersuchten, eine Benutzeroberfläche nicht unbedingt an. Durch die Umwandlung dieser zu einer Web-Anwendung und Bereitstellung in der Cloud ergeben sich hier neue Möglichkeiten, wie zum Beispiel eine Ausführung der Anwendung über ein beliebiges mobiles Endgerät (z.B. Smartphone) oder einer grafischen Oberfläche um auch für weniger technische Nutzer eine einfache Bedienbarkeit zu bieten. \pagebreak
 
 \subsection{Nachteile}
 Neben den positiven Aspekten die bei der Migration in die Cloud aufgekommen sind, haben sich auch einige Nachteile ergeben:
