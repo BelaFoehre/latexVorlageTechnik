@@ -20,6 +20,8 @@ Neben dem \ac{ECS} Cluster wird als weiterer Service \textit{\gls{CodePipeline}}
 
 \textit{\gls{CodePipeline}} Kombiniert die Services \textit{CodeStar}, \textit{CodeBuild} und \textit{CodeDeploy}. \textit{CodeStar} stellt hierbei eine Verbindung zu \gls{GitHub} her, wo der Anwendungscode abgelegt ist. \textit{CodeBuild} erzeugt ein Abbild der Anwendung in einem \textit{Container-Image} und legt diesen in \ac{ECR} ab. \textit{CodeDeploy} deployed die aktuellste Version der Anwendung über \ac{ECS} in den Cluster.
 
-Das Bereitstellungsmodell entspricht letztendlich dem \ac{CaaS} Modell, also der Bereitstellung von Containern, ohne der Notwendigkeit die zugrundeliegende Hardwareplattform zu konfigurieren, da diese Aufgabe von \gls{Fargate} übernommen wird.
+% Das Bereitstellungsmodell entspricht letztendlich dem \ac{CaaS} Modell, also der Bereitstellung von Containern, ohne der Notwendigkeit die zugrundeliegende Hardwareplattform zu konfigurieren, da diese Aufgabe von \gls{Fargate} übernommen wird.
+
+Das Bereitstellungsmodell entspricht letztendlich dem \textit{Serverless} Modell, da sich \gls{Fargate} als Plattform um die Orchestrierung und Bereitstellung der Container kümmert \cite[Vgl.][]{AWSFargate}\cite[Vgl][S. 16]{CNCF2018}.
 
 Definiert wird die Infrastruktur zuvor in einem \gls{Terraform} Skript, in welchem beschrieben wird, welche Services bereitgestellt werden und wie diese untereinander kommunizieren.
