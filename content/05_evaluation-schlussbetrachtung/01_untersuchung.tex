@@ -66,29 +66,47 @@ Zwar wird eine detaillierte Untersuchung finanzieller Auswirkungen der Cloud Mig
 
 Untersucht werden soll wir folgt:
 
-Als Betriebskosten werden für die Betrachtung lediglich die Kosten für den Betrieb der Infrastruktur in der Cloud, da diese in \ac{AWS} einsehbar sind. Zusätzlich dazu soll grob geschätzt werden, wie viel Zeit für die Ausführung der Anwendung beansprucht wird. Dafür wird für die ursprüngliche Anwendung auch berücksichtigt, wie viel Zeit für die Installation der Anwendung benötigt wird, davon ausgehend, dass diese ungefähr vier mal im Jahr ein Update erhält. Die benötigte Zeit für Installation und Ausführung wird dann in Personenstunden pro Jahr zusammengefasst um eine Orientierung für durch die Anwendung verursachten Kosten zu erhalten.
+Als Betriebskosten werden für die Betrachtung lediglich die Kosten für den Betrieb der Infrastruktur in der Cloud betrachtet, da diese in \ac{AWS} einsehbar sind. Zusätzlich dazu soll grob geschätzt werden, wie viel Zeit für die Ausführung der Anwendung beansprucht wird. Dafür wird für die ursprüngliche Anwendung auch berücksichtigt, wie viel Zeit für die Installation der Anwendung benötigt wird, davon ausgehend, dass diese ungefähr vier mal im Jahr ein Update erhält. Die benötigte Zeit für Installation und Ausführung wird dann in Personenstunden pro Jahr zusammengefasst um eine Orientierung für durch die Anwendung verursachten Kosten zu erhalten.
 
 \begin{align}
-    Updatezeit: \frac{U}{J} \times \left(T \times P\right) 
+    Entwicklungskosten = 
 \end{align}
 
-Wobei U für die Anzahl an durchgeführten Updates im Jahr (J) steht, T für die Zeit pro Update (in Personenstunden) und P für die Anzahl an Nutzern steht. Die Updatezeit gibt wieder, wie viel Zeit pro Jahr dafür vom Anwender verwendet wird, um die Anwendung auf seinem lokalen Gerät aktuell zu halten.
+Die Entwicklungskosten
 
 \begin{align}
-    Ausführungszeit: \frac{N}{J} \times \left(T \times P\right) 
+    Installationszeit = \frac{U \times T \times N(Personen)}{J}
 \end{align}
 
-Die Ausführungszeit für die Anwendung ergibt sich aus der Anzahl an durchgeführten Ausführungen (N) im Jahr (J) und der Zeit pro Ausführung (in Personenstunden). Diese kalkuliert die Zeit, die ein Anwender mit der Ausführung beschäftigt ist.
+Um den benötigten Zeitaufwand für die Installation bzw. Updates der Anwendung für ein Jahr (J) zu berechnen, wird die Anzahl der Updates pro Jahr (U) mit Zeit, die für ein Update benötigt wird (T) und der Anzahl der Personen, die die Anwendung nutzen (N) multipliziert.
 
 \begin{align}
-    Entwicklungszeit: \frac{T}{J}
+    Installationskosten = Installationszeit \times \frac{K}{W}
 \end{align}
 
-Die Entwicklungszeit ergibt sich aus der Zeit (T) pro Jahr (J), die vom Entwickler der Anwendung in Bugfixes, Updates und Erweiterungen investiert wird.
+Die Kosten für die Installation der Anwendung berechnen sich aus der zuvor berechneten Installationszeit und den Kosten pro Benutzer pro Tag (K) geteilt durch die Arbeitsstunden am Tag (W).
 
-\begin{align}
-    Zeitaufwand = Updatezeit + Ausführungszeit + Entwicklungszeit
-\end{align}
+% \begin{align}
+%     Updatezeit: \frac{U}{J} \times \left(T \times P\right) 
+% \end{align}
 
-Aus diesen einzelnen Kostenpositionen kann dann ein Schätzwert für die Personenstunden pro Jahr berechnet werden und mit dem durchschnittlichen Gehalt eines Consultant multipliziert um die Kosten zu schätzen. Zusätzlich dazu muss für die migrierte Anwendung bedacht werden, dass die Neuentwicklung der Anwendung und der Betrieb in der Cloud ebenfalls kosten verursachen.
+% Wobei U für die Anzahl an durchgeführten Updates im Jahr (J) steht, T für die Zeit pro Update (in Personenstunden) und P für die Anzahl an Nutzern steht. Die Updatezeit gibt wieder, wie viel Zeit pro Jahr dafür vom Anwender verwendet wird, um die Anwendung auf seinem lokalen Gerät aktuell zu halten.
+
+% \begin{align}
+%     Ausführungszeit: \frac{N}{J} \times \left(T \times P\right) 
+% \end{align}
+
+% Die Ausführungszeit für die Anwendung ergibt sich aus der Anzahl an durchgeführten Ausführungen (N) im Jahr (J) und der Zeit pro Ausführung (in Personenstunden). Diese kalkuliert die Zeit, die ein Anwender mit der Ausführung beschäftigt ist.
+
+% \begin{align}
+%     Entwicklungszeit: \frac{T}{J}
+% \end{align}
+
+% Die Entwicklungszeit ergibt sich aus der Zeit (T) pro Jahr (J), die vom Entwickler der Anwendung in Bugfixes, Updates und Erweiterungen investiert wird.
+
+% \begin{align}
+%     Zeitaufwand = Updatezeit + Ausführungszeit + Entwicklungszeit
+% \end{align}
+
+% Aus diesen einzelnen Kostenpositionen kann dann ein Schätzwert für die Personenstunden pro Jahr berechnet werden und mit dem durchschnittlichen Gehalt eines Consultant multipliziert um die Kosten zu schätzen. Zusätzlich dazu muss für die migrierte Anwendung bedacht werden, dass die Neuentwicklung der Anwendung und der Betrieb in der Cloud ebenfalls kosten verursachen.
 \pagebreak
