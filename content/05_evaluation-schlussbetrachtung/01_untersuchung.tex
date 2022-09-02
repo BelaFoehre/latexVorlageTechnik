@@ -69,12 +69,6 @@ Untersucht werden soll wir folgt:
 Als Betriebskosten werden für die Betrachtung lediglich die Kosten für den Betrieb der Infrastruktur in der Cloud betrachtet, da diese in \ac{AWS} einsehbar sind. Zusätzlich dazu soll grob geschätzt werden, wie viel Zeit für die Ausführung der Anwendung beansprucht wird. Dafür wird für die ursprüngliche Anwendung auch berücksichtigt, wie viel Zeit für die Installation der Anwendung benötigt wird, davon ausgehend, dass diese ungefähr vier mal im Jahr ein Update erhält. Die benötigte Zeit für Installation und Ausführung wird dann in Personenstunden pro Jahr zusammengefasst um eine Orientierung für durch die Anwendung verursachten Kosten zu erhalten.
 
 \begin{align}
-    Entwicklungskosten = 
-\end{align}
-
-Die Entwicklungskosten
-
-\begin{align}
     Installationszeit = \frac{U \times T \times N(Personen)}{J}
 \end{align}
 
@@ -85,6 +79,26 @@ Um den benötigten Zeitaufwand für die Installation bzw. Updates der Anwendung 
 \end{align}
 
 Die Kosten für die Installation der Anwendung berechnen sich aus der zuvor berechneten Installationszeit und den Kosten pro Benutzer pro Tag (K) geteilt durch die Arbeitsstunden am Tag (W).
+
+\begin{align}
+    Entwicklungskosten = T \times \frac{K}{W}
+\end{align}
+
+Die Entwicklungskosten ergeben sich aus der in die Entwicklung der Anwendung investierten Zeit (T) und den Tagessätzen für die Entwicklung (K) auf die Arbeitsstunden verteilt (W).
+
+\begin{align}
+    Fortlaufende Kosten = Vorjahreskosten + \frac{Installationskosten}{A} \times Anwenderzahl
+\end{align}
+
+Die fortlaufenden Kosten für die ursprüngliche Anwendung ergeben sich aus den Kosten des Vorjahres, addiert mit den Installationskosten für die initiale Anwenderzahl (A) und schließlich multipliziert mit der fortlaufend steigenden Anwenderzahl.
+
+\begin{align}
+    Fortlaufende Kosten = Vorjahreskosten + Betriebskosten + Weiterentwicklungskosten
+\end{align}
+
+Für die migrierte Anwendung entfallen die Installationskosten, da hier unabhängig von der Anwenderzahl die Anwendung immer für alle in der Cloud bereit steht. Hinzu kommen jedoch die Betriebskosten der Cloud Infrastruktur und Kosten für die Weiterentwicklung, da die Anwendung noch vollständig migriert und angepasst werden muss.
+
+Anschließend sollen die sich aus den fortlaufenden Kosten ergebenden Graphen übereinandergelegt werden, um einen Break-Even, also den Punkt festzustellen, an dem die Kosten für die migrierte Anwendung unter die Kosten für die lokale Anwendung fallen.
 
 % \begin{align}
 %     Updatezeit: \frac{U}{J} \times \left(T \times P\right) 

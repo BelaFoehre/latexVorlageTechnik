@@ -55,7 +55,22 @@ Die Installationszeit ergibt sich aus ungefähr 4 Updates, die pro Jahr herunter
     Installationskosten = \frac{13,6h}{Jahr} \times \frac{1000\mbox{\euro}}{8h} =\frac{1700\mbox{\euro}}{Jahr}
 \end{align}
 
-Für einen durchschnittlichen Nutzer der Anwendung werden ungefähr 1000Euro pro Tag kalkuliert und durch 8 Arbeitsstunden pro Tag geteilt. \pagebreak
+Für einen durchschnittlichen Nutzer der Anwendung werden ungefähr 1000€ pro Tag kalkuliert und durch 8 Arbeitsstunden pro Tag geteilt. Dieser Preis ergibt sich aus den Kostenraten für zum Beispiel Projektmanager und andere projektverantwortliche Personen. \pagebreak
+
+\begin{align}
+    Entwicklungskosten = 240h \times \frac{600\mbox{\euro}}{8h} = 18.000\mbox{\euro}
+\end{align}
+
+Die Entwicklungskosten soll wiederspiegeln, wie viel Zeit und damit verbundene Kosten in die bisherige Entwicklung der Anwendung investiert wurde. Dabei wird ein Zeitaufwand von ungefähr 30 Tagen, also 240 Stunden geschätzt. Die Kosten für einen Entwickler sind etwas geringer und Teile der Anwendung wurden in freier Zeit und als Studentenprojekt entwickelt. Aus diesem Grund wird von ungefähr 600€ pro Tag ausgegangen.
+
+Damit ergeben sich für die ursprüngliche Anwendung 18.000€ Entwicklungskosten und zusätzlich mit der Anzahl Anwendern steigende Installationskosten. Um die fortlaufenden Kosten kalkulieren zu können wurde folgende Formel aufgestellt:
+
+\begin{align}
+    Fortlaufende Kosten = 18.000\mbox{\euro} + \frac{1700\mbox{\euro}/4}{20} \times 50 = 16.062,50\mbox{\euro}
+\end{align}
+
+Als Vorjahreskosten werden für das Kalkulationsbeispiel 18.000€ angenommen. Für eine genauere Kalkulation wird die Entwicklung quartalsweise betrachtet, weshalb die Installationskosten durch 4 geteilt werden. Die ursprüngliche Anwenderzahl liegt bei 20 Personen und für das erste Quartal wird mit einem Anstieg auf 50 Anwender gerechnet.
+\pagebreak
 
 % \begin{align}
 %     Updatezeit: \frac{4}{Jahr} \times \left(1min \times 20\right) = \frac{80min}{Jahr}
@@ -73,7 +88,7 @@ Für einen durchschnittlichen Nutzer der Anwendung werden ungefähr 1000Euro pro
 %     Entwicklungszeit: \frac{4800min}{Jahr}
 % \end{align}
 
-% Die Entwicklungszeit ist schwer vorherzusagen, es ist jedoch zu schätzen, dass der Entwickler ungefähr an 30 Tagen im Jahr zwischen 3 und 4 Stunden in die Weiterentwicklung der Anwendung investiert, was eienen Schätzwert von 80h/Jahr ergibt.
+% Die Entwicklungszeit ist schwer vorherzusagen, es ist jedoch zu schätzen, dass der Entwickler ungefähr an 30 Tagen im Jahr zwischen 3 und 4 Stunden in die Weiterentwicklung der Anwendung investiert, was einen Schätzwert von 80h/Jahr ergibt.
 
 % \begin{align}
 %     Zeitaufwand = Updatezeit + Ausführungszeit + Entwicklungszeit = \\
@@ -86,12 +101,31 @@ Für einen durchschnittlichen Nutzer der Anwendung werden ungefähr 1000Euro pro
 
 Für die migrierte Anwendung entfallen der Aufwand und die damit verbundenen Kosten zur Installation und Aktualisierung dieser. Dieser Prozess ist durch die Bereitstellung in der Cloud und das automatisierte Deployment der Anwendung durch eine Pipeline realisiert. Stattdessen fallen für den Betrieb der Cloud Infrastruktur jedoch Kosten von Jährlich ca. 900€ pro Jahr an. Diese ergeben sich aus ca. 75\$ pro Monat laut \ac{AWS}-Preisrechner. Durch den aktuellen Kurs des Euro (1€ = 1\$ [Stand: 29.08.2022]) ist der Wert eins zu eins übertragbar.
 
+\begin{align}
+    Entwicklungskosten = (240h + 120h) \times \frac{600\mbox{\euro}}{8h} = 27.000\mbox{\euro}
+\end{align}
+
+Die basis Entwicklungskosten für die migrierte Anwendung bleiben bei 240 Stunden, da die ursprüngliche Anwendung als Grundlage verwendet wird. Hinzu werden 15 Tage, also 120 Stunden für die bisherige Weiterentwicklung der migrierten Version der Anwendung
+geschätzt. Damit ergeben sich entsprechend 50\% höhere Entwicklungskosten als Grundlage zur Kalkulation.
+
+\begin{align}
+    Fortlaufende Kosten = 27.000\mbox{\euro} + (\frac{900\mbox{\euro}}{Jahr}/4) + ((120h) \times \frac{600\mbox{\euro}}{8h}/4) = 29.475\mbox{\euro}
+\end{align}
+
+Um die fortlaufenden Kosten für die Migrierte Anwendung zu kalkulieren, werden wie zuvor festgelegt zu den Vorjahreskosten die Betriebskosten für die Cloud Infrastruktur und Weiterentwicklungskosten addiert. Die Betriebskosten liegen bei ungefähr 900€ pro Jahr, der Zeitaufwand für die Weiterentwicklung wird auf 15 Tage pro Jahr, also 120 Stunden geschätzt. Um eine Vergleichbarkeit herzustellen, werden auch hier die jährlichen Kostenpositionen quartalsweise betrachtet.
+
+Mit diesen Formeln können nun die ungefähren Kosten für eine beliebige Anwenderzahl kalkuliert werden und somit untersucht werden, ab welcher Anwenderzahl der Betrieb in der Cloud günstiger ist als der Betrieb in der eigenen Infrastruktur. Dies wird in der nachfolgenden Abbildung dargestellt. \pagebreak
+
+Für die ungefähre Bestimmung eines Break-Even wird davon ausgegangen, dass die maximale Anwenderzahl bei globalem Einsatz der Anwendung ungefähr 4.800 Personen umfassen wird. Diese Zahl ergibt sich aus 48.000 Mitarbeitenden, wovon etwa 10\% in ihrer Funktion als Projektleiter oder Verantwortlicher die Anwendung nutzen werden. Um die Entwicklung der Kosten zu betrachten wird anfänglich von einem langsameren Nutzerzuwachs ausgegangen von ungefähr 100 Anwendern pro Quartal, bevor die Nutzerzahl danach möglicherweise schneller steigt, sollte sich die Anwendung etablieren.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{roi.png}
-    \caption{Return of Invest Betrachtung: Break-Even bei ca. 40 Anwendern}
+    \caption{Return of Invest Betrachtung: Break-Even bei ca. 400 Anwendern}
     \label{fig:roi}
 \end{figure}
+
+Anhand der in Abbildung \ref{fig:roi} dargestellt Graphen ist festzustellen, dass die Kosten für den lokalen Betrieb der Anwendung (blau) exponentiell ansteigen, wogegen für die Kosten der migrierten Anwendung (orange) ein linearer Anstieg zu erwarten ist. Der Break-Even Punkt würde demnach bei knapp unter 400 Anwendern liegen.
 
 % \begin{align}
 %     Updatezeit: \frac{0min}{Jahr}
