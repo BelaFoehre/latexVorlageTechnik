@@ -12,7 +12,7 @@ Ziel der Anwendung ist das Einsammeln der \textit{\glspl{Timesheet}}, in dem Pro
     \label{fig:pmo_python}
 \end{figure}
 
-Die bisher existierende Anwendung ist eine Python Anwendung, die grundsätzlich in dre Module aufgeteilt ist:
+Die bisher existierende Anwendung ist eine Python Anwendung, die grundsätzlich in drei Module aufgeteilt ist:
 \begin{itemize}
 \item \textbf{Timesheet Collector: }Einsammeln der \textit{\glspl{Timesheet}}, der in dem Projekt aktiven Mitarbeiter und Ablegen dieser in einem neuen Verzeichnis
 \item \textbf{Timesheet Checker: }Überprüfen der \textit{\glspl{Timesheet}} auf Korrektheit und Vollständigkeit und gegebenenfalls Reparatur dieser (Fehlerkorrektur und Abgleich mit Daten aus Zeiterfassungstool zur Vermeidung von Unstimmigkeiten)
@@ -27,7 +27,7 @@ Da es sich bei dieser Arbeit um eine Machbarkeitsstudie mit Erstellung eines Pro
 \subsection{Entwurf der neuen Architektur}
 Kern der Anwendung soll trotz der Weiterentwicklung und anstehenden Änderungen die in Kapitel \ref{sec:use-case-modellierung} beschriebene Business-Logik bilden.
 
-In der ursprünglichen Anwendung ist der Zugriff auf die \gls{Box} mithilfe eines zusätzlichen Desktop-Clients umgesetzt worden, welcher es ermöglicht, Verzeichnisse in \gls{Box} wie einen lokalen Dateipfad ansprechen zu können. Somit konnte der Box-Pfad in eine Konfigurationsdatei geschrieben und als Parameter an die Anwendung übergeben werden. Da in einem Container in der Cloud Umgebung kein zugriff auf ein lokales Verzeichnis mit entsprechender \gls{Box}-Erweiterung in der selben Art und Weise hergestellt werden kann, muss hier in der neuen Anwendung entsprechend die \gls{Box}-\ac{API} eingebunden werden um den Zugriff auf die Verzeichnisse weiterhin zu ermöglichen. Insbesondere auch deshalb, weil die Mehrbenutzerfähigkeit gewährleistet werden soll, welche über ein lokales Verzeichnis nicht umsetzbar wäre. Hierfür stellt \gls{Box} selbst ein entsprechendes \ac{SDK} für diverse Sprachen bereit.
+In der ursprünglichen Anwendung ist der Zugriff auf die \gls{Box} mithilfe eines zusätzlichen Desktop-Clients umgesetzt worden, welcher es ermöglicht, Verzeichnisse in \gls{Box} wie einen lokalen Dateipfad ansprechen zu können. Somit konnte der Box-Pfad in eine Konfigurationsdatei geschrieben und als Parameter an die Anwendung übergeben werden. Da in einem Container in der Cloud Umgebung kein Zugriff auf ein lokales Verzeichnis mit entsprechender \gls{Box}-Erweiterung in der selben Art und Weise hergestellt werden kann, muss hier in der neuen Anwendung entsprechend die \gls{Box}-\ac{API} eingebunden werden um den Zugriff auf die Verzeichnisse weiterhin zu ermöglichen. Insbesondere auch deshalb, weil die Mehrbenutzerfähigkeit gewährleistet werden soll, welche über ein lokales Verzeichnis nicht umsetzbar wäre. Hierfür stellt \gls{Box} selbst ein entsprechendes \ac{SDK} für diverse Sprachen bereit.
 
 Außerdem enthalten die PMO-Tools ein Skript, welches den Umgang mit Excel Spreadsheets ermöglicht. Dazu gehört zum einen das Ermitteln aktiver Mitarbeiter und zum anderen das Auslesen der \textit{\glspl{Timesheet}}, was jedoch für den untersuchten Service vorerst keine Verwendung findet. Einen vergleichbaren Service muss auch die neue Anwendung zum Lesen des PMO-Files enthalten. Für andere Programmiersprachen, wie zum Beispiel Java kann man in diesem Fall auf \textit{Libraries} wie die \gls{Apache POI} Programmbibliothek zurückgreifen, welche das Lesen und Schreiben von Microsoft Office Dateien ermöglicht.
 
