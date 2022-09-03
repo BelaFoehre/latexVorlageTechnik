@@ -3,18 +3,18 @@
 % NUR beschreiben wie und was untersucht wird, Ergebnis in Kapitel Evaluation
 
 \section{Beurteilung der technischen Realisierung}
-Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitätsanforderungen für den modellierten Use-Case wird für jedes Kriterium ein Testfall definiert, um untersuchen zu können, ob die Mindestanforderungen für eine erfolgreiche Bewertung abgedeckt werden. Darüber hinaus soll untersucht werden, welche Aufwände die Umsetzung mit sich gebracht hat.
+Entsprechend der in Kapitel \ref{sec:use-case-modellierung} definierten Qualitätsanforderungen für den modellierten Use-Case wird für jedes Kriterium ein Testfall definiert, um untersuchen zu können, ob die Mindestanforderungen für eine erfolgreiche Bewertung abgedeckt werden. Darüber hinaus soll untersucht werden, welchen Aufwand die Umsetzung mit sich gebracht hat.
 
 Folgende Testfälle werden dazu definiert:
 \begin{enumerate}
     \item Variation der Anzahl aktiver Mitarbeiter im PMO-File.
     \item Abgleichen kopierter \textit{\glspl{Timesheet}} mit den \textit{\glspl{Timesheet}} aus dem Ursprungsverzeichnis.
     \item Variation des Monats in der Konfiguration.
-    \item Test mit sehr großem Timesheet.
+    \item Test mit sehr großem \textit{\gls{Timesheet}}.
     \item Manueller Abgleich und Untersuchung auf potenzielle Verluste.
     \item Logfile auslesen.
     \item Fehler einbauen und Anwendung ausführen.
-    \item Test mit unterschiedlichen Root Verzeichnissen.
+    \item Test mit unterschiedlichen \textit{Root}-Verzeichnissen.
 \end{enumerate}
 
 Zum Testen der Anwendung wird in einem \gls{Box}-Verzeichnis die Ordnerstruktur der Projektumgebung nachgebildet und mit Testdatensätzen befüllt. In dem PMO-File kann der Status jeder eingetragenen Person auf ''\textit{active}'' oder ''\textit{inactive}'' gesetzt werden. Durch Variieren der Kennzeichnung für die simulierten Mitarbeiter kann geprüft werden, ob in dem \textit{Collect}-Verzeichnis tatsächlich nur die \textit{\glspl{Timesheet}} der als ''\textit{active}'' eingetragenen Mitarbeiter kopiert werden.
@@ -27,11 +27,11 @@ Eines der \textit{gemockten} \textit{\glspl{Timesheet}} enthält verhältnismä�
 
 Um zu überprüfen, ob der Kopiervorgang verlustfrei funktioniert, werden die \textit{\glspl{Timesheet}} aus dem Ursprungsverzeichnis mit den kopierten \textit{\glspl{Timesheet}} im Zielverzeichnis manuell verglichen.
 
-Da für jeder einzelne Kopiervorgang einer Datei in eine Log-Datei geschrieben werden soll, um über Erfolg oder Misserfolg des Vorgangs für jede Datei zu informieren, soll geprüft werden, ob das Logging in \textit{CloudWatch} diese Vorgänge ausreichend erfasst oder separates Logging nötig ist.
+Da für jeden einzelnen Kopiervorgang einer Datei in eine Log-Datei geschrieben werden soll, um über Erfolg oder Misserfolg des Vorgangs für jede Datei zu informieren, soll geprüft werden, ob das Logging in \textit{CloudWatch} diese Vorgänge ausreichend erfasst oder separates Logging nötig ist.
 
-Die Anwendung soll fehlerhafte Dateien im Kopiervorgang überspringen können, ohne dass diese zum Abbruch führen. Dazu wird absichtlich der Dateiname einer Testdatei geändert, um einen Fehler zu simulieren um zu prüfen, ob die Anwendung trotzdem durchläuft und die übrigen Dateien kopiert.
+Die Anwendung soll fehlerhafte Dateien im Kopiervorgang überspringen können, ohne dass diese zum Abbruch führen. Dazu wird absichtlich der Dateiname einer Testdatei geändert, um einen Fehler zu simulieren und zu prüfen, ob die Anwendung trotzdem weiterläuft sowie die übrigen Dateien kopiert.
 
-Damit die Anwendung wie gewünscht in Zukunft auch für andere Projekte eingesetzt werden kann, muss sich das Rootverzeichnis unkompliziert ändern lassen. Dazu kann die Ordnerstruktur ein weiteres mal in einem anderen Verzeichnis reproduziert  werden und in der Konfiguration die Ordner-ID entsprechend angepasst.
+Damit die Anwendung wie gewünscht in Zukunft auch für andere Projekte eingesetzt werden kann, muss sich das \textit{Root}-Verzeichnis unkompliziert ändern lassen. Dazu kann die Ordnerstruktur ein weiteres mal in einem anderen Verzeichnis reproduziert und in der Konfiguration die Ordner-ID entsprechend angepasst werden.
 
 % Beim Prüfen aud Erfüllung dieser Testfälle konnte bestätigt werden, dass die grundlegende Funktionalität der Anwendung auch nach der Cloud Migration verfügbar ist, jedoch durch das Refactoring der Anwendung noch nicht alle Qualitätsanforderungen erfüllt werden können. So werden die Testfälle 1-5 und 8 wie erwartet erfüllt, jedoch fehlt unter anderem das ausführliche Logging und das erwartete Fehlerhandling. Da  die Umsetzung des Prototypen mit wenigen Testdatensätzen erfolgte, wurde die Erfüllung der Testfälle manuell überprüft.
 
@@ -62,11 +62,11 @@ Mit dem Ziel die Anwendung für mehr Personen innerhalb des Projekts, als auch a
 Zudem soll untersucht werden, wie die in Kapitel \ref{sec:anforderungsanalyse} herausgearbeiteten Anforderungen an die Sicherheit und den Schutz personenbezogener und unternehmenskritischer Daten eingehalten werden. Dazu soll zum einen die Cloud Infrastruktur der Anwendung untersucht werden, als auch die Anwendung selbst.
 
 \section{Untersuchung der finanziellen Aspekte}
-Zwar wird eine detaillierte Untersuchung finanzieller Auswirkungen der Cloud Migration einleitend für diese Arbeit ausgeschlossen, jedoch ist eine oberflächliche Betrachtung unerlässlich, um die Cloud Migration der untersuchten Anwendung bewerten zu können. Für diese oberflächliche Betrachtung werden Kostenpositionen, wie zum Beispiel mögliche Lizenzkosten explizit ausgelassen. Es werden lediglich die Betriebskosten der Cloud Infrastruktur und geschätzte Aufwände in Personenstunden berücksichtigt um eine grobe Einschätzung über mögliche Kosten zu geben. \\
+Zwar wird eine detaillierte Untersuchung finanzieller Auswirkungen der Cloud \mbox{Migration} einleitend für diese Arbeit ausgeschlossen, jedoch ist eine oberflächliche Betrachtung unerlässlich, um die Cloud Migration der untersuchten Anwendung bewerten zu können. Für diese oberflächliche Betrachtung werden Kostenpositionen, wie zum Beispiel mögliche Lizenzkosten explizit ausgelassen. Es werden lediglich die Betriebskosten der Cloud Infrastruktur und geschätzte Aufwendungen in Personenstunden berücksichtigt um eine grobe Einschätzung über mögliche Kosten zu geben. \\
 
-Untersucht werden soll wie folgt:
+Untersucht werden soll folgendermaßen:
 
-Als Betriebskosten werden für die Betrachtung lediglich die Kosten für den Betrieb der Infrastruktur in der Cloud betrachtet, da diese in \ac{AWS} einsehbar sind. Zusätzlich dazu soll grob geschätzt werden, wie viel Zeit für die Ausführung der Anwendung beansprucht wird. Dafür wird für die ursprüngliche Anwendung auch berücksichtigt, wie viel Zeit für die Installation der Anwendung benötigt wird, davon ausgehend, dass diese ungefähr vier mal im Jahr ein Update erhält. Die benötigte Zeit für Installation und Ausführung wird dann in Personenstunden pro Jahr zusammengefasst um eine Orientierung für durch die Anwendung verursachten Kosten zu erhalten.
+Als Betriebskosten werden für die Betrachtung lediglich die Kosten für den Betrieb der Infrastruktur in der Cloud herangezogen, da diese in \ac{AWS} einsehbar sind. Zusätzlich dazu soll grob geschätzt werden, wie viel Zeit für die Ausführung der Anwendung beansprucht wird. Dafür wird für die ursprüngliche Anwendung auch berücksichtigt, wie viel Zeit für die Installation der Anwendung benötigt wird, davon ausgehend, dass diese ungefähr vier mal im Jahr ein Update erhält. Die benötigte Zeit für Installation und Ausführung wird dann in Personenstunden pro Jahr zusammengefasst um eine Orientierung für durch die Anwendung verursachten Kosten zu erhalten.
 
 \begin{align}
     Installationszeit = \frac{U \times T \times N(Personen)}{J}

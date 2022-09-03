@@ -5,12 +5,12 @@
 % Was muss Applikation hierzu erfüllen (non-functional requirements)?
 
 Um ein Migrationskonzept entwerfen zu können % wird zuerst die existierenden Anwendung kurz beschrieben und untersucht und
-werden mithilfe einer Literaturrecherche vorallem die notwendigen nicht-funktionalen, aber auch grundlegende Anforderungen an die Migration erarbeitet.
+werden mithilfe einer Literaturrecherche vor allem die notwendigen nicht-funktionalen, aber auch grundlegende Anforderungen an die Migration erarbeitet.
 
-Wird eine Anwendung in die Cloud migriert werden unter anderem folgende Vorteile erwartet \cite[Vgl. auch im Folgenden][03:23-05:36min]{AWS2019}:
+Wird eine Anwendung in die Cloud migriert, werden unter anderem folgende Vorteile erwartet \cite[Vgl. auch im Folgenden][03:23-05:36min]{AWS2019}:
 \begin{itemize}
 \item Senkung operativer Kosten
-\item Produktivität, zum Beinspiel durch Skalierbarkeit und Fehlertoleranz
+\item Produktivität, zum Beispiel durch Skalierbarkeit und Fehlertoleranz
 \item Kostenvermeidung
 \item Operative Belastbarkeit
 \item (Business) Agilität, zum Beispiel mit dem Einsatz von CI/CD
@@ -24,7 +24,7 @@ Hiermit verbunden muss vor der Migration untersucht und festgelegt werden, welch
 
 Grundlegend kann der Migrationsprozess  in vier Schritte zusammengefasst werden \cite[Vgl. auch im Folgenden][S. 34ff]{Maenhaut2016}:
 \begin{enumerate}
-\item \textbf{Auswahl der Komponenten:} Die Auswahl der zu migrierenden Komponenten sollte als erster Schritt vorgenommen werden. Wird die ganze Anwendung migriert ist dieser entsprechend einfach. Zu beachten ist hier vorallem die Kommunikation zwischen den Komponenten und damit verbundenen Sicherheitsanforderungen.
+\item \textbf{Auswahl der Komponenten:} Die Auswahl der zu migrierenden Komponenten sollte als erster Schritt vorgenommen werden. Wird die ganze Anwendung migriert ist dieser erste Schritt entsprechend einfach. Zu beachten ist hier vor allem die Kommunikation zwischen den Komponenten und damit verbundenen Sicherheitsanforderungen.
 \item \textbf{Feststellen kompatibler Cloud Provider:} Verschiedene Provider bieten verschiedene Möglichkeiten und haben unterschiedliche limitierende Faktoren. Somit sollte ein Provider gefunden werden, der alle gewünschten Features abdecken kann.
 \item \textbf{Einfluss auf den Client untersuchen:} Da die Kommunikation zwischen einzelnen Komponenten ins Internet verlagert wird, muss möglicher Weise die Bandbreite des Client Netzwerks angehoben werden.
 \item \textbf{Skalierung der Anwendung:} Einer der Vorteile des Cloud Computing ist die Skalierbarkeit, also die Fähigkeit, bei großer Last weitere Instanzen einer Anwendung zu starten. Um diese Skalierbarkeit bereitstellen zu können müssen die Komponenten lokalisiert werden, die entsprechend angepasst werden müssten.
@@ -41,7 +41,7 @@ Zu den Sicherheitsanforderungen gehören, wie in Kapitel \ref{sec:herausforderun
 
 % Zudem ist zu untersuchen, ob eine Public, Hybrid oder Private Cloud verwendet werden kann. Für den Prototypen wäre der Einsatz einer Public Cloud Infrastruktur unproblematisch, da hier nur Testdatensätze verwendet werden. Würden die realen Daten verwendet, so müsste auf eine Private Cloud umgestellt werden, da die in der untersuchten Anwendung verwendeten Dateien personenbezogene Daten enthalten und unternehmenskritische Daten wie Informationen über das Budget und Gewinn/Verlust in einem Projektmanagement-File enthalten sind.
 
-Darüber hinaus sollen vorallem auch die nachfolgend genannten nicht-funktionalen Anforderungen einer Cloud-nativen Anwendung umgesetzt werden. Dazu gehören in diesem Fall die \textbf{Mehrbenutzerfähigkeit}, die zuvor bereits erwähnte \textbf{Skalierbarkeit} und \textbf{Fehlertoleranz} der Anwendung. Um die \textbf{Agilität} in der Entwicklung zu steigern soll außerdem eine CI/CD Pipeline eingesetzt werden, die die Aktualisierung der Anwendung automatisiert. Diese schnelle Bereitstellung von Updates ist in dem aktuellen Setup deutlich komplizierter, wenn die Anwendung von anderen Anwendern außer dem Entwickler dieser verwendet wird.
+Darüber hinaus sollen vorallem auch die nachfolgend genannten nicht-funktionalen Anforderungen einer Cloud-nativen Anwendung umgesetzt werden. Dazu gehören in diesem Fall die \textbf{Mehrbenutzerfähigkeit}, die zuvor bereits erwähnte \textbf{Skalierbarkeit} und \textbf{Fehlertoleranz} der Anwendung. Um die \textbf{Agilität} in der Entwicklung zu steigern soll außerdem eine CI/CD Pipeline eingesetzt werden, die die Aktualisierung der Anwendung automatisiert. Diese schnelle Bereitstellung von Updates ist in dem aktuellen Setup deutlich komplizierter, wenn die Anwendung von anderen Nutzern außer dem Entwickler selbst gebraucht wird.
 
 % Für die \textbf{Skalierbarkeit} der untersuchten Anwendung kann wie in Kapitel \ref{sec:cloud-native-anwendungen} beschriebene vertikale oder horizontale Skalierung eingesetzt werden. Bei der für diesen Fall gewählten horizontalen Skalierung werden im Lastfall weitere Container mit derselben Anwendung gestartet. Die \textbf{Mehrbenutzerfähigkeit} kann in diesem Fall ebenfalls durch die horizontale Skalierung gewährleistet werden, da jeder Container die Anwendung für einen Benutzer zur Verfügung stellen kann.
 \pagebreak
