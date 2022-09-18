@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Mon Sep  5 08:25:41 2022
+# Make data base, printed on Sun Sep 18 13:38:45 2022
 
 # Variables
 
@@ -140,19 +141,20 @@ DOCUMENT_NAME = dokumentation
 # environment
 LANG = C
 # environment
-VSCODE_PID = 52127
+VSCODE_PID = 76406
 # variable set hash-table stats:
 # Load=65/1024=6%, Rehash=0, Collisions=1/91=1%
 
 # Pattern-specific Variable Values
 
+ 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 16777220, inode 2692095): 37 files, no impossibilities.
+# . (device 16777220, inode 2692095): 38 files, no impossibilities.
 
-# 37 files, no impossibilities in 1 directories.
+# 38 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -291,6 +293,6 @@ report:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Sep  5 08:25:41 2022
+# Finished Make data base on Sun Sep 18 13:38:45 2022
 
  
